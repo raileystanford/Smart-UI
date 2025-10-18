@@ -1,0 +1,18 @@
+@use './templates.scss' as *;
+
+@mixin flex($wrap, $gap: 0px) {
+  display: flex;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin flex-col($gap: 0px) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin bg($url) {
+  background-image: $url;
+  @extend %bg;
+}
