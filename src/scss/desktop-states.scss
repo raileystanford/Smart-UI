@@ -1,0 +1,267 @@
+@use './modules/variables.scss' as var;
+@use './modules/templates.scss' as *;
+
+// Header
+
+.logotype {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &:hover, &:focus {
+    transform: scale(1.06);
+    filter: saturate(1.5)
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.9);
+  }
+}
+
+.nav-links__link {
+  will-change: transform;
+  transition: all 0.2s;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+    width: 0%;
+    height: 2px;
+    background: var.$lime;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+
+  &:hover, &:focus {
+    color: var.$gray-blue;
+    transform: translateY(-2px);
+
+    &::after {
+      width: calc(100% - 8px);
+    }
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.95);
+
+    &::after {
+      transition: all 0.08s;
+      opacity: 0;
+    }
+  }
+}
+
+.lang-controls__btn {
+  will-change: transform;
+  transition: all 0.2s;
+  border-radius: 5px;
+
+  .lang-controls__text {
+    will-change: transform;
+    transition: all 0.2s;
+  }
+
+  &:hover, &:focus {
+
+    &:not(.active) {
+      background: var.$yellow;
+      color: var.$gray-blue;
+    }
+
+  }
+
+  &:active {
+
+    &:not(.active) {
+      transition: all 0.08s;
+      background: transparent;
+    }
+
+  }
+}
+
+.socials__link {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &:hover, &:focus {
+    transform: scale(1.12);
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.9);
+  }
+}
+
+.button {
+  will-change: transform;
+  transition: all 0.3s;
+
+  &:hover, &:focus {
+    background: var.$blue;
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.95);
+  }
+}
+
+.partners__link {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &:hover, &:focus {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.95);
+  }
+}
+
+.aside-btn {
+  transition: all 0.3s;
+
+  &:hover, &:focus {
+    background: var.$yellow;
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: rotate(180deg) scale(0.95);
+  }
+}
+
+.chat-btn {
+  will-change: transform;
+  transition: all 0.3s;
+
+  &::before, &::after {
+    content: '';
+    @extend %wh-100;
+    position: absolute;
+    background: var.$lime;
+    border-radius: 50%;
+    transition: all 0.3s;
+    z-index: -1;
+  }
+  
+  &::before {
+    background: var.$yellow;
+    transform: scale(0.9);
+  }
+
+  &:hover, &:focus {
+
+    &::before {
+      transform:  scale(1.1);
+    }
+
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.92);
+
+    &::before {
+      transform: scale(0.9);
+    }
+  }
+}
+
+// Popup-msg
+
+.data-field__input {
+  transition: border 0.2s;
+
+  &:hover, &:focus {
+    border-color: var.$lime-light;
+  }
+}
+
+.popup-button {
+  will-change: transform;
+  transition: all 0.3s;
+
+  &:hover, &:focus {
+
+    &:not([disabled]) {
+
+      background: var.$blue;
+
+      &[type="reset"] {
+        background: var.$red;
+        color: var.$white;
+      }
+
+    }
+    
+  }
+
+  &:active {
+
+    &:not([disabled]) {
+      transition: all 0.08s;
+      transform: scale(0.92);
+    }
+    
+  }
+}
+
+// Chat
+
+.chat__btn {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &-icon {
+    transition: all 0.2s;
+  }
+
+  &:not([disabled]) {
+
+    &:hover, &:focus {
+
+      .chat__btn-icon {
+        fill: var.$white;
+      }
+
+    }
+
+    &:active {
+      transition: all 0.08s;
+      transform: scale(0.9);
+    }
+
+  }
+}
+
+.chat__close {
+  will-change: transform;
+  transition: all 0.2s;
+  
+  &-icon {
+    transition: all 0.2s;
+  }
+
+  &:hover, &:focus {
+    background: var.$red;
+
+    .chat__close-icon {
+      fill: var.$white;
+    }
+  }
+
+  &:active {
+    transition: all 0.08s;
+    transform: scale(0.85);
+  }
+}

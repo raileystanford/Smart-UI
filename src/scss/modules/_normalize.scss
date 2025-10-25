@@ -46,7 +46,7 @@ LABEL {
   margin: 0;
 }
 
-INPUT, IFRAME, OUTPUT {
+INPUT, IFRAME, OUTPUT, TEXTAREA {
   border: none;
   outline: none;
   padding: 0;
@@ -103,6 +103,7 @@ DIALOG:focus {
   outline: none;
 }
 
+// Flex
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -119,3 +120,13 @@ DIALOG:focus {
     flex: 0 0 auto;
   }
 }
+
+// Grid
+// .page-wrapper {
+//   display: grid;
+//   width: 1358px;
+//   min-height: 100vh;
+//   padding: 0 15px;
+//   margin: 0 auto;
+//   grid-template-rows: auto 1fr auto;
+// }

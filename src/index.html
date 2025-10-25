@@ -9,18 +9,248 @@
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
   <!-- Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
   <link rel="stylesheet" href="./css/desktop-states.css" media="(min-width: 769px)">
   <link rel="stylesheet" href="./css/mobile-states.css" media="(max-width: 768px)">
   <link rel="stylesheet" href="./css/index.css">
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/emoji-mart@5.6.0/dist/browser.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js" defer></script>
   <script src="./js/index.js" type="module"></script>
 
 </head>
 <body>
 
 
+  <div class="page-wrapper">
 
+    <header class="header" data-title="header">
 
+      <nav class="head-nav">
+
+        <div class="head-nav__left">
+
+          <a href="#" class="logotype">
+            <img src="./images/icons/logo.svg" alt="Smart UI" class="logotype__icon">
+          </a>
+
+          <ul class="nav-links head-nav__nav-links">
+
+            <li class="nav-links__li">
+              <a href="#" class="nav-links__link link-text" data-lang="nav-link1">Tools</a>
+            </li>
+
+            <li class="nav-links__li">
+              <a href="#" class="nav-links__link link-text" data-lang="nav-link2">Strategy</a>
+            </li>
+
+            <li class="nav-links__li">
+              <a href="#" class="nav-links__link link-text" data-lang="nav-link3">Our team</a>
+            </li>
+
+            <li class="nav-links__li">
+              <a href="#" class="nav-links__link link-text" data-lang="nav-link4">Portfolio</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="head-nav__right">
+
+          <div class="lang-controls head-nav__lang-controls" data-lang-controls>
+
+            <button class="lang-controls__btn link-text" data-lang-var="de">DE</button>
+            <button class="lang-controls__btn link-text active" data-lang-var="en" disabled>EN</button>
+           
+          </div>
+
+          <div class="socials">
+
+            <a href="#" class="socials__link">
+              <img src="./images/icons/whatsapp.svg" alt="Whatsapp" class="socials__icon">
+            </a>
+
+            <a href="#" class="socials__link">
+              <img src="./images/icons/telergam.svg" alt="Telegram" class="socials__icon">
+            </a>
+         
+          </div>
+
+        </div>
+
+      </nav>
+
+      <article class="head-intro">
+
+        <div class="head-intro__text">
+
+          <h1 class="head-intro__title title-text" data-lang="head-title">We are SMART-UI</h1>
+          <p class="head-intro__subtitle sub-text" data-lang="head-sub">You deserve easy IT, to make it easy make it SMART 👋</p>
+
+        </div>
+
+        <div class="head-intro__controls">
+
+          <a href="#" class="button link-text" data-lang="head-btn">Get Started</a>
+
+          <div class="partners">
+
+            <a href="#" class="partners__link">
+              <img src="./images/icons/Clutch.svg" alt="Clutch" class="partners__icon">
+            </a>
+
+            <a href="#" class="partners__link">
+              <img src="./images/icons/Upwork.svg" alt="Upwork" class="partners__icon">
+            </a>
+
+            <a href="#" class="partners__link">
+              <img src="./images/icons/Linkedin.svg" alt="Linkedin" class="partners__icon">
+            </a>
+
+          </div>
+
+        </div>
+
+        <span class="explore head-intro__explore small-text" data-lang="explore">Scroll to explore</span>
+
+      </article>
+
+      <div class="bg-decore">
+        <div class="bg-decore__circle bg-decore__circle--mid"></div>
+        <div class="bg-decore__circle bg-decore__circle--small"></div>
+        <div class="bg-decore__circle bg-decore__circle--min"></div>
+        <div class="bg-decore__circle bg-decore__circle--big"></div>
+      </div>
+
+      <div class="comp">
+        <img src="./images/illustrations/monitor.png" alt="monitor" class="comp__img comp__img--monitor" data-parallax="0.03/0.08/0/normal/once/true">
+        <img src="./images/illustrations/viewport.png" alt="viewport" class="comp__img comp__img--viewport" data-parallax="0.03/0.08/0/normal/once/true">
+        <img src="./images/illustrations/tasks.png" alt="tasks" class="comp__img comp__img--tasks" data-parallax="0.03/0.08/0/normal/once/true">
+
+        <img src="./images/illustrations/files.png" alt="files" class="comp__img comp__img--files" data-parallax="0.06/0.08/0/normal/once/true">
+        <img src="./images/illustrations/message.png" alt="message" class="comp__img comp__img--msg" data-parallax="0.11/0.08/0/normal/once/true">
+
+        <img src="./images/illustrations/keyboard.png" alt="keyboard" class="comp__img comp__img--keyboard" data-parallax="0.07/0.08/0/normal/once/true">
+        <img src="./images/illustrations/mouse.png" alt="mouse" class="comp__img comp__img--mouse" data-parallax="0.07/0.08/0/normal/once/true">
+      </div>
+
+    </header>
+
+    <main class="main"></main>
+
+    <footer class="footer"></footer>
+
+  </div>
+
+  <button class="aside-btn link-text" data-lang="leave-msg" data-popup="popup-msg--com">leave message</button>
+
+  <dialog class="popup-msg popup-msg--com">
+    <form action="#" method="post" class="popup-msg__form" id="popupCommon" novalidate>
+
+      <div class="popup-msg__head">
+
+        <div class="popup-msg__intro">
+          <p class="popup-msg__title small-text" data-lang="popup-title">Leave your message</p>
+          <span class="popup-msg__subtitle mini-text" data-lang="popup-sub">Please leave one of your contacts to contact you.</span>
+        </div>
+
+        <div class="socials">
+
+          <a href="#" class="socials__link">
+            <img src="./images/icons/whatsapp.svg" alt="Whatsapp" class="socials__icon">
+          </a>
+
+          <a href="#" class="socials__link">
+            <img src="./images/icons/telergam.svg" alt="Telegram" class="socials__icon">
+          </a>
+        
+        </div>
+
+      </div>
+
+      <div class="popup-msg__body">
+
+        <div class="data-field popup-msg__data-field">
+          <input type="text" id="text1" class="data-field__input input-text" placeholder="Leave any contacts: (telegram ,whatsapp, linkedin , etc...)" autocomplete="off" data-lang="popup-field1" data-validate>
+          <span class="data-field__warning input-text" data-warn="text1"></span>
+        </div>
+
+        <div class="data-field popup-msg__data-field">
+          <textarea id="text2" class="data-field__input data-field__input--textarea input-text" placeholder="Your message" autocomplete="off" data-validate data-lang="popup-field2"></textarea>
+          <span class="data-field__warning input-text" data-warn="text2"></span>
+        </div>
+
+        <span class="popup-msg__info small-text" data-lang="popup-warn">Your data is safe and will not be passed on to third parties</span>
+
+      </div>
+
+      <div class="popup-msg__controls">
+
+        <button class="popup-button popup-text" type="reset" data-popup-close disabled data-lang="popup-reset">No, cancel</button>
+        <button class="popup-button popup-text" type="submit" data-lang="popup-submit">Yes, confirm</button>
+
+      </div>
+
+    </form>
+  </dialog>
+
+  <div class="popup-success">
+    <span class="popup-success__text succ-text" data-lang="popup-success">Message sent successfully</span>
+  </div>
+
+  <button class="chat-btn">
+    <img src="./images/icons/chat.svg" alt="Chat" class="chat-btn__icon">
+  </button>
+
+  <dialog class="chat">
+
+    <button class="chat__close">
+      <svg class="chat__close-icon">
+        <use xlink:href="./images/sprite.svg#close"></use>
+      </svg>
+    </button>
+
+    <div class="chat__inner">
+
+      <div class="chat__header">
+        <p class="chat__title chat-text" data-lang="chat-title">Chat</p>
+        <span class="chat__subtitle micro-text" data-lang="chat-sub">last seen 5 minutes ago</span>
+      </div>
+
+      <div class="chat__area" data-simplebar>
+        <div class="chat__area-inner"></div>
+      </div>
+
+      <div class="chat__footer">
+
+        <button class="chat__btn chat__btn--emoji">
+          <svg class="chat__btn-icon">
+            <use xlink:href="./images/sprite.svg#emoji"></use>
+          </svg>
+        </button>
+
+        <textarea class="chat__input chat-text" placeholder="Start typing..." data-lang="chat-inp"></textarea>
+
+        <button class="chat__btn chat__btn--sent">
+          <svg class="chat__btn-icon">
+            <use xlink:href="./images/sprite.svg#sent"></use>
+          </svg>
+        </button>
+
+        <div class="chat__emoji"></div>
+
+        <span class="chat__indicator popup-text" data-lang="chat-ind">Dmitry is typing</span>
+
+      </div>
+
+      <div class="chat__preloader">
+        <div class="chat__spinner"></div>
+      </div>
+
+    </div>
+
+  </dialog>
 
 
 

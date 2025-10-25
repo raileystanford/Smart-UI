@@ -16,3 +16,9 @@
   background-image: $url;
   @extend %bg;
 }
+
+@mixin abs($top: 0px, $left: 0px) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
