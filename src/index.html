@@ -61,7 +61,7 @@
           <div class="lang-controls head-nav__lang-controls" data-lang-controls>
 
             <button class="lang-controls__btn link-text" data-lang-var="de">DE</button>
-            <button class="lang-controls__btn link-text active" data-lang-var="en" disabled>EN</button>
+            <button class="lang-controls__btn link-text" data-lang-var="en" disabled>EN</button>
            
           </div>
 
@@ -81,7 +81,102 @@
 
       </nav>
 
-      <article class="head-intro">
+      <div class="mobile-nav">
+
+        <div class="mobile-nav__inner">
+
+          <button class="mobile-nav__burger" data-burger-open>
+            <img src="./images/icons/burger.png" alt="menu" class="mobile-nav__icon">
+          </button>
+
+          <a href="#" class="logotype">
+            <img src="./images/icons/logo.svg" alt="Smart UI" class="logotype__icon">
+          </a>
+
+        </div>
+
+      </div>
+
+      <nav class="mobile-menu" data-burger-content>
+
+        <div class="mobile-menu__inner">
+
+          <div class="mobile-menu__head">
+
+            <button class="mobile-menu__close" data-burger-close>
+              <img src="./images/icons/mobile-close.png" alt="close" class="mobile-menu__close-icon">
+            </button>
+
+            <a href="#" class="logotype">
+              <img src="./images/icons/logo.svg" alt="Smart UI" class="logotype__icon">
+            </a>
+
+          </div>
+
+          <div class="mobile-menu__body">
+
+            <ul class="nav-links mobile-menu__nav-links">
+
+              <li class="nav-links__li">
+                <a href="#" class="nav-links__link link-text" data-lang="nav-link1">Tools</a>
+              </li>
+
+              <li class="nav-links__li">
+                <a href="#" class="nav-links__link link-text" data-lang="nav-link2">Strategy</a>
+              </li>
+
+              <li class="nav-links__li">
+                <a href="#" class="nav-links__link link-text" data-lang="nav-link3">Our team</a>
+              </li>
+
+              <li class="nav-links__li">
+                <a href="#" class="nav-links__link link-text" data-lang="nav-link4">Portfolio</a>
+              </li>
+
+            </ul>
+
+            <div class="mobile-menu__controls">
+
+              <div class="mobile-menu__info">
+
+                <div class="lang-controls mobile-menu__lang-controls" data-lang-controls>
+
+                  <button class="lang-controls__btn link-text" data-lang-var="de">DE</button>
+                  <button class="lang-controls__btn link-text" data-lang-var="en" disabled>EN</button>
+                
+                </div>
+
+                <div class="socials mobile-menu__socials">
+
+                  <a href="#" class="socials__link">
+                    <img src="./images/icons/whatsapp.svg" alt="Whatsapp" class="socials__icon">
+                  </a>
+
+                  <a href="#" class="socials__link">
+                    <img src="./images/icons/telergam.svg" alt="Telegram" class="socials__icon">
+                  </a>
+              
+                </div>
+
+              </div>
+
+              <button class="button mobile-menu__button link-text" data-lang="leave-msg" data-popup="popup-msg--com">leave message</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="mobile-menu__decor">
+          <div class="mobile-menu__circle"></div>
+          <div class="mobile-menu__circle"></div>
+          <div class="mobile-menu__circle"></div>
+        </div>
+        
+      </nav>
+
+      <article class="head-intro header__head-intro">
 
         <div class="head-intro__text">
 
@@ -92,7 +187,7 @@
 
         <div class="head-intro__controls">
 
-          <a href="#" class="button link-text" data-lang="head-btn">Get Started</a>
+          <a href="#" class="button button--common link-text" data-lang="head-btn">Get Started</a>
 
           <div class="partners">
 
@@ -113,6 +208,7 @@
         </div>
 
         <span class="explore head-intro__explore small-text" data-lang="explore">Scroll to explore</span>
+        <span class="explore explore--mobile head-intro__explore small-text" data-lang="explore-mob">Swipe to explore</span>
 
       </article>
 
@@ -143,7 +239,7 @@
 
   </div>
 
-  <button class="aside-btn link-text" data-lang="leave-msg" data-popup="popup-msg--com">leave message</button>
+  <button class="button button--aside link-text" data-lang="leave-msg" data-popup="popup-msg--com">leave message</button>
 
   <dialog class="popup-msg popup-msg--com">
     <form action="#" method="post" class="popup-msg__form" id="popupCommon" novalidate>
@@ -187,8 +283,8 @@
 
       <div class="popup-msg__controls">
 
-        <button class="popup-button popup-text" type="reset" data-popup-close disabled data-lang="popup-reset">No, cancel</button>
-        <button class="popup-button popup-text" type="submit" data-lang="popup-submit">Yes, confirm</button>
+        <button class="button button--popup popup-text" type="reset" data-popup-close disabled data-lang="popup-reset">No, cancel</button>
+        <button class="button button--popup popup-text" type="submit" data-lang="popup-submit">Yes, confirm</button>
 
       </div>
 
@@ -198,10 +294,6 @@
   <div class="popup-success">
     <span class="popup-success__text succ-text" data-lang="popup-success">Message sent successfully</span>
   </div>
-
-  <button class="chat-btn">
-    <img src="./images/icons/chat.svg" alt="Chat" class="chat-btn__icon">
-  </button>
 
   <dialog class="chat">
 
@@ -251,6 +343,15 @@
     </div>
 
   </dialog>
+
+  <div class="page-buttons">
+
+    <button class="chat-btn">
+      <img src="./images/icons/chat.svg" alt="Chat" class="chat-btn__icon">
+    </button>
+    
+  </div>
+  
 
 
 

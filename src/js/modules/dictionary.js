@@ -51,6 +51,11 @@ let elements = {
     'de': 'Scrollen Sie, um mehr zu erfahren'
   },
 
+  'explore-mob': {
+    'en': 'Swipe to explore',
+    'de': 'Zum Erkunden wischen'
+  },
+
   'leave-msg': {
     'en': 'leave message',
     'de': 'Nachricht lassen'

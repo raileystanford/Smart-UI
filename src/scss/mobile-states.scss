@@ -1,2 +1,75 @@
-/* -webkit-tap-highlight-color: transparent;
-  // touch-action: manipulation; */
+@use './modules/variables.scss' as var;
+@use './modules/templates.scss' as *;
+
+
+
+// Header
+
+.logotype, .partners__link, .chat-btn, .socials__link, .mobile-menu__close {
+  will-change: transform;
+  transition: all 0.08s;
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.button {
+  will-change: transform;
+  transition: all 0.08s;
+
+  &:not([disabled]) {
+
+    &:active {
+      background: var.$blue;
+      transform: scale(0.95);
+    }
+
+    &[type="reset"]:active {
+      background: var.$red;
+      color: var.$white;
+    }
+
+  }
+}
+
+.chat__close {
+  transition: all 0.08s;
+
+  &:active {
+    background: var.$red;
+  }
+}
+
+.chat__btn {
+  will-change: transform;
+  transition: all 0.08s;
+
+  &-icon {
+    transition: all 0.08s;
+  }
+
+  &:active {
+    transform: scale(0.92);
+
+    .chat__btn-icon {
+      fill: var.$white;
+    }
+  }
+}
+
+.data-field__input {
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: var.$lime;
+  }
+}
+
+.nav-links__link {
+  transition: all 0.08s;
+
+  &:active {
+    color: var.$lime;
+  }
+}

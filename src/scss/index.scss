@@ -5,10 +5,6 @@
 @use './modules/mixins.scss' as mix;
 @use './modules/typography.scss';
 
-// BODY {
-//   background: black;
-// }
-
 .header {
   @include mix.flex-col(160px);
   padding: 66px 0 54px 0;
@@ -31,6 +27,10 @@
     align-items: center;
   }
 
+  &__mobile-trigger {
+    display: none;
+  }
+
   &__nav-links {
     margin: 5px 0 0 0;
   }
@@ -41,6 +41,7 @@
 }
 
 .logotype {
+  display: block;
   max-width: 178px;
   flex-shrink: 0;
 
@@ -51,7 +52,7 @@
 }
 
 .nav-links {
-  @include mix.flex(wrap, 15px 33px);
+  @include mix.flex(wrap, 6px 33px);
 
   &__li {
     display: flex;
@@ -147,12 +148,46 @@
 
 .button {
   @extend %flex-cen;
-  width: 218px;
-  min-height: 85px;
-  border-radius: 10px;
   background: var.$lime;
-  padding: 30px 29px 28px 29px;
   color: var.$white;
+
+  &--common {
+    border-radius: 10px;
+    width: 218px;
+    min-height: 85px;
+    padding: 30px 29px 28px 29px;
+  }
+
+  &--aside {
+    @include mix.abs(270px, 16px);
+    border-radius: 5px;
+    height: 225px;
+    width: auto;
+    min-width: 48px;
+    padding: 20px 11px;
+    transform: rotate(-180deg);
+    writing-mode: vertical-lr;
+  }
+
+  &--popup {
+    width: 180px;
+    min-height: 60px;
+    padding: 20px 19px 18px 19px;
+    border-radius: 8px;
+
+    &[type="reset"] {
+      border: 1px solid var.$red;
+      color: var.$red;
+      background: transparent;
+    }
+
+    &[disabled] {
+      background: transparent;
+      border: 1px solid var.$dark-silver;
+      color: var.$dark-silver;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .partners {
@@ -183,6 +218,15 @@
     animation: explore 1.8s infinite;
   }
 
+  &--mobile {
+    display: none;
+
+    &::before {
+      background: url(../images/icons/swipe.png) 0 0 / contain no-repeat;
+      animation: swipe 1.3s infinite;
+    }
+  }
+
   @keyframes explore {
     0%{transform: translateY(0px)}
     10%{transform: translateY(7px)}
@@ -191,43 +235,12 @@
     40%{transform: translateY(0px)}
     100%{transform: translateY(0px)}
   }
-}
 
-.chat-btn {
-  @extend %flex-cen;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: var.$lime;
-  position: fixed;
-  bottom: 40px;
-  right: 60px;
-  z-index: 10;
-
-  &.hide {
-    transform: scale(0);
-    visibility: hidden;
+  @keyframes swipe {
+    0%{transform: translateY(2px)}
+    50%{transform: translateY(-7px)}
+    100%{transform: translateY(2px)}
   }
-
-  &__icon {
-    width: 60%;
-    height: 58%;
-  }
-}
-
-.aside-btn  {
-  @extend %flex-cen;
-  position: absolute;
-  top: 270px;
-  left: 16px;
-  color: var.$white;
-  background: var.$lime;
-  border-radius: 5px;
-  height: 225px;
-  min-width: 48px;
-  padding: 20px 11px;
-  transform: rotate(180deg);
-  writing-mode: vertical-lr;
 }
 
 .bg-decore {
@@ -447,29 +460,6 @@
   }
 }
 
-.popup-button {
-  @extend %flex-cen;
-  width: 180px;
-  min-height: 60px;
-  border-radius: 8px;
-  background: var.$lime;
-  color: var.$white;
-  padding: 20px 19px 18px 19px;
-
-  &[type="reset"] {
-    border: 1px solid var.$red;
-    color: var.$red;
-    background: transparent;
-  }
-
-  &[disabled] {
-    background: transparent;
-    border: 1px solid var.$dark-silver;
-    color: var.$dark-silver;
-    cursor: not-allowed;
-  }
-}
-
 .popup-success {
   @extend %flex-cen;
   @extend %px-cen;
@@ -481,8 +471,9 @@
   top: -100px;
   background: var.$gray-blue;
   border-radius: 10px;
-  transition: all 0.2s;
+  transition: all 0.25s;
   visibility: hidden;
+  z-index: 10;
 
   &.active {
     visibility: visible;
@@ -518,6 +509,19 @@
   &.active {
     visibility: visible;
     opacity: 1;
+  }
+}
+
+.chat-btn {
+  @extend %flex-cen;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var.$lime;
+
+  &__icon {
+    width: 60%;
+    height: 58%;
   }
 }
 
@@ -886,6 +890,213 @@
 
 }
 
+.mobile-nav {
+  @include mix.flex(nowrap, 0px);
+  justify-content: center;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+  transition: all 0.2s;
+  z-index: 9;
+  display: none;
+
+  &.active {
+    box-shadow: 0 0 5px var.$gray;
+    background: var.$white;
+  }
+
+  &__inner {
+    @include mix.flex(nowrap, 20px);
+    justify-content: space-between;
+    align-items: center;
+    width: 628px;
+
+    &::after {
+      content: '';
+      width: 25px;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    width: 25px;
+    height: 21px;
+  }
+
+  &__icon {
+    @extend %wh-100;
+  }
+}
+
+.mobile-menu {
+  will-change: transform, opacity;
+  display: none;
+  position: relative;
+  background: var.$white;
+  padding: 20px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+  transform: translateY(-50px);
+
+  &.active {
+    transition: all 0.3s;
+    transform: translateY(0px);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__decor {
+    @include mix.abs();
+    @extend %wh-100;
+    z-index: -1;
+  }
+
+  &__circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var.$yellow;
+
+    &:nth-child(1) {
+      top: 60px;
+      left: 70%;
+      width: 51px;
+      height: 51px;
+    }
+
+    &:nth-child(2) {
+      top: 300px;
+      left: 18%;
+      width: 85px;
+      height: 85px;
+    }
+
+    &:nth-child(3) {
+      top: 0%;
+      left: 85%;
+      width: 500px;
+      height: 500px;
+      background: var.$blue;
+    }
+  }
+
+  &__inner {
+    @include mix.flex-col(60px);
+    align-self: center;
+    width: 628px;
+    margin: 0 auto;
+  }
+
+  &__head {
+    @include mix.flex(wrap, 20px);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__close-icon {
+    @extend %wh-100;
+    display: block;
+  }
+
+  &__body {
+    @include mix.flex-col(30px);
+    align-items: center;
+  }
+
+  &__nav-links {
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    .nav-links__link {
+      font-size: 45px;
+      padding: 0;
+      line-height: 50px;
+    }
+  }
+
+  &__controls {
+    @include mix.flex-col(12px);
+    align-items: center;
+  }
+
+  &__info {
+    @include mix.flex(nowrap, 35px);
+    align-items: center;
+  }
+
+  &__lang-controls {
+    gap: 11px;
+
+    .lang-controls__btn {
+      font-size: 45px;
+      line-height: 50px;
+
+      &:not(:last-child)::after {
+        height: 32px;
+      }
+    }
+  }
+
+  &__socials {
+    justify-content: center;
+
+    .socials__link {
+      width: 47px;
+      height: 47px;
+    }
+  }
+
+  &__aside-btn {
+    position: static;
+    transform: none;
+    width: 208px;
+    min-height: 44px;
+    height: auto !important;
+    writing-mode: horizontal-tb;
+  }
+
+  &__button {
+    border-radius: 7px;
+    font-size: 16px;
+    width: 160px;
+    min-height: 50px;
+  }
+}
+
+.page-buttons {
+  @include mix.flex-col(20px);
+  position: fixed;
+  bottom: 40px;
+  right: 60px;
+  z-index: 9;
+  transition: all 0.2s;
+
+  &.hide {
+    visibility: hidden;
+    transform: scale(0);
+  }
+}
+
 
 // Media queries
 @media (max-width: 1600px) {
@@ -925,4 +1136,725 @@
 
   }
 
+}
+
+@media (max-width: 1500px) {
+
+  .page-wrapper {
+    width: 1150px;
+  }
+
+  .head-nav {
+    max-width: 1050px;
+  }
+
+  .head-intro {
+
+    &__title {
+      font-size: 120px;
+      line-height: 110px;
+    }
+  }
+
+  .comp {
+    width: 430px;
+    height: 335px;
+  }
+
+}
+
+@media (max-width: 1250px) {
+
+  .page-wrapper {
+    width: 854px;
+  }
+
+  .header {
+    padding: 52px 0 75px 0;
+    gap: 165px;
+  }
+
+  .head-nav {
+    max-width: 752px;
+
+    &__left {
+      gap: 37px;
+    }
+
+    &__right {
+      gap: 30px;
+    }
+
+    &__nav-links {
+      gap: 5px 31px;
+
+      .nav-links__link {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .logotype {
+    max-width: 137px;
+  }
+
+  .lang-controls {
+    gap: 7px;
+
+    &__btn {
+      font-size: 14px;
+      line-height: 21px;
+
+      &:not(:last-child) {
+        margin: 0 7px 0 0;
+      }
+
+      &:not(:last-child)::after {
+        height: 10px;
+        right: -7.5px;
+      }
+    }
+  }
+
+  .socials {
+    gap: 14px;
+
+    &__link {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .head-intro {
+    max-width: 470px;
+    gap: 53px;
+
+    &__text {
+      gap: 5px;
+    }
+
+    &__title {
+      font-size: 95px;
+      line-height: 94px;
+    }
+
+    &__subtitle {
+      font-size: 17px;
+      line-height: 26px;
+    }
+
+    &__explore {
+      margin: 23px 0 0 0;
+    }
+
+    &__controls {
+      gap: 29px;
+    }
+  }
+
+  .button {
+
+    &--common {
+      width: 159px;
+      min-height: 63px;
+      padding: 21px 20px 19px 20px;
+      font-size: 14px;
+      border-radius: 7px;
+    }
+
+    &--aside {
+      width: auto;
+      min-width: 35px;
+      height: 165px;
+      padding: 10px 10px;
+      top: 260px;
+      border-radius: 3.6px;
+      left: 15px;
+      font-size: 14px;
+    }
+  }
+
+  .partners {
+    gap: 14px;
+
+    &__link {
+      max-width: 65px;
+    }
+  }
+
+  .comp {
+    top: 34%;
+    width: 312px;
+    height: 256px;
+  }
+
+  .chat-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .page-buttons {
+    right: 30px;
+    bottom: 30px;
+  }
+
+  .bg-decore {
+
+    &__circle--mid {
+      top: -30%;
+      left: -21.5%;
+      width: 341px;
+      height: 341px;
+    }
+
+    &__circle--small {
+      top: 31.1%;
+      left: 9.8%;
+      width: 68px;
+      height: 68px;
+    }
+
+    &__circle--min {
+      top: 33.3%;
+      left: 60%;
+      width: 85px;
+      height: 85px;
+    }
+
+    &__circle--big {
+      top: 0%;
+      left: 77.5%;
+      width: 768px;
+      height: 768px;
+      background: var.$blue;
+    }
+  }
+
+  .chat {
+    bottom: 100px;
+    right: 30px;
+    height: 470px;
+    width: 310px;
+  }
+
+}
+
+@media (max-width: 950px) {
+
+  .page-wrapper {
+    width: 700px;
+  }
+
+  .header {
+    gap: 140px;
+  }
+
+  .head-nav {
+    
+    &__left {
+      gap: 30px;
+    }
+
+    &__nav-links {
+      gap: 5px 20px;
+    }
+  }
+
+  .head-intro {
+
+    &__controls {
+      align-self: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  .partners {
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: column;
+
+    &__link {
+      max-width: 160px;
+      width: 80%;
+    }
+  }
+
+  .button {
+
+    &--aside {
+      top: 236px;
+    }
+  }
+
+  .comp {
+    top: 55%;
+  }
+
+  .bg-decore {
+
+    &__circle--mid {
+      top: -26%;
+      left: -23%;
+    }
+
+    &__circle--small {
+      top: 24%;
+      left: 14%;
+    }
+
+    &__circle--min {
+      top: 54%;
+      left: 53%;
+    }
+
+    &__circle--big {
+      top: 10%;
+      left: 77.5%;
+      background: var.$blue;
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .page-wrapper {
+    width: 658px;
+  }
+
+  .mobile-nav {
+    display: flex;
+  }
+
+  .header {
+    padding: 66px 0 104px 0;
+
+    &__head-intro {
+      margin: 108px 0 0 0;
+    }
+  }
+
+  .button {
+
+    &--common {
+      width: 208px;
+      min-height: 60px;
+    }
+
+    &--aside {
+      display: none;
+    }
+
+    &--popup {
+      width: 180px;
+    }
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+
+  .head-nav {
+    display: none;
+  }
+
+  .logotype {
+    max-width: 140px;
+  }
+
+  .head-intro {
+    max-width: 495px;
+    gap: 19px;
+
+    &__text {
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: 100px;
+      line-height: 100%;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+    }
+
+    &__controls {
+      gap: 89px;
+    }
+
+    &__explore {
+      margin: 44px 0 0 0;
+    }
+  }
+
+  .partners {
+    gap: 35px;
+
+    &__link {
+      width: 100%;
+      max-width: none;
+    }
+
+    &__link:first-child {
+      order: 1;
+    }
+
+    &__link:nth-child(3) {
+      order: -1;
+    }
+  }
+
+  .explore {
+    display: none;
+
+    &--mobile {
+      display: flex;
+      font-size: 23px;
+      line-height: 34px;
+      gap: 5px;
+    }
+  }
+
+  .chat-btn {
+    width: 55px;
+    height: 55px;
+  }
+
+  .bg-decore {
+
+    &__circle--mid {
+      top: -21%;
+      left: -26.5%;
+      width: 293px;
+      height: 293px;
+    }
+
+    &__circle--small {
+      top: 16.5%;
+      left: 8.7%;
+      width: 68px;
+      height: 68px;
+    }
+
+    &__circle--min {
+      top: 54.8%;
+      left: 51%;
+      width: 86px;
+      height: 86px;
+    }
+
+    &__circle--big {
+      top: 0%;
+      left: 76.5%;
+      width: 1024px;
+      height: 1024px;
+    }
+  }
+
+  .popup-msg {
+    width: 435px;
+
+    &__form {
+      padding: 25px 20px;
+    }
+  }
+
+  .popup-success {
+    width: 400px;
+
+    &.active {
+      top: 80px;
+    }
+  }
+
+}
+
+@media (max-width: 660px) {
+
+  .page-wrapper {
+    width: 430px;
+  }
+
+  .mobile-nav {
+
+    &__inner {
+      width: 400px;
+    }
+  }
+
+  .mobile-menu {
+
+    &__inner {
+      width: 400px;
+    }
+
+    &__circle {
+
+      &:nth-child(2) {
+        left: 15%;
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  .head-intro {
+
+    &__title {
+      font-size: 60px;
+      line-height: 60px;
+    }
+
+    &__subtitle {
+      font-size: 19px;
+
+    }
+  }
+
+  .comp {
+    display: none;
+  }
+
+  .partners {
+
+    &__link {
+      width: 80%;
+    }
+  }
+
+  .chat {
+    bottom: 30px;
+  }
+
+  .bg-decore {
+
+    &__circle--mid {
+      width: 270px;
+      height: 270px;
+    }
+
+    &__circle--small {
+      top: 18%;
+      left: 19%;
+      width: 50px;
+      height: 50px;
+    }
+
+    &__circle--big {
+      left: 80%;
+    }
+  }
+
+}
+
+@media (max-width: 436px) {
+
+  .page-wrapper {
+    width: 305px;
+  }
+
+  .header {
+    padding: 66px 0 34px 0;
+
+    &__head-intro {
+      margin: 47px 0 0 0;
+    }
+  }
+
+  .mobile-nav {
+
+    &__inner {
+      width: 275px;
+    }
+  }
+
+  .mobile-menu {
+
+    &__circle {
+
+      &:nth-child(1) {
+        left: 75%;
+      }
+
+      &:nth-child(2) {
+        top: 275px;
+        left: 8%;
+        width: 68px;
+        height: 68px;
+      }
+    }
+
+    &__inner {
+      width: 275px;
+    }
+
+    &__body {
+      gap: 50px;
+    }
+
+    &__nav-links {
+      gap: 20px;
+
+      .nav-links__link {
+        font-size: 30px;
+        line-height: 32px;
+      }
+    }
+
+    &__controls {
+      gap: 20px;
+    }
+    
+    &__lang-controls {
+
+      .lang-controls__btn {
+        font-size: 30px;
+        line-height: 33px;
+
+        &:not(:last-child)::after {
+          height: 21px;
+        }
+      }
+    }
+
+    &__socials {
+
+      .socials__link {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  }
+
+  .head-intro {
+    gap: 22px;
+
+    &__text {
+      gap: 14px;
+    }
+
+    &__title {
+      font-size: 55px;
+      line-height: 55.5px;
+    }
+
+    &__controls {
+      gap: 25px;
+    }
+
+    &__explore {
+      margin: 30px 0 0 0;
+    }
+  }
+
+  .partners {
+    gap: 24px;
+
+    &__link {
+      width: 128px;
+    }
+  }
+
+  .explore {
+    font-size: 15px;
+    line-height: 22px;
+
+    &::before {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .chat-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .page-buttons {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .button {
+
+    &--common {
+      width: 200px;
+    }
+
+    &--popup {
+      padding: 15.5px 10px 14.5px 10px;
+      width: 120px;
+      min-height: 37px;
+    }
+  }
+
+  .chat {
+    width: 300px;
+    height: 480px;
+    bottom: 10px;
+    right: 10px;
+
+    &__close {
+      top: -35px;
+      left: 0;
+    }
+  }
+
+  .bg-decore {
+
+    &__circle--mid, &__circle--min, &__circle--small {
+      display: none;
+    }
+
+    &__circle--big {
+      top: 39%;
+      left: 80%;
+      width: 404px;
+      height: 404px;
+    }
+  }
+
+  .popup-msg {
+    width: 300px;
+
+    &__head {
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    &__subtitle {
+      font-size: 13px;
+    }
+
+    &__body {
+      margin: 5px 0 0 0;
+    }
+
+    &__controls {
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    &__data-field:not(:last-of-type) {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  .popup-success {
+    width: 275px;
+    padding: 15px 10px;
+
+    &__text {
+      gap: 10px;
+      font-size: 16px;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
 }

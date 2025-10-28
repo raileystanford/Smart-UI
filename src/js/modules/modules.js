@@ -821,16 +821,21 @@ class Chat {
 
     if (!EmojiMart) return;
 
+    this.media = window.matchMedia('(max-width: 436px)').matches;
+
     this.picker = new EmojiMart.Picker({
       onEmojiSelect: this.insertEmojiToInput,
       theme: 'dark',
       maxFrequentRows: 0,
+      perLine: 8,
+      emojiButtonSize: this.media ? 34.5 : 36,
+      emojiSize: this.media ? 22.5 : 24,
       locale: document.documentElement.lang,
       previewPosition: 'none',
       categories: ['frequent', 'people', 'nature', 'foods', 'activity', 'places', 'objects', 'symbols', 'flags'],
     });
 
-    this.picker.style.cssText = 'width: 100%; height: 100%';
+    this.picker.style.cssText = 'margin: 0 auto';
     this.emojiContainer.append(this.picker);
 
   }
@@ -856,11 +861,14 @@ class Chat {
         theme: 'dark',
         locale: lang,
         maxFrequentRows: 0,
+        perLine: 8,
+        emojiButtonSize: this.media ? 34.5 : 36,
+        emojiSize: this.media ? 22.5 : 24,
         previewPosition: 'none',
         categories: ['frequent', 'people', 'nature', 'foods', 'activity', 'places', 'objects', 'symbols', 'flags'],
       });
 
-      this.picker.style.cssText = 'width: 100%; height: 100%';
+      this.picker.style.cssText = 'margin: 0 auto';
       this.emojiContainer.append(this.picker);
 
     }, 100);
@@ -1372,6 +1380,110 @@ class Parallax {
 
 }
 
+class BurgerMenu {
+
+  constructor(params) {
+
+    this.params = params ?? {};
+    this.params.exceptBtns = this.params.exceptBtns ?? '';
+    let media = this.params.activationBreakpoint ?? 768;
+    let mediaOk = window.matchMedia(`(max-width: ${media}px)`).matches;
+
+    if (!mediaOk) return;
+
+    this.ownMethodsBinder();
+    this.getElements();
+    this.createOverlay();
+    this.setEventListeners();
+
+  }
+
+  setEventListeners() {
+
+    document.addEventListener('click', (event) => {
+        
+      let target = event.target;
+      let except = this.params.exceptBtns;
+
+      if (target.closest('[data-burger-open]')) {
+        this.openBurgerMenu();
+      } else if (target.closest('[data-burger-close]')) {
+        this.closeBurgerMenu();
+      } else if ((target.closest('a') || target.closest(`button:not(${except})`)) && target.closest('[data-burger-content]')) {
+        this.closeBurgerMenu();
+      } else if (!target.closest('[data-burger-content]') && !target.closest('[data-burger-open]') && this.params.closeByClickOutOfMenu) {
+        this.closeBurgerMenu();
+      }
+
+    });
+
+  }
+
+  openBurgerMenu() {
+    this.openButton.classList.toggle('active');
+    this.content.classList.toggle('active');
+    this.overlay?.classList.toggle('active');
+    
+    this.handlePageOverflow();
+    this.params.openCallback?.({ 
+      button: this.openButton, 
+      content: this.content, 
+      overlay: this.overlay,
+      closeBtn: this.closeButton,
+    });
+  }
+
+  closeBurgerMenu() {
+    this.openButton.classList.remove('active');
+    this.content.classList.remove('active');
+    this.overlay?.classList.remove('active');
+
+    this.handlePageOverflow();
+    this.params.closeCallback?.({ 
+      button: this.openButton, 
+      content: this.content, 
+      overlay: this.overlay,
+      closeBtn: this.closeButton,
+    });
+  }
+
+  handlePageOverflow() {
+    let burgerActive = this.content.matches('.active');
+    let scrollOffset = window.innerWidth - document.documentElement.clientWidth;
+
+    if (burgerActive) {
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = scrollOffset + 'px';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+  } 
+
+  createOverlay() {
+    if (this.params.needOverlay) {
+      this.overlay = document.createElement('div');
+      this.overlay.classList.add('burger-overlay');
+      document.body.append(this.overlay);
+    }
+  }
+
+  getElements() {
+    this.openButton = document.querySelector('[data-burger-open]');
+    this.closeButton = document.querySelector('[data-burger-close]');
+    this.content = document.querySelector('[data-burger-content]');
+  }
+
+  ownMethodsBinder() {
+    let prototype = Object.getPrototypeOf(this);
+    let ownMethods = Object.getOwnPropertyNames(prototype)
+    for (let item of ownMethods) {
+      if (item !== 'constructor') prototype[item] = prototype[item].bind(this);
+    }
+  }
+
+}
+
 
 
 
@@ -1387,4 +1499,5 @@ export {
   FormValidator,
   Chat,
   Parallax,
+  BurgerMenu,
 }

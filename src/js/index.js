@@ -5,6 +5,7 @@ import {
   FormValidator,
   Chat,
   Parallax,
+  BurgerMenu,
 } from './modules/modules.js';
 
 import { titles, elements } from './modules/dictionary.js';
@@ -63,6 +64,10 @@ const popupClass = new Popup({
 
 new Chat();
 
+new BurgerMenu({
+  exceptBtns: '[data-lang-var]',
+});
+
 // new Parallax({
 //   off: 768,
 // });
@@ -90,6 +95,8 @@ function langControlsHandler() {
 
   if (controls.length === 0) return;
 
+  let media = window.matchMedia('(max-width: 768px)').matches;
+
   selectLastLangBtn();
 
   document.addEventListener('click', (event) => {
@@ -97,10 +104,8 @@ function langControlsHandler() {
     let button = event.target.closest('[data-lang-var]');
 
     if (button) {
-
       unselectOtherButtons();
       selectButton(button);
-
     }
 
   });
@@ -119,9 +124,9 @@ function langControlsHandler() {
 
   function selectLastLangBtn() {
     let lang = document.documentElement.lang;
-    let button = document.querySelector(`[data-lang-var="${lang}"]`);
+    let buttons = Array.from(document.querySelectorAll(`[data-lang-var="${lang}"]`));
     unselectOtherButtons();
-    selectButton(button);
+    buttons.forEach((button) => selectButton(button));
   }
 
 }
@@ -154,18 +159,18 @@ function popupTextareaAutoHeight() {
 
 function hideChatButton(state) {
 
-  let button = document.querySelector('.chat-btn');
+  let buttons = document.querySelector('.page-buttons');
 
-  if (!button) return;
+  if (!buttons) return;
 
   if (state) {
 
-    button.classList.add('hide');
+    buttons.classList.add('hide');
 
   } else {
 
     setTimeout(() => {
-      button.classList.remove('hide');
+      buttons.classList.remove('hide');
     }, 200);
 
   }
@@ -317,8 +322,32 @@ function formValidatorEventsHandler() {
 
 }
 
+function mobileNavLine() {
+
+  let line = document.querySelector('.mobile-nav');
+  let media = window.matchMedia('(max-width: 768px)').matches;
+
+  if (!(line && media)) return;
+
+  scrollHandler();
+
+  document.addEventListener('scroll', scrollHandler);
+
+  function scrollHandler() {
+
+    if (window.pageYOffset > 0) {
+      line.classList.add('active');
+    } else {
+      line.classList.remove('active');
+    }
+
+  }
+
+}
+
 
 focusStateFix();
 langControlsHandler();
 popupTextareaAutoHeight();
 formValidatorEventsHandler();
+mobileNavLine();

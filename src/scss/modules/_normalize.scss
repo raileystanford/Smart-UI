@@ -103,6 +103,11 @@ DIALOG:focus {
   outline: none;
 }
 
+A, BUTTON {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 // Flex
 .page-wrapper {
   display: flex;

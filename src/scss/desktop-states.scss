@@ -103,13 +103,17 @@
   will-change: transform;
   transition: all 0.3s;
 
-  &:hover, &:focus {
-    background: var.$blue;
-  }
+  &:not([disabled]) {
 
-  &:active {
-    transition: all 0.08s;
-    transform: scale(0.95);
+    &:hover, &:focus {
+      background: var.$blue;
+    }
+
+    &:active {
+      transition: all 0.08s;
+      transform: scale(0.95);
+    }
+
   }
 }
 
@@ -127,7 +131,7 @@
   }
 }
 
-.aside-btn {
+.button--aside {
   transition: all 0.3s;
 
   &:hover, &:focus {
@@ -136,7 +140,7 @@
 
   &:active {
     transition: all 0.08s;
-    transform: rotate(180deg) scale(0.95);
+    transform: rotate(-180deg) scale(0.95) !important;
   }
 }
 
@@ -187,7 +191,7 @@
   }
 }
 
-.popup-button {
+.button--popup {
   will-change: transform;
   transition: all 0.3s;
 
