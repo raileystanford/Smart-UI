@@ -5,6 +5,8 @@
 @use './modules/mixins.scss' as mix;
 @use './modules/typography.scss';
 
+// Header
+
 .header {
   @include mix.flex-col(160px);
   padding: 66px 0 54px 0;
@@ -537,7 +539,7 @@
   left: auto;
   right: 60px;
   transform: scale(0.6);
-  z-index: 10;
+  z-index: 8;
   transition: all 0.15s;
   visibility: hidden;
   opacity: 0;
@@ -1088,12 +1090,191 @@
   position: fixed;
   bottom: 40px;
   right: 60px;
-  z-index: 9;
+  z-index: 8;
   transition: all 0.2s;
 
   &.hide {
     visibility: hidden;
     transform: scale(0);
+  }
+}
+
+// About
+
+.about {
+  @include mix.flex-col(3px);
+  padding: 74px 0 78px 0;
+  position: relative;
+
+  &__block-intro {
+    max-width: 673px;
+
+    .block-intro__subtitle {
+      transition: opacity 0.16s, height 0.25s;
+
+      &.active {
+        opacity: 0;
+      }
+    }
+
+  }
+
+  &__content {
+    @include mix.flex(nowrap, 30px);
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 0 0 0;
+  }
+}
+
+.block-intro {
+  @include mix.flex-col(30px);
+
+  &__title {
+    color: var.$white;
+  }
+
+  &__subtitle {
+    color: var.$dark;
+    line-height: 30px;
+  }
+}
+
+.custom-bg {
+
+  &::before {
+    content: '';
+    @extend %px-cen;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    background: url(../images/backgrounds/noise.png) 0 0 / cover no-repeat,
+                url(../images/backgrounds/about-bg2.png) 0 0 / cover no-repeat,
+                url(../images/backgrounds/about-bg.jpg) 0 0 / cover no-repeat;
+    z-index: -1;
+  }
+
+}
+
+.skills-slider {
+  @include mix.flex(nowrap, 75px);
+
+  &__panel {
+    @include mix.flex-col(30px);
+    justify-content: space-between;
+    align-self: stretch;
+  }
+
+  &__main {
+    padding: 60px 0 0 0;
+    margin: -60px 0 0 0;
+    position: relative;
+    width: 650px;
+
+    &::before {
+      content: '';
+      @include mix.abs();
+      display: block;
+      width: 100vw;
+      height: 2px;
+      background: var.$sea-green;
+      border-radius: 4px;
+    }
+  }
+
+  &__slide {
+    @include mix.flex-col(23px);
+    @extend %wh-100;
+  }
+
+  &__title {
+    color: var.$white;
+    line-height: 34px;
+    user-select: auto;
+  }
+
+  &__li {
+    line-height: 32px;
+    letter-spacing: -0.025em;
+    color: var.$dark;
+    user-select: auto;
+
+    &::before {
+      content: '-';
+      padding: 0 5px 0 0;
+    }
+  }
+
+  &__link {
+    @include mix.flex(nowrap, 18px);
+    width: fit-content;
+    align-items: center;
+    color: var.$white;
+    letter-spacing: -0.019em;
+    text-decoration: underline;
+    margin: 15px 0 0 0;
+
+    &::before {
+      content: '';
+      width: 37px;
+      height: 1px;
+      background: var.$white;
+    }
+  }
+}
+
+.pagination {
+  @include mix.flex(nowrap, 30px);
+  align-items: center;
+
+  &__current {
+    @include mix.flex(nowrap, 30px);
+    align-items: center;
+    color: var.$white;
+
+    &::after {
+      content: '';
+      width: 46px;
+      height: 1px;
+      background: var.$white;
+    }
+  }
+
+  &__total {
+    color: var.$gray;
+  }
+
+}
+
+.slider-controls {
+  @include mix.flex(wrap, 17px);
+  width: fit-content;
+  align-self: flex-end;
+
+  &__btn {
+    @extend %flex-cen;
+    border-radius: 50%;
+    background: var.$sea-green;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  &__btn--next &__icon {
+    transform: rotate(180deg);
+  }
+
+  &__icon {
+    margin: 1px 0 0 0;
+    width: 15px;
+  }
+
+  .swiper-button-disabled {
+    background: transparent;
+    border: 1px solid var.$white;
+    filter: opacity(0.5);
+    cursor: not-allowed;
   }
 }
 

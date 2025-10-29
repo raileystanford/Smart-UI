@@ -41,6 +41,8 @@ const validatorClass = new FormValidator({
 
 });
 
+const chatClass = new Chat();
+
 const popupClass = new Popup({
   backDrop: true, // Добавляет блок на весь экран затеняющий все кроме попапа. Можно стили его настроить через css
   closeOnBtn: true, // Закрыть попап только закрывающей кнопкой а не тычком вне него
@@ -49,6 +51,7 @@ const popupClass = new Popup({
   delay: 100, // Добавляет задержку перед возвращением прокрутки и верт скрола чтобы при закрытии попап не дергало в сторону
 
   preOpenCallback: function() {
+    if (chatClass) chatClass.closeChat();
     successMsgHandler(false);
     hideChatButton(true);
   },
@@ -62,8 +65,6 @@ const popupClass = new Popup({
   },
 });
 
-new Chat();
-
 new BurgerMenu({
   exceptBtns: '[data-lang-var]',
 });
@@ -75,6 +76,113 @@ new BurgerMenu({
 
 // Other functions
 
+new Swiper('#skillsSlider', {
+  slidesPerView: 1,
+  spaceBetween: 2,
+  speed: 700,
+  simulateTouch: false,
+  touchRatio: 0,
+  effect: 'cube',
+
+  cubeEffect: {
+    shadow: false,
+    slideShadows: false,
+  },
+
+  navigation: {
+    nextEl: '.about .slider-controls__btn--next',
+    prevEl: '.about .slider-controls__btn--prev',
+  },
+
+  pagination: {
+    el: '.skills-slider__pagination',
+    type: 'custom',
+    renderCustom: customSwiperPagination,
+  },
+
+  // autoplay: {
+  //   delay: 2000,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  // },
+
+  on: {
+    init: changeAboutSubtitle(elements),
+    slideChange: changeAboutSubtitle(elements),
+  }
+
+});
+
+
+function changeAboutSubtitle(dic) {
+
+  let element = document.querySelector('.about .block-intro__subtitle');
+  
+  if (!element || !dic) return;
+
+  function getNewTextHeight(text, width) {
+
+    let clone = element.cloneNode();
+    clone.style.cssText = `position: absolute; visibility: hidden; height: auto; width: ${width}px`;
+    document.body.append(clone);
+
+    clone.textContent = text;
+    let height = clone.scrollHeight;
+    clone.remove();
+
+    return height;
+
+  }
+
+  function animateTextChange(text) {
+
+    element.addEventListener('transitionend', (event) => {
+
+      let duration = event.elapsedTime * 1000;
+
+      let height = getNewTextHeight(text, element.offsetWidth);
+      element.textContent = text;
+      element.style.height = height + 'px';
+
+      setTimeout(() => {
+        element.classList.remove('active');
+      }, duration);
+
+    }, { once: true });
+
+    element.style.height = element.offsetHeight + 'px';
+    element.classList.add('active');
+    
+  }
+
+  function getText(swiper) {
+
+    let lang = document.documentElement.lang;
+    let slide = swiper.slides[swiper.activeIndex];
+    let key = slide.dataset.key;
+
+    return dic[key][lang];
+
+  }
+
+  return function(swiper) {
+    
+    let text = getText(swiper);
+    animateTextChange(text);
+
+  }
+
+}
+
+function customSwiperPagination(swiper, current, total) {
+
+  current = current < 10 ? '0' + current : current;
+  total = total < 10 ? '0' + total : total;
+
+  return `<span class="pagination__current pag-text">${current}</span>
+          <span class="pagination__total pag-text">${total}</span>`;
+
+}
 
 function focusStateFix() {
 

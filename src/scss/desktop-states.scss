@@ -269,3 +269,33 @@
     transform: scale(0.85);
   }
 }
+
+// About
+
+.slider-controls__btn {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &:not(.swiper-button-disabled) {
+
+    &:hover, &:focus {
+      background: var.$lime;
+    }
+
+    &:active {
+      transition: all 0.08s;
+      transform: scale(0.92);
+    }
+
+  }
+}
+
+.skills-slider__link {
+  transition: all 0.2s;
+
+  &:focus, &:hover {
+    color: var.$yellow;
+    text-decoration: underline;
+    letter-spacing: 1px;
+  }
+}
