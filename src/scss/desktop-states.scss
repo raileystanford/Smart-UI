@@ -135,7 +135,7 @@
   transition: all 0.3s;
 
   &:hover, &:focus {
-    background: var.$yellow;
+    background: var.$yellow !important;
   }
 
   &:active {

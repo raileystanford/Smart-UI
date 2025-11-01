@@ -1,8 +1,6 @@
 @use './modules/variables.scss' as var;
 @use './modules/templates.scss' as *;
 
-
-
 // Header
 
 .logotype, .partners__link, .chat-btn, .socials__link, .mobile-menu__close {
@@ -72,4 +70,35 @@
   &:active {
     color: var.$lime;
   }
+}
+
+// About
+
+.slider-controls__btn {
+  will-change: transform;
+  transition: all 0.2s;
+
+  &:not(.swiper-button-disabled) {
+
+    &:active {
+      transition: all 0.05s;
+      transform: scale(0.9);
+      background: var.$lime;
+    }
+
+  }
+}
+
+.skills-slider__link {
+  transition: all 0.05s;
+
+  &:focus, &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: var.$yellow;
+    text-decoration: underline;
+  }
+
 }

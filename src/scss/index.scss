@@ -1151,7 +1151,8 @@
     height: 100%;
     background: url(../images/backgrounds/noise.png) 0 0 / cover no-repeat,
                 url(../images/backgrounds/about-bg2.png) 0 0 / cover no-repeat,
-                url(../images/backgrounds/about-bg.jpg) 0 0 / cover no-repeat;
+                url(../images/backgrounds/about-bg.jpg) 0 0 / cover no-repeat,
+                var.$black;
     z-index: -1;
   }
 
@@ -1222,6 +1223,12 @@
       background: var.$white;
     }
   }
+
+  &__bottom {
+    @include mix.flex(wrap, 20px);
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .pagination {
@@ -1267,7 +1274,7 @@
 
   &__icon {
     margin: 1px 0 0 0;
-    width: 15px;
+    width: 40%;
   }
 
   .swiper-button-disabled {
@@ -1342,6 +1349,21 @@
     height: 335px;
   }
 
+  .about {
+
+    &__block-intro {
+      max-width: 550px;
+    }
+  }
+
+  .skills-slider {
+
+    &__main {
+      width: 550px;
+    }
+    
+  }
+
 }
 
 @media (max-width: 1250px) {
@@ -1351,7 +1373,7 @@
   }
 
   .header {
-    padding: 52px 0 75px 0;
+    padding: 52px 0 83px 0;
     gap: 165px;
   }
 
@@ -1464,7 +1486,7 @@
   }
 
   .comp {
-    top: 34%;
+    top: 33.6%;
     width: 312px;
     height: 256px;
   }
@@ -1496,7 +1518,7 @@
     }
 
     &__circle--min {
-      top: 33.3%;
+      top: 33%;
       left: 60%;
       width: 85px;
       height: 85px;
@@ -1516,6 +1538,90 @@
     right: 30px;
     height: 470px;
     width: 310px;
+  }
+
+  .about {
+    padding: 35px 0 44px 0;
+    gap: 16px;
+
+    &__block-intro {
+      max-width: 391px;
+    }
+
+    &__content {
+      padding: 46px 0 0 0;
+    }
+  }
+
+  .block-intro {
+    gap: 20px;
+
+    &__title {
+      font-size: 60px;
+      line-height: 78px;
+    }
+
+    &__subtitle {
+      font-size: 15px;
+      line-height: 23px;
+    }
+  }
+
+  .slider-controls {
+    gap: 13.5px;
+
+    &__btn {
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  .pagination {
+    gap: 20px;
+   
+    &__current {
+      @include mix.flex(nowrap, 20px);
+
+      &::after {
+        width: 33px;
+      }
+    }
+
+  }
+
+  .skills-slider {
+    gap: 55px;
+
+    &__main {
+      width: 396px;
+      padding: 46px 0 0 0;
+      margin: -46px 0 0 0;
+    }
+
+    &__title {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    &__slide {
+      gap: 38px;
+    }
+
+    &__li {
+      font-size: 15px;
+      line-height: 23.2px;
+    }
+
+    &__link {
+      font-size: 15px;
+      margin: 3px 0 0 0; 
+      gap: 11px; 
+
+      &::before {
+        width: 22px;
+      }
+    }
+    
   }
 
 }
@@ -1594,6 +1700,20 @@
       top: 10%;
       left: 77.5%;
       background: var.$blue;
+    }
+  }
+
+  .about {
+
+    &__block-intro {
+      max-width: 370px;
+    }
+  }
+
+  .skills-slider {
+
+    &__main {
+      width: 300px;
     }
   }
 
@@ -1751,6 +1871,70 @@
     }
   }
 
+  .about {
+    padding: 51px 0 50px 0;
+    gap: 52px;
+
+    &__block-intro {
+      max-width: 411px;
+    }
+  }
+
+  .block-intro {
+    gap: 12px;
+
+    &__title {
+      font-size: 80px;
+      line-height: 80px;
+    }
+
+    &__subtitle {
+      font-size: 17px;
+      line-height: 26px;
+    }
+
+    &__button {
+      margin: 30px 0 0 0;
+    }
+  }
+
+  .slider-controls {
+    gap: 16px;
+    
+    &__btn {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  .skills-slider {
+    width: 100%;
+    justify-content: flex-end;
+
+    &__main {
+      width: 407px;
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 26.1px;
+    }
+
+    &__slide {
+      gap: 24px;
+    }
+
+    &__li {
+      font-size: 17px;
+      line-height: 26px;
+    }
+
+    &__link {
+      font-size: 16px;
+      margin: 0px;
+    }
+  }
+
 }
 
 @media (max-width: 660px) {
@@ -1826,6 +2010,33 @@
 
     &__circle--big {
       left: 80%;
+    }
+  }
+
+  .about {
+
+    &__content {
+      padding: 0;
+    }
+  }
+
+  .skills-slider {
+    gap: 30px;
+    flex-direction: column;
+    
+
+    &__main {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__slide &__link {
+      display: none;
     }
   }
 
@@ -2036,6 +2247,65 @@
         width: 24px;
         height: 24px;
       }
+    }
+  }
+
+  .about {
+    padding: 34px 0 34px 0;
+    gap: 52px;
+  }
+
+  .block-intro {
+    gap: 21px;
+
+    &__title {
+      font-size: 60px;
+      line-height: 60px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    &__button {
+      margin: 7px 0 0 0;
+    }
+  }
+
+  .skills-slider {
+    gap: 22px;
+
+    &__slide {
+      gap: 12.5px;
+    }
+
+    &__title {
+      font-size: 17px;
+      line-height: 25px;
+    }
+    
+    &__li {
+      font-size: 15px;
+      line-height: 24px;
+    }
+  }
+
+  .pagination {
+
+    &__current {
+
+      &::after {
+        width: 39px;
+      }
+    }
+  }
+
+  .slider-controls {
+
+    &__btn {
+      width: 40px;
+      height: 40px;
     }
   }
 }

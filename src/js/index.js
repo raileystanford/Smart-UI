@@ -76,13 +76,16 @@ new BurgerMenu({
 
 // Other functions
 
+replaceSlidesInAboutBlock();
+replaceElementsInAboutBlock();
+
 new Swiper('#skillsSlider', {
   slidesPerView: 1,
   spaceBetween: 2,
   speed: 700,
   simulateTouch: false,
   touchRatio: 0,
-  effect: 'cube',
+  
 
   cubeEffect: {
     shadow: false,
@@ -106,10 +109,24 @@ new Swiper('#skillsSlider', {
   //   pauseOnMouseEnter: true,
   // },
 
+  breakpoints: {
+
+    660: {
+      effect: 'cube',
+      autoHeight: false,
+    },
+
+    300: {
+      effect: 'slide', 
+      autoHeight: true,
+    }
+
+  },
+
   on: {
     init: changeAboutSubtitle(elements),
     slideChange: changeAboutSubtitle(elements),
-  }
+  },
 
 });
 
@@ -453,9 +470,53 @@ function mobileNavLine() {
 
 }
 
+function replacePopupButtonInAboutBlock() {
+
+  let button = document.querySelector('.about .button--common');
+  let block = document.querySelector('.about .block-intro');
+  let media = window.matchMedia('(max-width: 768px)').matches;
+
+  if (!button || !media || !block ) return;
+
+  button.classList.add('block-intro__button');
+  block.append(button);
+
+}
+
+function replaceElementsInAboutBlock() {
+
+  let media = window.matchMedia('(max-width: 660px)').matches;
+  let controls = document.querySelector('.about .slider-controls');
+  let link = document.querySelector('.about .skills-slider__link');
+  let container = document.querySelector('.about .skills-slider');
+
+  if (!media || !controls || !link || !container) return;
+
+  let wrapper = document.createElement('div');
+  wrapper.classList.add('skills-slider__bottom');
+
+  wrapper.append(controls, link);
+  container.append(wrapper);
+
+}
+
+function replaceSlidesInAboutBlock() {
+
+  let media = window.matchMedia('(max-width: 660px)').matches;
+  let slider = document.querySelector('#skillsSlider');
+  let slides = slider.querySelectorAll('.swiper-slide');
+
+  if (!media || !slider || slides.length > 2) return;
+
+  Array.from(slider.firstElementChild.children).forEach((item) => item.remove());
+  slider.firstElementChild.append(slides[1], slides[0]);
+
+}
+
 
 focusStateFix();
 langControlsHandler();
 popupTextareaAutoHeight();
 formValidatorEventsHandler();
 mobileNavLine();
+replacePopupButtonInAboutBlock();
