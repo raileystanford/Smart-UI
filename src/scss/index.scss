@@ -221,7 +221,6 @@
   }
 
   &--mobile {
-    display: none;
 
     &::before {
       background: url(../images/icons/swipe.png) 0 0 / contain no-repeat;
@@ -300,6 +299,7 @@
   &__img {
     position: absolute;
     display: block;
+    filter: saturate(1.2);
   }
 
   &__img--monitor {
@@ -372,6 +372,7 @@
   visibility: hidden;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.4);
+  box-shadow: 0 4px 20px var.$black-shadow;
 
   &.active {
     transition: all 0.25s;
@@ -476,6 +477,7 @@
   transition: all 0.25s;
   visibility: hidden;
   z-index: 10;
+  box-shadow: 0 4px 20px var.$black-shadow;
 
   &.active {
     visibility: visible;
@@ -507,6 +509,7 @@
   transition: all 0.3s;
   opacity: 0;
   visibility: hidden;
+  backdrop-filter: blur(6px);
 
   &.active {
     visibility: visible;
@@ -1101,13 +1104,35 @@
 
 // About
 
+.block-intro {
+  @include mix.flex-col(25px);
+
+  &__label {
+    color: var.$green;
+  }
+
+  &__title {
+    color: var.$white;
+  }
+
+  &__subtitle {
+    color: var.$dark;
+    line-height: 30px;
+  }
+
+  &__controls {
+    @include mix.flex-col(15px);
+  }
+}
+
 .about {
   @include mix.flex-col(3px);
-  padding: 74px 0 78px 0;
+  padding: 87px 0 87px 0;
   position: relative;
 
   &__block-intro {
     max-width: 673px;
+    gap: 41px;
 
     .block-intro__subtitle {
       transition: opacity 0.16s, height 0.25s;
@@ -1124,19 +1149,6 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 60px 0 0 0;
-  }
-}
-
-.block-intro {
-  @include mix.flex-col(30px);
-
-  &__title {
-    color: var.$white;
-  }
-
-  &__subtitle {
-    color: var.$dark;
-    line-height: 30px;
   }
 }
 
@@ -1167,11 +1179,10 @@
     align-self: stretch;
   }
 
-  &__main {
+  &__line-wrapper {
     padding: 60px 0 0 0;
     margin: -60px 0 0 0;
     position: relative;
-    width: 650px;
 
     &::before {
       content: '';
@@ -1184,6 +1195,10 @@
     }
   }
 
+  &__main {
+    width: 650px;
+  }
+
   &__slide {
     @include mix.flex-col(23px);
     @extend %wh-100;
@@ -1192,14 +1207,12 @@
   &__title {
     color: var.$white;
     line-height: 34px;
-    user-select: auto;
   }
 
   &__li {
     line-height: 32px;
     letter-spacing: -0.025em;
     color: var.$dark;
-    user-select: auto;
 
     &::before {
       content: '-';
@@ -1229,6 +1242,10 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  &__slider-controls {
+    align-self: flex-end;
+  }
 }
 
 .pagination {
@@ -1257,8 +1274,7 @@
 .slider-controls {
   @include mix.flex(wrap, 17px);
   width: fit-content;
-  align-self: flex-end;
-
+  
   &__btn {
     @extend %flex-cen;
     border-radius: 50%;
@@ -1284,6 +1300,145 @@
     cursor: not-allowed;
   }
 }
+
+// Tools
+
+.tools {
+  @include mix.flex(nowrap, 268px);
+  padding: 66px 0 45px 0;
+  align-items: flex-start;
+
+  &__block-intro {
+    max-width: 302px;
+
+    .block-intro__title {
+      color: var.$gray-blue;
+    }
+
+    .button--common {
+      width: 100%;
+    }
+  }
+}
+
+.slider {
+  @include mix.flex-col(0px);
+  width: 645px;
+  align-items: center;
+
+  &__pagination {
+    align-self: flex-start;
+    margin: 0 0 30px 0;
+  }
+
+  &__main {
+    width: 100%;
+  }
+
+  &__pagination {
+
+    .pagination__current {
+      color: var.$gray-blue;
+
+      &::after {
+        background: var.$gray-blue;
+      }
+    }
+
+    .pagination__total {
+      color: var.$dark;
+    }
+  }
+
+  &__slider-controls {
+
+    .swiper-button-disabled {
+      background: var.$dark-white;
+      border: 1px solid var.$white;
+      filter: opacity(0.5);
+      cursor: not-allowed;
+    }
+
+  }
+
+  .swiper-slide {
+    transition: all 0.35s;
+    padding: 0 0 37px 0;
+    opacity: 0;
+  }
+
+  .swiper-slide-active, .swiper-slide-next {
+    opacity: 1;
+  }
+}
+
+.tool-slide {
+  @include mix.flex-col(20px);
+  @extend %wh-100;
+  position: relative;
+  align-items: center;
+  background: var.$light-peri;
+  border-radius: 9px;
+  padding: 47px 9px 8px 9px;
+  
+  &::after {
+    content: '';
+    @extend %px-cen;
+    position: absolute;
+    bottom: 10px;
+    width: 85%;
+    height: 10px;
+    z-index: -1;
+    box-shadow: 0 15px 30px var.$silver;
+  }
+
+  &__logotype {
+    @extend %flex-cen;
+    width: 209px;
+    height: 209px;
+    border-radius: 50%;
+    background: var.$white;
+  }
+
+  &__img {
+    width: 60%;
+    height: 60%;
+    filter: saturate(1.2);
+
+    &--css, &--js  {
+      width: 50.7%;
+      height: 71%;
+    }
+
+    &--bs {
+      width: 69.5%;
+      height: 56%;
+    }
+
+  }
+
+  &__info {
+    @include mix.flex-col(20px);
+    justify-content: center;
+    padding: 30px;
+    background: var.$white;
+    border-radius: 9px;
+    width: 100%;
+    min-height: 236px;
+  }
+
+  &__title {
+    color: var.$gray-blue;
+    word-break: break-word;
+  }
+
+  &__subtitle {
+    color: var.$gray;
+  }
+
+}
+
+
 
 
 // Media queries
@@ -1541,7 +1696,7 @@
   }
 
   .about {
-    padding: 35px 0 44px 0;
+    padding: 35px 0 48px 0;
     gap: 16px;
 
     &__block-intro {
@@ -1592,10 +1747,13 @@
   .skills-slider {
     gap: 55px;
 
-    &__main {
-      width: 396px;
+    &__line-wrapper {
       padding: 46px 0 0 0;
       margin: -46px 0 0 0;
+    }
+
+    &__main {
+      width: 396px;
     }
 
     &__title {
@@ -1809,10 +1967,8 @@
   }
 
   .explore {
-    display: none;
 
     &--mobile {
-      display: flex;
       font-size: 23px;
       line-height: 34px;
       gap: 5px;
@@ -1872,7 +2028,7 @@
   }
 
   .about {
-    padding: 51px 0 50px 0;
+    padding: 51px 0 43px 0;
     gap: 52px;
 
     &__block-intro {
@@ -2023,16 +2179,18 @@
   .skills-slider {
     gap: 30px;
     flex-direction: column;
-    
 
-    &__main {
-      width: 100%;
+    &__line-wrapper {
       margin: 0;
       padding: 0;
 
       &::before {
         display: none;
       }
+    }
+    
+    &__main {
+      width: 100%;
     }
 
     &__slide &__link {

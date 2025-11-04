@@ -8,19 +8,20 @@ import {
   BurgerMenu,
 } from './modules/modules.js';
 
-import { titles, elements } from './modules/dictionary.js';
+import { titles_dic, elements_dic } from './modules/dictionary.js';
 
 
 // Plugins
+
 new UpdatePageTitle({
-  dictionary: { ...titles, ...elements },
+  dictionary: { ...titles_dic },
   observer: {
     threshold: 0.3,
   },
 });
 
 new ChangeLanguage({
-  dictionary: { ...titles, ...elements }
+  dictionary: { ...titles_dic, ...elements_dic }
 });
 
 const validatorClass = new FormValidator({
@@ -73,32 +74,25 @@ new BurgerMenu({
 //   off: 768,
 // });
 
-
-// Other functions
-
 replaceSlidesInAboutBlock();
 replaceElementsInAboutBlock();
+createSkillsSlider();
 
-new Swiper('#skillsSlider', {
-  slidesPerView: 1,
-  spaceBetween: 2,
+new Swiper('#toolsSlider', {
+  slidesPerView: 2,
+  slidesPerGroup: 2, 
+  spaceBetween: 39,
   speed: 700,
   simulateTouch: false,
-  touchRatio: 0,
-  
-
-  cubeEffect: {
-    shadow: false,
-    slideShadows: false,
-  },
+  autoHeight: true,
 
   navigation: {
-    nextEl: '.about .slider-controls__btn--next',
-    prevEl: '.about .slider-controls__btn--prev',
+    nextEl: '.tools .slider-controls__btn--next',
+    prevEl: '.tools .slider-controls__btn--prev',
   },
 
   pagination: {
-    el: '.skills-slider__pagination',
+    el: '.tools .slider__pagination',
     type: 'custom',
     renderCustom: customSwiperPagination,
   },
@@ -109,27 +103,24 @@ new Swiper('#skillsSlider', {
   //   pauseOnMouseEnter: true,
   // },
 
-  breakpoints: {
+  // breakpoints: {
 
-    660: {
-      effect: 'cube',
-      autoHeight: false,
-    },
+  //   660: {
+  //     effect: 'cube',
+  //     autoHeight: false,
+  //   },
 
-    300: {
-      effect: 'slide', 
-      autoHeight: true,
-    }
+  //   300: {
+  //     effect: 'slide', 
+  //     autoHeight: true,
+  //   }
 
-  },
-
-  on: {
-    init: changeAboutSubtitle(elements),
-    slideChange: changeAboutSubtitle(elements),
-  },
+  // },
 
 });
 
+
+// Other functions
 
 function changeAboutSubtitle(dic) {
 
@@ -513,6 +504,101 @@ function replaceSlidesInAboutBlock() {
 
 }
 
+function createSkillsSlider() {
+
+  let slider = document.querySelector('#skillsSlider');
+  
+  if (!slider) return;
+
+  let media = window.matchMedia('(max-width: 660px)').matches;
+
+  let object = new Swiper(slider, {
+    slidesPerView: 1,
+    speed: 700,
+    simulateTouch: false,
+    touchRatio: 0,
+    effect: media ? 'slide' : 'cube',
+    
+    cubeEffect: {
+      shadow: false,
+      slideShadows: false,
+    },
+
+    navigation: {
+      nextEl: '.about .slider-controls__btn--next',
+      prevEl: '.about .slider-controls__btn--prev',
+    },
+
+    pagination: {
+      el: '.skills-slider__pagination',
+      type: 'custom',
+      renderCustom: customSwiperPagination,
+    },
+
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: true,
+    // },
+
+    breakpoints: {
+
+      660: {
+        speed: 700,
+        autoHeight: false,
+      },
+
+      300: {
+        speed: 600,
+        autoHeight: true,
+      }
+
+    },
+
+    on: {
+      init: changeAboutSubtitle(elements_dic),
+      slideChange: changeAboutSubtitle(elements_dic),
+    },
+
+  });
+
+  return object;
+
+}
+
+function exploreComponentHandler(dictionary) {
+
+  let elements = Array.from(document.querySelectorAll('.explore'));
+
+  if (elements.length === 0 || !dictionary) return;
+
+  let media = window.matchMedia('(max-width: 768px)').matches;
+  let lang = document.documentElement.lang;
+
+  elements.forEach((item) => {
+
+    if (media) {
+
+      item.dataset.lang = 'explore-mob';
+      let text = dictionary[item.dataset.lang][lang];
+      item.textContent = text;
+      item.classList.add('explore--mobile');
+
+    } else {
+
+      item.dataset.lang = 'explore';
+      let text = dictionary[item.dataset.lang][lang];
+      item.textContent = text;
+      item.classList.remove('explore--mobile');
+
+    }
+
+  })
+
+}
+
+
+
 
 focusStateFix();
 langControlsHandler();
@@ -520,3 +606,4 @@ popupTextareaAutoHeight();
 formValidatorEventsHandler();
 mobileNavLine();
 replacePopupButtonInAboutBlock();
+exploreComponentHandler(elements_dic);

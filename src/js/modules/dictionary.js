@@ -1,4 +1,4 @@
-let titles = {
+let titles_dic = {
 
   'header': {
     'en': 'Smart-UI',
@@ -8,11 +8,16 @@ let titles = {
   'about': {
     'en': 'Smart-UI - About us',
     'de': 'Smart-UI - Über uns'
+  },
+
+  'tools': {
+    'en': 'Smart-UI - Tools',
+    'de': 'Smart-UI - Werkzeuge'
   }
 
 }
 
-let elements = {
+let elements_dic = {
 
   // Header
 
@@ -217,10 +222,92 @@ let elements = {
     'de': 'CMS-Entwicklung/Integration'
   },
 
+  // Tools
+
+  'tools-label': {
+    'en': 'Technology',
+    'de': 'Technologie'
+  },
+
+  'tools-title': {
+    'en': 'Tools We Use',
+    'de': 'Werkzeuge, die wir verwenden'
+  },
+
+  'tools-sub': {
+    'en': 'Contact that lead developer and discuss technical points in detail',
+    'de': 'Nehmen Sie Kontakt mit dem leitenden Entwickler auf und besprechen Sie die technischen Details ausführlich.'
+  },
+
+  'tools-btn': {
+    'en': 'Contact the lead developer',
+    'de': 'Kontaktieren Sie den Entwickler'
+  },
+
+  't-slide-title1': {
+    'en': 'Markup',
+    'de': 'Aufschlag'
+  },
+
+  't-slide-text1': {
+    'en': 'HTML, CSS, SASS, Semantic, W3C Valid',
+    'de': 'HTML, CSS, SASS, Semantik, W3C-konform'
+  },
+
+  't-slide-title2': {
+    'en': 'UI-Frameworks',
+    'de': 'UI-Frameworks'
+  },
+
+  't-slide-text2': {
+    'en': 'Bootstrap 3,4,5, Material-UI, Tailwind',
+    'de': 'Bootstrap 3, 4, 5, Material-UI, Tailwind'
+  },
+
+  't-slide-title3': {
+    'en': 'Content Management',
+    'de': 'Inhaltsverwaltun'
+  },
+
+  't-slide-text3': {
+    'en': 'WordPress',
+    'de': 'WordPress'
+  },
+
+  't-slide-title4': {
+    'en': 'Speed Optimization',
+    'de': 'Geschwindigkeitsoptimierung'
+  },
+
+  't-slide-text4': {
+    'en': 'Google pages speed insights to 100%',
+    'de': 'Google PageSpeed ​insights auf 100 %'
+  },
+
+  't-slide-title5': {
+    'en': 'Control Version System',
+    'de': 'Kontrollversionssystem'
+  },
+
+  't-slide-text5': {
+    'en': 'GitHub, GitLab, Bitbucket',
+    'de': 'GitHub, GitLab, Bitbucket'
+  },
+
+  't-slide-title6': {
+    'en': 'JavaScript',
+    'de': 'JavaScript'
+  },
+
+  't-slide-text6': {
+    'en': 'JavaScript Vanilla JS, React.jx, Angular',
+    'de': 'JavaScript Vanilla JS, React.jx, Angular'
+  },
+
 
 
 
 }
 
 
-export { titles, elements }
+export { titles_dic, elements_dic }
