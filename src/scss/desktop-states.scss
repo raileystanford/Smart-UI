@@ -299,30 +299,3 @@
     letter-spacing: 1px;
   }
 }
-
-// Tools
-
-.tool-slide {
-  transition: all 0.3s;
-
-  &__img {
-    will-change: transform;
-    transition: all 0.2s;
-  }
-
-  &::after {
-    transition: all 0.3s;
-  }
-
-  &:hover {
-    background: var.$sea-green;
-
-    &::after {
-      box-shadow: none;
-    }
-
-    .tool-slide__img {
-      transform: scale(1.1);
-    }
-  }
-}

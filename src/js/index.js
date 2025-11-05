@@ -80,11 +80,15 @@ createSkillsSlider();
 
 new Swiper('#toolsSlider', {
   slidesPerView: 2,
-  slidesPerGroup: 2, 
+  slidesPerGroup: 1,
   spaceBetween: 39,
   speed: 700,
   simulateTouch: false,
   autoHeight: true,
+  observer: true,
+  observeParents: true,
+  watchSlidesProgress: true,
+  watchSlidesVisibility: true,
 
   navigation: {
     nextEl: '.tools .slider-controls__btn--next',
@@ -103,19 +107,52 @@ new Swiper('#toolsSlider', {
   //   pauseOnMouseEnter: true,
   // },
 
-  // breakpoints: {
+  breakpoints: {
 
-  //   660: {
-  //     effect: 'cube',
-  //     autoHeight: false,
-  //   },
+    1250: {
+      observer: true,
+      observeParents: true,
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      slidesPerView: 2,
+      slidesPerGroup: 1, 
+      spaceBetween: 39,
+      speed: 700,
+    },
 
-  //   300: {
-  //     effect: 'slide', 
-  //     autoHeight: true,
-  //   }
+    769: {
+      observer: true,
+      observeParents: true,
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      slidesPerView: 3,
+      spaceBetween: 21,
+    },
 
-  // },
+    661: {
+      slidesPerView: 3,
+      spaceBetween: 24.5,
+      centeredSlides: true,
+      initialSlide: 1,
+    },
+
+    437: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+      centeredSlides: true,
+      initialSlide: 1,
+    },
+
+    300: {
+      centeredSlides: true,
+      initialSlide: 1,
+      slidesPerView: 1.632,
+      slidesPerGroup: 1,
+      spaceBetween: 20,
+      speed: 600,
+    }
+
+  },
 
 });
 
@@ -597,6 +634,27 @@ function exploreComponentHandler(dictionary) {
 
 }
 
+function addExtraSlidesInToolsSlider() {
+
+  let slider = document.querySelector('#toolsSlider');
+
+  if (!slider) return;
+
+  let swiper = slider.swiper;
+  let slidesCount = swiper.params.slidesPerView;
+  let isCentered = swiper.params.centeredSlides;
+  console.log(isCentered);
+
+  if (slidesCount > 1 && !isCentered) {
+
+    for (let i = 1; i <= slidesCount - 1; i++) {
+      swiper.appendSlide(`<div class="swiper-slide"></div>`);
+    }
+
+  }
+
+}
+
 
 
 
@@ -607,3 +665,4 @@ formValidatorEventsHandler();
 mobileNavLine();
 replacePopupButtonInAboutBlock();
 exploreComponentHandler(elements_dic);
+addExtraSlidesInToolsSlider();
