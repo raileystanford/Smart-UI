@@ -649,7 +649,6 @@ function addExtraSlidesInToolsSlider() {
   let swiper = slider.swiper;
   let slidesCount = swiper.params.slidesPerView;
   let isCentered = swiper.params.centeredSlides;
-  console.log(isCentered);
 
   if (slidesCount > 1 && !isCentered) {
 
@@ -676,6 +675,119 @@ function strategyElementsAutoCount() {
 
 }
 
+function strategyMobileSlider() {
+
+  let container = document.querySelector('.strategy__content');
+  let elements = Array.from(container.querySelectorAll('.strategy__description'));
+  let media = window.matchMedia('(max-width: 768px)').matches;
+
+  if (!container || !media || elements.length === 0) return;
+
+  let slider = createSlider();
+  let controls = createControls();
+
+  container.innerHTML = '';
+  container.append(slider, controls);
+
+  activateSlider();
+
+  function createSlider() {
+
+    let slider = document.createElement('div');
+    slider.classList.add('swiper', 'strategy__slider');
+    slider.id = 'strategySlider';
+
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('swiper-wrapper');
+
+    slider.append(wrapper);
+
+    let slidesCount = Math.ceil(elements.length / 3);
+
+    for (let i = 1; i <= slidesCount; i++) {
+      
+      let slide = document.createElement('div');
+      slide.classList.add('swiper-slide');
+
+      let inner = document.createElement('div');
+      inner.classList.add('strategy__slide');
+
+      let group = elements.splice(0, 3);
+      group.forEach((item) => inner.append(item));
+
+      slide.append(inner);
+      wrapper.append(slide);
+
+    }
+
+    return slider;
+
+  }
+
+  function createControls() {
+
+    let block = document.createElement('div');
+    block.classList.add('strategy__controls');
+
+    let btns = `<div class="slider-controls strategy__slider-controls">
+
+                  <button class="slider-controls__btn slider-controls__btn--prev">
+                    <img src="./images/icons/arrow.png" alt="prev" class="slider-controls__icon">
+                  </button>
+
+                  <button class="slider-controls__btn slider-controls__btn--next">
+                    <img src="./images/icons/arrow.png" alt="next" class="slider-controls__icon">
+                  </button>
+
+                </div>`;
+
+    let pagintaion = `<div class="pagination strategy__pagination"></div>`;
+
+    block.insertAdjacentHTML('beforeend', pagintaion);
+    block.insertAdjacentHTML('beforeend', btns);
+
+    return block;
+
+  }
+
+  function activateSlider() {
+
+    new Swiper(slider, {
+      slidesPerView: 1,
+      spaceBetween: 1,
+      speed: 700,
+      simulateTouch: false,
+      autoHeight: true,
+      effect: 'cube',
+    
+      cubeEffect: {
+        shadow: false,
+        slideShadows: false,
+      },
+
+      navigation: {
+        nextEl: '.strategy .slider-controls__btn--next',
+        prevEl: '.strategy .slider-controls__btn--prev',
+      },
+
+      pagination: {
+        el: '.strategy .strategy__pagination',
+        type: 'custom',
+        renderCustom: customSwiperPagination,
+      },
+
+      // autoplay: {
+      //   delay: 2000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
+
+    });
+
+  }
+
+}
+
 
 
 
@@ -687,4 +799,5 @@ mobileNavLine();
 replacePopupButtonInAboutBlock();
 exploreComponentHandler(elements_dic);
 addExtraSlidesInToolsSlider();
+strategyMobileSlider();
 strategyElementsAutoCount();

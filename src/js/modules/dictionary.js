@@ -371,9 +371,6 @@ let elements_dic = {
     'de': 'Die Phase der Fehlererkennung und -behebung in der Qualitätssicherung sowie des Hochladens auf den Server und der Domänenverbindung.'
   },
 
-
-
-
 }
 
 

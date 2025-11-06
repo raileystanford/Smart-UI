@@ -204,7 +204,7 @@ class ChangeLanguage {
   setCurrentLanguage() {
 
     let lang = localStorage.getItem('currentLang');
-    this.changeLaguage(lang);
+    if (lang) this.changeLaguage(lang);
 
   }
 

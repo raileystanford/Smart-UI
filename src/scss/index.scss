@@ -1908,7 +1908,7 @@
   }
 
   .tools {
-    padding: 41px 0 37px 0;
+    padding: 41px 0 49px 0;
 
     &__slider {
       width: 538px;
@@ -1960,6 +1960,41 @@
     &__subtitle {
       font-size: 12px;
       line-height: 15px;
+    }
+  }
+
+  .scroll-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .strategy {
+    padding: 45px 0;
+    gap: 58px;
+
+    &__content, &__element {
+      gap: 35px;
+    }
+  }
+
+  .description {
+    width: 520px;
+
+    &__count {
+      font-size: 27px;
+      line-height: 30px;
+    }
+
+    &__title {
+      font-size: 23px;
+      line-height: 26px;
+      margin: 1px 0 0 0;
+    }
+
+    &__text {
+      font-size: 15px;
+      line-height: 18px;
+      max-width: 340px;
     }
   }
 
@@ -2301,7 +2336,7 @@
   }
 
   .tools {
-    padding: 32px 0 41px 0;
+    padding: 32px 0 34px 0;
     gap: 96px;
 
     &::before {
@@ -2355,6 +2390,60 @@
       font-size: 14px;
       line-height: 16px;
     }
+  }
+
+  .strategy {
+    padding: 41px 0;
+    gap: 76px;
+
+    &__content {
+      gap: 50px;
+    }
+
+    &__slider {
+      width: 100%;
+    }
+
+    &__slide {
+      display: flex;
+      flex-direction: column;
+      gap: 37px;
+    }
+
+    &__description {
+
+      &:nth-child(2n) {
+        align-self: flex-start;
+      }
+    }
+
+    &__controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+
+  .description {
+    width: 100%;
+    gap: 17px;
+
+    flex-direction: column;
+
+    &__text, &__title {
+      max-width: 100%;
+    }
+
+    &__text {
+      font-size: 17px;
+      line-height: 22px;
+    }
+  }
+
+  .scroll-btn {
+    width: 55px;
+    height: 55px;
   }
 
 }
@@ -2750,6 +2839,7 @@
   }
 
   .tools {
+    padding: 34px 0 33px 0;
 
     &::before {
       top: 34px;
@@ -2795,5 +2885,46 @@
     }
 
 
+  }
+
+  .strategy {
+    padding: 33px 0;
+    gap: 53px;
+
+    &__content {
+      gap: 34px;
+    }
+
+    &__slide {
+      gap: 24px;
+    }
+  }
+
+  .description {
+    gap: 14px;
+    
+    &__head {
+      gap: 15px;
+    }
+
+    &__count {
+      font-size: 32px;
+      line-height: 35px;
+    }
+
+    &__title {
+      font-size: 30px;
+      line-height: 33px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .scroll-btn {
+    width: 50px;
+    height: 50px;
   }
 }
