@@ -1,6 +1,7 @@
 import { 
   UpdatePageTitle,
   ChangeLanguage,
+  ScrollToTop,
   Popup,
   FormValidator,
   Chat,
@@ -22,6 +23,11 @@ new UpdatePageTitle({
 
 new ChangeLanguage({
   dictionary: { ...titles_dic, ...elements_dic }
+});
+
+new ScrollToTop({
+  '1024-9999': 1000,
+  '300-500': 1400,
 });
 
 const validatorClass = new FormValidator({
@@ -655,6 +661,21 @@ function addExtraSlidesInToolsSlider() {
 
 }
 
+function strategyElementsAutoCount() {
+
+  let elements = Array.from(document.querySelectorAll('.description__count'));
+
+  if (elements.length === 0) return;
+
+  elements.forEach((item, index) => {
+
+    let number = (index + 1) < 10 ? '0' + (index + 1) : index + 1;
+    item.textContent = number;
+
+  });
+
+}
+
 
 
 
@@ -666,3 +687,4 @@ mobileNavLine();
 replacePopupButtonInAboutBlock();
 exploreComponentHandler(elements_dic);
 addExtraSlidesInToolsSlider();
+strategyElementsAutoCount();

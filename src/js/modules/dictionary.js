@@ -13,6 +13,11 @@ let titles_dic = {
   'tools': {
     'en': 'Smart-UI - Tools',
     'de': 'Smart-UI - Werkzeuge'
+  },
+
+  'strategy': {
+    'en': 'Smart-UI - Strategy',
+    'de': 'Smart-UI - Strategie'
   }
 
 }
@@ -302,6 +307,68 @@ let elements_dic = {
   't-slide-text6': {
     'en': 'JavaScript Vanilla JS, React.jx, Angular',
     'de': 'JavaScript Vanilla JS, React.jx, Angular'
+  },
+
+  // Strategy
+
+  'strat-title1': {
+    'en': 'Strategy',
+    'de': 'Strategie'
+  },
+
+  'strat-text1': {
+    'en': 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
+    'de': 'Anders als oft angenommen, ist Lorem Ipsum kein zufälliger Text. Er hat seine Wurzeln in einem klassischen lateinischen Text aus dem Jahr 45 v. Chr. und ist somit über 2000 Jahre alt.'
+  },
+
+  'strat-title2': {
+    'en': 'Design',
+    'de': 'Design'
+  },
+
+  'strat-text2': {
+    'en': 'Not just a picture, but a convenient and intuitive interface with unique and original UI.',
+    'de': 'Nicht nur ein Bild, sondern eine komfortable und intuitive Benutzeroberfläche mit einzigartiger und origineller Benutzerführung.'
+  },
+
+  'strat-title3': {
+    'en': 'Develope',
+    'de': 'Entwickeln'
+  },
+
+  'strat-text3': {
+    'en': 'HTML, CSS, LESS/SASS, Bootstrap. This is the frame of your site that we will do at the highest level. Vanilla JavaScript, Jquery, WordPress, Angular, React.js. We will make your web app interactive.',
+    'de': 'HTML, CSS, LESS/SASS, Bootstrap. Das ist das Grundgerüst Ihrer Website, das wir auf höchstem Niveau umsetzen. Vanilla JavaScript, jQuery, WordPress, Angular, React.js. Wir machen Ihre Webanwendung interaktiv.'
+  },
+
+  'strat-title4': {
+    'en': 'Support',
+    'de': 'Unterstützung'
+  },
+
+  'strat-text4': {
+    'en': 'When the website is done and live. We will support and improve new features on the website.',
+    'de': 'Sobald die Website fertiggestellt und online ist, werden wir neue Funktionen unterstützen und verbessern.'
+  },
+
+  'strat-title5': {
+    'en': 'QA',
+    'de': 'QA'
+  },
+
+  'strat-text5': {
+    'en': 'During the QA phase, which is the process of custom software development, we handpick and combine industry best practices and methodologies to detect bugs in the context of the environment; no line of code leaves us untested.',
+    'de': 'Während der QA-Phase, also dem Prozess der kundenspezifischen Softwareentwicklung, wählen und kombinieren wir die besten Praktiken und Methoden der Branche, um Fehler im Kontext der jeweiligen Umgebung zu erkennen; keine Codezeile bleibt ungetestet.'
+  },
+
+  'strat-title6': {
+    'en': 'Launching',
+    'de': 'Start'
+  },
+
+  'strat-text6': {
+    'en': 'The stage of detecting and correcting a bug in QA as well uploading to the server and domain connection.',
+    'de': 'Die Phase der Fehlererkennung und -behebung in der Qualitätssicherung sowie des Hochladens auf den Server und der Domänenverbindung.'
   },
 
 

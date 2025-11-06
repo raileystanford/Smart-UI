@@ -144,7 +144,7 @@
   }
 }
 
-.chat-btn {
+.chat-btn, .scroll-btn {
   will-change: transform;
   transition: all 0.3s;
 
@@ -173,7 +173,7 @@
 
   &:active {
     transition: all 0.08s;
-    transform: scale(0.92);
+    transform: scale(0.9) !important;
 
     &::before {
       transform: scale(0.9);

@@ -1306,7 +1306,7 @@
 
 .tools {
   @include mix.flex(nowrap, 268px);
-  padding: 66px 0 45px 0;
+  padding: 66px 0 53px 0;
   align-items: flex-start;
 
   &__block-intro {
@@ -1464,7 +1464,93 @@
   
 }
 
+// Strategy
 
+.strategy {
+  @include mix.flex-col(63px);
+  padding: 59px 0 44px 0;
+  position: relative;
+
+  &__block-intro {
+
+    .block-intro__title {
+      color: var.$white;
+    }
+  }
+
+  &__content {
+    @include mix.flex-col(72px);
+  }
+
+  &__element {
+    @include mix.flex-col(37px);
+  }
+
+  &__description {
+
+    &:nth-of-type(2n) {
+      align-self: flex-end;
+    }
+  }
+}
+
+.description {
+  @include mix.flex(nowrap, 23px);
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 756px;
+
+  &__head {
+    @include mix.flex(nowrap, 10px);
+    align-items: flex-start;
+  }
+
+  &__title {
+    color: var.$white;
+    max-width: 280px;
+  }
+
+  &__count {
+    color: var.$sea-green;
+  }
+
+  &__text {
+    line-height: 32px;
+    color: var.$light-silver;
+    max-width: 528px;
+  }
+}
+
+.scroll-btn {
+  @extend %flex-cen;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var.$lime;
+  transform: scale(0.1) rotate(240deg);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  &__icon {
+    width: 56%;
+    height: 56%;
+    transform: rotate(-90deg);
+    margin: 0 0 2px 0;
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  &.off {
+    transform: scale(0.1) rotate(240deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 
 
