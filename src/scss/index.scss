@@ -2212,7 +2212,7 @@
   }
 
   .strategy {
-    padding: 45px 0;
+    padding: 45px 0 51px 0;
     gap: 58px;
 
     &__content, &__element {
@@ -2238,6 +2238,55 @@
       font-size: 15px;
       line-height: 18px;
       max-width: 340px;
+    }
+  }
+
+  .team {
+    gap: 80px;
+    padding: 47px 0px;
+  }
+
+  .multi-decor {
+    width: 350px;
+    height: 390px;
+  }
+
+  .teammates {
+
+    &__body {
+      gap: 44px;
+    }
+  }
+
+  .teammate {
+    width: 228px;
+    border-radius: 7px;
+
+    &__avatar-wrapper {
+      height: 224px;
+      border-radius: 7px 7px 0 0;
+    }
+
+    &__info {
+      padding: 23px 20px;
+      gap: 20px;
+      min-height: 232px;
+    }
+
+    &__name {
+      font-size: 23px;
+      line-height: 29px;
+    }
+
+    &__role {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    &__button {
+      width: 160px;
+      min-height: 50px;
+      letter-spacing: -0.04em;
     }
   }
 
@@ -2355,6 +2404,10 @@
     &__slider {
       width: 100%;
     }
+  }
+
+  .teammate {
+    width: 290px;
   }
 
 }
@@ -2501,6 +2554,20 @@
     }
   }
 
+  .popup-msg--team {
+
+    .popup-msg__intro {
+      gap: 7px;
+    }
+
+    .button--popup {
+      width: 130px;
+      padding: 10px;
+      min-height: 50px;
+    }
+
+  }
+
   .popup-success {
     width: 400px;
 
@@ -2633,7 +2700,7 @@
   }
 
   .strategy {
-    padding: 41px 0;
+    padding: 41px 0 50px 0;
     gap: 76px;
 
     &__content {
@@ -2684,6 +2751,48 @@
   .scroll-btn {
     width: 55px;
     height: 55px;
+  }
+
+  .team {
+    gap: 70px;
+
+    &__block-intro {
+      max-width: 200px;
+    }
+  }
+
+  .teammates {
+
+    &__body {
+      gap: 29px;
+      padding: 0 0 28px 0;
+    }
+  }
+
+  .teammate {
+    width: 190px;
+    box-shadow: 0 30px 25px -30px rgb(209, 209, 209);
+
+    &__avatar-wrapper {
+      height: 187px;
+    }
+
+    &__info {
+      gap: 20px;
+      min-height: 214px;
+    }
+
+    &__name {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    &__button {
+      width: 120px;
+      font-size: 13px;
+      padding: 11px 10px 9px 10px; 
+      min-height: 40px;
+    }
   }
 
 }
@@ -2810,6 +2919,47 @@
       height: 398px;
       right: -100%;
     }
+  }
+
+  .team {
+    gap: 50px;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &__slider {
+      width: 100%;
+
+      .swiper-slide {
+        padding: 0 0 25px 0;
+      }
+    }
+
+    &__slider-controls {
+
+      .slider-controls__btn[disabled] {
+        background: var.$gray-fig;
+      }
+    }
+
+  }
+
+  .multi-decor {
+    width: 240px;
+    height: 270px;
+    right: -70px;
+  }
+
+  .teammate {
+    width: 100%;
   }
 
 }
@@ -3011,6 +3161,37 @@
     }
   }
 
+  .popup-msg--team {
+
+    .popup-msg__head {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .popup-msg__intro {
+      gap: 7px;
+    }
+
+    .popup-msg__title {
+      line-height: 20px;
+    }
+
+    .popup-msg__subtitle--sub {
+      display: none;
+    }
+
+    .popup-msg__footer {
+      flex-direction: column;
+    }
+
+    .button--popup {
+      width: 120px;
+      padding: 10px;
+      min-height: 50px;
+    }
+
+  }
+
   .popup-success {
     width: 275px;
     padding: 15px 10px;
@@ -3138,7 +3319,7 @@
   }
 
   .strategy {
-    padding: 33px 0;
+    padding: 33px 0 45px 0;
     gap: 53px;
 
     &__content {
@@ -3176,5 +3357,70 @@
   .scroll-btn {
     width: 50px;
     height: 50px;
+  }
+
+  .team {
+    padding: 44px 0;
+
+    &__block-intro {
+      max-width: 172px;
+    }
+    
+    &__content {
+      gap: 5px;
+    }
+  }
+
+  .multi-decor {
+    top: 0px;
+    right: -203px;
+    width: 300px;
+    height: 344px;
+
+    &__img {
+      filter: drop-shadow(2px 2px 2px var.$gray-fig) saturate(1.2);
+    }
+
+    &__img--bucket, &__img--colors, &__img--cube {
+      display: none;
+    }
+
+    &__img--msg {
+      left: 1%;
+      transform: rotateY(180deg);
+      filter: drop-shadow(-2px 2px 2px var.$gray-fig) saturate(1.2);
+    }
+
+    &__img--play {
+      left: 14%;
+    }
+
+    &__img--tools {
+      left: 16%;
+    }
+
+  }
+
+  .teammate {
+    border-radius: 10px;
+
+    &__avatar-wrapper {
+      height: 271px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    &__info {
+      padding: 25px 30px;
+      min-height: 203px;
+    }
+
+    &__name {
+      font-size: 27px;
+      line-height: 35px;
+    }
+
+    &__button {
+      width: 165px;
+    }
   }
 }

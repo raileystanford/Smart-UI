@@ -146,6 +146,8 @@ new Swiper('#toolsSlider', {
 
 });
 
+mobileTeamSlider();
+
 new LazyLoad({
   offset: 800,
 })
@@ -964,6 +966,111 @@ function translateTeamMoreButton() {
 
   });
   
+}
+
+function mobileTeamSlider() {
+
+  let cards = Array.from(document.querySelectorAll('.team .teammate'));
+  let media = window.matchMedia('(max-width: 660px)').matches;
+
+  if (!media || cards.length === 0) return;
+
+  let container = document.querySelector('.team__content');
+  let slider = createSlider();
+
+  container.innerHTML = '';
+  container.append(slider);
+
+  addControls();
+  initSlider();
+
+  function createSlider() {
+
+    let slider = document.createElement('div');
+    slider.classList.add('swiper', 'team__slider');
+    slider.setAttribute('data-load-block', '');
+
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('swiper-wrapper');
+
+    cards.forEach((card) => {
+
+      let slide = document.createElement('div');
+      slide.classList.add('swiper-slide');
+      slide.append(card);
+      wrapper.append(slide);
+
+    });
+
+    slider.append(wrapper);
+
+    return slider;
+
+  }
+
+  function initSlider() {
+
+    new Swiper(slider, {
+      slidesPerView: 2.3,
+      slidesPerGroup: 1,
+      spaceBetween: 30,
+      speed: 600,
+      autoHeight: true,
+      centeredSlides: true, // Центрирование слайда
+      initialSlide: 1, // Каокй слайд по счету изначально активен с 0
+
+      navigation: {
+        nextEl: '.team .slider-controls__btn--next',
+        prevEl: '.team .slider-controls__btn--prev',
+      },
+
+      // autoplay: {
+      //   delay: 2000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
+
+      breakpoints: {
+
+        520: {
+          slidesPerView: 2.3,
+          spaceBetween: 30,
+        },
+
+        437: {
+          slidesPerView: 2,
+          spaceBetween: 18,
+        },
+
+        300: {
+          slidesPerView: 1.341,
+          spaceBetween: 18,
+        }
+
+      },
+
+    });
+
+  }
+
+  function addControls() {
+
+    let controls = `<div class="slider-controls team__slider-controls">
+
+                      <button class="slider-controls__btn slider-controls__btn--prev">
+                        <img src="./images/icons/arrow.png" alt="prev" class="slider-controls__icon">
+                      </button>
+
+                      <button class="slider-controls__btn slider-controls__btn--next">
+                        <img src="./images/icons/arrow.png" alt="next" class="slider-controls__icon">
+                      </button>
+
+                    </div>`;
+
+    container.insertAdjacentHTML('beforeend', controls);
+
+  }
+
 }
 
 

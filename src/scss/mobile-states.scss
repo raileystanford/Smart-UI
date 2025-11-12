@@ -110,3 +110,16 @@
   }
 
 }
+
+// Team 
+
+.button--team {
+
+  &:not([disabled]) {
+
+    &:active {
+      background: var.$lime;
+    }
+
+  }
+}
