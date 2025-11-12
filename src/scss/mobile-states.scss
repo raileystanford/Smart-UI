@@ -31,11 +31,19 @@
   }
 }
 
-.chat__close {
-  transition: all 0.08s;
+.close-button {
+  transition: all 0.07s;
+
+  &__icon {
+    transition: all 0.07s;
+  }
 
   &:active {
     background: var.$red;
+
+    .close-button__icon {
+      fill: var.$white;
+    }
   }
 }
 

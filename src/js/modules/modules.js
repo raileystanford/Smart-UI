@@ -262,10 +262,11 @@ class Popup {
 
   openPopup(btn) {
 
-    this.params.preOpenCallback?.(btn, this.popup);
-
     this.popupClass = `.${btn.dataset.popup}`;
     this.popup = document.querySelector(this.popupClass);
+
+    this.params.preOpenCallback?.(btn, this.popup);
+
     this.triggerBtn = btn;
     this.triggerBtn.style.pointerEvents = 'none';
 
@@ -328,43 +329,43 @@ class FormValidator {
 
   constructor(params) {
 
+    this.forms = Array.from(document.querySelectorAll('[data-form]'));
+
+    if (this.forms.length === 0) return;
+
     this.params = params ?? {};
     this.resetWhenChange = this.params.resetWhenChange ?? true;
     this.realTimeCheck = this.params.realTimeCheck;
-    this.submitLock = this.params.lockSubmit;
-    this.form = document.querySelector(this.params.form);
+    this.invalids = [];
 
-    if (this.form) {
-
-      this.submitBtn = this.form.querySelector('[type="submit"]');
-      this.resetBtn = this.form.querySelector('[type="reset"]');
-      this.invalids = [];
-      if (this.submitLock) this.filledInputs = new Set();
-
-      this.ownMethodsBinder();
-      this.updateFormFields();
-      this.initPhoneMask();
-      this.setEventListeners();
-
-    }
+    this.ownMethodsBinder();
+    this.updateFormFields();
+    this.initPhoneMask();
+    this.setEventListeners();
 
   }
 
   setEventListeners() {
 
-    this.form.addEventListener('submit', this.submitHandler);
+    document.addEventListener('submit', this.submitHandler);
 
-    if (this.resetBtn) this.form.addEventListener('reset', this.resetFormFields);
-
-    document.addEventListener('input', this.inputHandler);
+    if (this.resetWhenChange || this.realTimeCheck) {
+      document.addEventListener('input', this.inputHandler);
+    }
 
   }
 
   submitHandler(event) {
 
+    this.form = event.target;
+
+    if (!this.form.closest('[data-form]')) return;
+
     event.preventDefault();
 
-    this.fields.forEach((field) => {
+    this.form._elements.forEach((field) => {
+
+      field.classList.remove('valid');
 
       if (field.type === 'text' || field.tagName === 'TEXTAREA') {
         this.validateTextField(field);
@@ -382,10 +383,9 @@ class FormValidator {
 
     let validInputs = this.form.querySelectorAll('.valid');
 
-    if (validInputs.length === this.fields.length) {
+    if (validInputs.length === this.form._elements.length) {
       this.validEvent();
       // this.form.submit();
-      this.resetFormFields();
     } else {
       this.invalidEvent();
     }
@@ -396,11 +396,9 @@ class FormValidator {
 
     let input = event.target;
 
-    input.classList.remove('valid');
+    if (!input.matches('[data-validate]')) return;
 
-    if (this.submitLock) {
-      this.submitBtnLockHandler(input);
-    }
+    input.classList.remove('valid');
 
     if (this.resetWhenChange) {
       input.classList.remove('invalid');
@@ -408,30 +406,20 @@ class FormValidator {
 
     if (this.realTimeCheck) {
 
+      this.form = input.closest('[data-form]');
+
       if (input.type === 'text' || input.tagName === 'TEXTAREA') {
         this.validateTextField(input);
       } else if (input.type === 'email') {
-        this.validateEmailField(field);
+        this.validateEmailField(input);
       } else if (input.type === 'tel') {
-        this.validatePhoneField(field);
+        this.validatePhoneField(input);
       }
 
       if (this.invalids.length > 0) this.invalidEvent();
 
     }
  
-  }
-
-  resetFormFields() {
-
-    this.fields.forEach((field) => {
-
-      field.value = '';
-      field.classList.remove('invalid');
-      field.classList.remove('valid');
-
-    })
-
   }
 
   validEvent() {
@@ -471,22 +459,6 @@ class FormValidator {
 
   }
 
-  submitBtnLockHandler(input) {
-
-    if (input.value.length > 0) { 
-      this.filledInputs.add(input);
-    } else {
-      this.filledInputs.delete(input);
-    }
-
-    if (this.filledInputs.size === this.fields.length) {
-      this.submitBtn.removeAttribute('disabled');
-    } else {
-      this.submitBtn.setAttribute('disabled', '');
-    }
-
-  }
-
   validateTextField(input) {
 
     let opt = this.params.textInput ?? {};
@@ -500,7 +472,7 @@ class FormValidator {
     let isContainForbiddenSymbols;
 
     if (opt.forbiddenSymbols !== false) {
-      isContainForbiddenSymbols = (opt.forbiddenSymbols ?? /[!@#$%~^&*()-_=+{}\[\];:'"><,./?\\|`]/).test(value);
+      isContainForbiddenSymbols = (opt.forbiddenSymbols ?? /[\!@\#\$\%\~\^\&\*\(\)_\=\+\{\}\[\];:'"\>\<,\./?\\\|`\-]/).test(value);
     } else {
       isContainForbiddenSymbols = false;
     }
@@ -616,6 +588,7 @@ class FormValidator {
       let isMultiple = input.multiple;
       let isContainForbiddenSymbols = /[а-яa-z!@#$%^&*\(\)_=\-\|\}\{'";:\/?\.\\>,<`~]/i.test(value);
       let isFullLength = opt.length ? value.length === opt.length : true;
+      let isOverNumbered = value.length > opt.length;
 
       let isAllowedCountry, isCorrectFormat;
 
@@ -646,16 +619,17 @@ class FormValidator {
 
       }
 
-
       if (isEmpty) {
         this.validationError(input, 'Empty field');
       } else if (isContainForbiddenSymbols) {
         this.validationError(input, 'Forbidden symbol');
-      } else if (!isFullLength) {
-        this.validationError(input, 'Enter full number');
       } else if (!isAllowedCountry) {
         this.validationError(input, 'Wrong number country');
-      }else {
+      } else if (isOverNumbered) {
+        this.validationError(input, 'Value bigger than length');
+      } else if (!isFullLength) {
+        this.validationError(input, 'Enter full number');
+      }  else {
         input.classList.remove('invalid');
         input.classList.add('valid');
       }
@@ -695,7 +669,7 @@ class FormValidator {
 
     if (!this.params.phoneMask) return;
 
-    let inputs = this.form.querySelectorAll('input[type="tel"][data-validate]');
+    let inputs = Array.from(document.querySelectorAll('[data-form] input[type="tel"][data-validate]'));
 
     if (inputs.length === 0) return;
 
@@ -715,11 +689,16 @@ class FormValidator {
 
   updateFormFields() {
 
-    if (this.submitLock) this.submitBtn.setAttribute('disabled', '');
+    this.forms.forEach((form) => {
 
-    this.form._validator = this;
-    this.fields = Array.from(this.form.querySelectorAll('[data-validate]'));
-    this.fields.forEach((field) => field._validator = this);
+      let inputs = Array.from(form.querySelectorAll('[data-validate]'));
+
+      form._validator = this;
+      form._elements = inputs;
+      
+      inputs.forEach((input) => input._validator = this);
+
+    });
 
   }
 
@@ -773,12 +752,18 @@ class Chat {
     document.addEventListener('click', (event) => {
 
       let isTrigger = event.target.closest('.chat-btn');
-      let isCloseBtn = event.target.closest('.chat__close');
+      let isCloseBtn = event.target.closest('.chat__close-button');
       let isSendBtn = event.target.closest('.chat__btn--sent');
       let isEmojiBtn = this.picker ? event.target.closest('.chat__btn--emoji') : false;
 
       if (isTrigger) {
-        this.openChat();
+
+        if (this.chat.matches('.active')) {
+          this.closeChat();
+        } else {
+          this.openChat();
+        }
+        
       } else if (isCloseBtn) {
         this.closeChat();
       } else if (isSendBtn) {
@@ -1136,21 +1121,24 @@ class Chat {
 
   openChat() {
 
-    console.log(this.convTimer);
     clearTimeout(this.convTimer);
-    this.chat.classList.toggle('active');
+    this.chat.classList.add('active');
+
     this.startConversation();
 
-    setTimeout(() => {
+    this.focusTimer = setTimeout(() => {
       this.input.focus(); 
     }, 100);
     
   }
 
   closeChat() {
+    clearTimeout(this.focusTimer);
     clearTimeout(this.convTimer);
     this.chat.classList.remove('active');
     this.input.blur();
+    if (this.emojiContainer.matches('.active')) this.emojiContainerHandler();
+    if (this.typingIndicator) this.typingIndicator.classList.remove('active');
   }
 
   ownMethodsBinder() {
@@ -1560,9 +1548,155 @@ class ScrollToTop {
 
 }
 
+class LazyLoad {
 
+  constructor(params) {
+    this.params = params ?? {};
+    this.blocks= Array.from(document.querySelectorAll('[data-load-block], [data-load-bg]'));
 
+    if (this.blocks.length > 0) {
+      this.ownMethodsBinder();
+      this.checkWebpSupport();
+    }
 
+  }
+
+  runMethods(event) {
+
+    if (event) {
+
+      let img = event.target;
+
+      if (event.type === 'load') {
+        this.webpSupport = (img.width > 0) && (img.height > 0);
+      } else if (event.type === 'error') {
+        this.webpSupport = false;
+      }
+
+    }
+
+    this.createObserver();
+    this.observeBlocks();
+    this.showLine();
+
+  }
+
+  checkWebpSupport() {
+
+    if (this.params.bgWebpNeed) {
+
+      const img = new Image();
+
+      img.addEventListener('load', this.runMethods);
+      img.addEventListener('error', this.runMethods);
+
+      img.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAAQJaQAA3AAA/v3/9gA';
+
+    } else {
+
+      this.runMethods();
+
+    }
+
+  }
+
+  createObserver() {
+    
+    let offset = this.params.offset ?? 700;
+    this.observer = new IntersectionObserver((list, observer) => {
+
+      list.forEach((item) => {
+        if (item.isIntersecting) {
+          this.observerHandler(item.target);
+          observer.unobserve(item.target);
+        }
+      })
+
+    }, { root: null, rootMargin: `${offset}px 0px ${offset}px 0px`, threshold: 0.01 })
+  }
+
+  observerHandler(container) {
+    
+    if (container.matches('[data-load-block]')) {
+
+      let elements = Array.from(container.querySelectorAll('[data-load]'));
+      elements.forEach((element) => {
+
+        let inPicture = element.closest('picture');
+        let inVideo = element.closest('video');
+        let inAudio = element.closest('audio');
+
+        let url = element.dataset.load;
+
+        this.loadHandler(element);
+
+        if (inPicture) {
+          element.tagName === 'IMG' ? element.src = url : element.srcset = url;
+        } else if (inVideo || inAudio) {
+          element.preload = 'auto';
+        } else {
+          element.src = url;
+        }
+
+        element.removeAttribute('data-load');
+
+      });
+
+    } 
+    
+    if (container.matches('[data-load-bg]')) {
+      
+      let path = container.dataset.loadBg;
+      let src = path;
+
+      if (this.webpSupport) src = path.replace(/.\w+$/, '.webp');
+
+      container.style.backgroundImage = `url(${src})`;
+      container.removeAttribute('data-load-bg');
+
+    }
+
+  }
+
+  loadHandler(item) {
+    item.addEventListener('load', (event) => {
+      event.currentTarget.classList.add('loaded');
+    }, { once: true });
+  }
+
+  observeBlocks() {
+    this.blocks.forEach((block) => {
+
+      let isContent = block.querySelector('[data-load]');
+      let isBgLoad = block.matches('[data-load-bg]');
+      if (isContent || isBgLoad) {
+        this.observer.observe(block);
+      }
+
+    })
+  }
+
+  showLine() {
+    if (this.params.showLine) {
+      let offset = this.params.offset ?? 700;
+      this.blocks.forEach((block) => {
+        block.style.position = 'relative';
+        let line = document.createElement('div');
+        line.style.cssText = `display: block; width: 100vw; height: 2px; background: red; position: absolute; left: 0; top: -${offset}px`;
+        block.prepend(line);
+      })
+    }
+  }
+
+  ownMethodsBinder() {
+    let prototype = Object.getPrototypeOf(this);
+    let ownMethods = Object.getOwnPropertyNames(prototype)
+    for (let item of ownMethods) {
+      if (item !== 'constructor') prototype[item] = prototype[item].bind(this);
+    }
+  }
+
+}
 
 
 
@@ -1579,4 +1713,5 @@ export {
   Parallax,
   BurgerMenu,
   ScrollToTop,
+  LazyLoad,
 }

@@ -248,18 +248,18 @@
   }
 }
 
-.chat__close {
+.close-button {
   will-change: transform;
   transition: all 0.2s;
   
-  &-icon {
+  &__icon {
     transition: all 0.2s;
   }
 
   &:hover, &:focus {
     background: var.$red;
 
-    .chat__close-icon {
+    .close-button__icon {
       fill: var.$white;
     }
   }
@@ -297,5 +297,58 @@
     color: var.$yellow;
     text-decoration: underline;
     letter-spacing: 1px;
+  }
+}
+
+// Team
+
+.teammate {
+  transition: all 0.25s;
+
+  &__avatar {
+    will-change: transform;
+    transition: all 0.25s;
+  }
+
+  &__name {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      border-radius: 20px;
+      background: var.$black;
+      transition: all 0.3s;
+    }
+  }
+
+  &:hover {
+    transform: translateY(4px);
+    box-shadow: none;
+
+    .teammate__avatar {
+      transform: scale(1.1);
+    }
+
+    .teammate__name::after {
+      width: 100%;
+    }
+
+  }
+}
+
+.button--team {
+
+  &:not([disabled]) {
+
+    &:hover, &:focus {
+      background: var.$lime;
+    }
+
   }
 }

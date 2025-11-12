@@ -18,6 +18,11 @@ let titles_dic = {
   'strategy': {
     'en': 'Smart-UI - Strategy',
     'de': 'Smart-UI - Strategie'
+  },
+
+  'team': {
+    'en': 'Smart-UI - Our team',
+    'de': 'Smart-UI - Unser Team'
   }
 
 }
@@ -369,6 +374,68 @@ let elements_dic = {
   'strat-text6': {
     'en': 'The stage of detecting and correcting a bug in QA as well uploading to the server and domain connection.',
     'de': 'Die Phase der Fehlererkennung und -behebung in der Qualitätssicherung sowie des Hochladens auf den Server und der Domänenverbindung.'
+  },
+
+  // Team
+
+  'team-title': {
+    'en': 'Meet Our Team',
+    'de': 'Lernen Sie unser Team kennen'
+  },
+
+  'team-sub': {
+    'en': 'Expert Team Member',
+    'de': 'Mitglied des Expertenteams'
+  },
+
+  'team-ask': {
+    'en': 'Ask a question',
+    'de': 'Eine Frage stellen'
+  },
+
+  'team-role1': {
+    'en': 'The Chief Operations Officer at SMART-UI IT Company',
+    'de': 'Der Chief Operations Officer bei SMART-UI IT Company'
+  },
+
+  'team-role2': {
+    'en': 'Executive Managing Director – Smart UI',
+    'de': 'Geschäftsführender Direktor – Smart UI'
+  },
+
+  'team-role3': {
+    'en': 'Founder and CEO at SMART-UI IT Company',
+    'de': 'Gründer und CEO des IT-Unternehmens SMART-UI'
+  },
+
+  'team-role4': {
+    'en': 'Lead Software Enginieer',
+    'de': 'Leitender Softwareentwickler'
+  },
+
+  'team-role5': {
+    'en': 'Head of QA Department',
+    'de': 'Leiter der Qualitätssicherungsabteilung'
+  },
+
+  'team-role6': {
+    'en': 'Manager of social advertising and PR',
+    'de': 'Manager für Social-Media-Werbung und PR'
+  },
+
+  'team-role7': {
+    'en': 'Lead UI, UX designer',
+    'de': 'Leitender UI/UX-Designer'
+  },
+
+  'team-role8': {
+    'en': 'Trademarks law specialist',
+    'de': 'Spezialist für Markenrecht'
+  },
+
+  'team-role9': {
+    'en': 'Technical Director of Development Department',
+    'de': 'Technischer Leiter der Entwicklungsabteilung'
   },
 
 }

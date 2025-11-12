@@ -7,6 +7,7 @@ import {
   Chat,
   Parallax,
   BurgerMenu,
+  LazyLoad
 } from './modules/modules.js';
 
 import { titles_dic, elements_dic } from './modules/dictionary.js';
@@ -30,20 +31,12 @@ new ScrollToTop({
   '300-500': 1400,
 });
 
-const validatorClass = new FormValidator({
-  form: '#popupCommon', // Селектор нашей формы
-  resetWhenChange: true, // Снимать инвалид с поля когда мы в нем изменили невалидное содержимое
-  // realTimeCheck: true, // Проверка полей в режиме реального времени при вводе
-  // lockSubmit: true, // Если тру то дает сабмит кнопке атрибут дисаблед пока не заполнены все поля c data-validate. Можно не писать
+new FormValidator({
 
-  textInput: { // Настройки для текст поля (можно не писать есть авто значения)
+  textInput: {
     onlyLatin: true,
-    // onlyCyrylic: true,
     minLength: 2,
-    // noNumbers: true,
-    forbiddenSymbols: /-/, // Запретить ввод таких символов. (твой рег заменит стандартный). По умолчанию есть там уже набор и он работает.
-    // Можно не писать ваще это всойство по автомату работает станадртный набор запрет и он провер
-    // Чтобы вообще не отслеживать запр символы пиши значение false
+    forbiddenSymbols: false,
   }
 
 });
@@ -57,10 +50,11 @@ const popupClass = new Popup({
   // pageWrapper: '.selector', // Если у страницы есть какаято обертка типо для смус скрола то указываем ее селектор тут чтоб падинг для скролбара норм работал. Если нету обертки просто не пиши это свойтсо
   delay: 100, // Добавляет задержку перед возвращением прокрутки и верт скрола чтобы при закрытии попап не дергало в сторону
 
-  preOpenCallback: function() {
+  preOpenCallback: function(btn, popup) {
     if (chatClass) chatClass.closeChat();
     successMsgHandler(false);
     hideChatButton(true);
+    changePopupInfo(btn, popup);
   },
 
   afterOpenCallback: function() {}, // Вызывает наш колбек после выполнения кода открытия попапа
@@ -91,8 +85,6 @@ new Swiper('#toolsSlider', {
   speed: 700,
   simulateTouch: false,
   autoHeight: true,
-  observer: true,
-  observeParents: true,
   watchSlidesProgress: true,
   watchSlidesVisibility: true,
 
@@ -116,10 +108,6 @@ new Swiper('#toolsSlider', {
   breakpoints: {
 
     1250: {
-      observer: true,
-      observeParents: true,
-      watchSlidesProgress: true,
-      watchSlidesVisibility: true,
       slidesPerView: 2,
       slidesPerGroup: 1, 
       spaceBetween: 39,
@@ -127,10 +115,6 @@ new Swiper('#toolsSlider', {
     },
 
     769: {
-      observer: true,
-      observeParents: true,
-      watchSlidesProgress: true,
-      watchSlidesVisibility: true,
       slidesPerView: 3,
       spaceBetween: 21,
     },
@@ -145,7 +129,7 @@ new Swiper('#toolsSlider', {
     437: {
       slidesPerView: 2,
       spaceBetween: 30,
-      centeredSlides: true,
+      centeredSlides: false,
       initialSlide: 1,
     },
 
@@ -162,8 +146,84 @@ new Swiper('#toolsSlider', {
 
 });
 
+new LazyLoad({
+  offset: 800,
+})
+
 
 // Other functions
+
+function changePopupInfo(btn, popup) {
+
+  if (!popup.matches('.popup-msg--team')) return;
+
+  let card = btn.closest('.teammate');
+  let avatar = getImg();
+  let name = card.querySelector('.teammate__name').textContent;
+  let role = card.querySelector('.teammate__role').textContent;
+  let lang = document.documentElement.lang;
+
+  replaceAvatar();
+  replaceName();
+  replaceRole();
+  replaceSubtext();
+
+  function replaceSubtext() {
+
+    let subArea = popup.querySelector('.popup-msg__subtitle--sub');
+    let text = lang === 'en' ? `Please leave one of your contacts, ${name} will contact you.` : `Bitte hinterlassen Sie einen Ihrer Kontaktdaten, ${name} wird sich mit Ihnen in Verbindung setzen.`;
+
+    subArea.textContent = text;
+
+  }
+
+  function replaceRole() {
+
+    let roleArea = popup.querySelector('.popup-msg__subtitle--role');
+    
+    roleArea.textContent = role;
+
+  }
+
+  function replaceName() {
+
+    let firstName = name.split(' ')[0];
+    let nameArea = popup.querySelector('.popup-msg__title');
+    let text = lang === 'en' ? `Leave message to ${firstName}` : `Hinterlasse eine Nachricht für ${firstName}`;
+
+    nameArea.textContent = text;
+
+  }
+  
+  function replaceAvatar() {
+
+    let userAvatar = popup.querySelector('.popup-msg__avatar');
+    let isPictureTag = userAvatar.closest('picture');
+
+    if (isPictureTag) {
+      isPictureTag.replaceWith(avatar);
+    } else {
+      userAvatar.replaceWith(avatar);
+    }
+
+  }
+
+  function getImg() {
+
+    let img = card.querySelector('.teammate__avatar');
+
+    if (img.closest('picture')) {
+      img = img.closest('picture').cloneNode(true);
+      img.lastElementChild.className = 'popup-msg__avatar';
+    } else {
+      img = img.cloneNode();
+      img.className = 'popup-msg__avatar';
+    }
+
+    return img;
+
+  }
+}
 
 function changeAboutSubtitle(dic) {
 
@@ -297,6 +357,7 @@ function popupTextareaAutoHeight() {
   if (!element) return;
 
   let initHeight;
+  let maxHeight = 62;
 
   document.addEventListener('input', (event) => {
 
@@ -308,11 +369,12 @@ function popupTextareaAutoHeight() {
       input.style.height = '4px';
       let inputHeight = input.scrollHeight;
       if (inputHeight < initHeight) inputHeight = initHeight;
+      if (inputHeight > 62) inputHeight = 62;
       input.style.height = inputHeight + 'px';
 
     }
 
-  })
+  });
 
 }
 
@@ -348,6 +410,8 @@ function clearInputs(btn, popup) {
     input.value = '';
     input._warnField.classList.remove('active');
     input._warnField.style.height = '0px';
+    
+    if (input.tagName === 'TEXTAREA') input.style.height = '';
 
   });
 
@@ -388,11 +452,9 @@ function successMsgHandler(state) {
 
 function formValidatorEventsHandler() {
 
-  let form = document.querySelector('#popupCommon');
+  let forms = Array.from(document.querySelectorAll('[data-form]'))
 
-  if (!form) return;
-
-  let resetBtn = form.querySelector('[type="reset"]');
+  if (forms.length === 0) return;
 
   findWarningFields();
 
@@ -406,7 +468,7 @@ function formValidatorEventsHandler() {
 
   document.addEventListener('input', (event) => {
 
-    let input = event.target.closest('#popupCommon [data-validate]');
+    let input = event.target.closest('[data-form] [data-validate]');
 
     if (input) {
       hideWarning(input);
@@ -423,6 +485,8 @@ function formValidatorEventsHandler() {
   })
 
   function resetBtnAccess(input) {
+
+    let resetBtn = input.form.querySelector('[type="reset"]');
 
     if (!resetBtn) return;
 
@@ -444,6 +508,9 @@ function formValidatorEventsHandler() {
     let emptyField = lang === 'en' ? 'Empty field. Type some text' : 'Leeres Feld. Geben Sie einen Text ein';
     let onlyLatins = lang === 'en' ? 'Only latin symbols allowed' : 'Nur lateinische Symbole erlaubt';
     let minSymbolsCount = lang === 'en' ? 'Enter minimum 2 symbols' : 'Geben Sie mindestens 2 Zeichen ein';
+    let onlyCyrylic = lang === 'en' ? 'Only cyrylic symbols allowed' : 'Nur cyrylische Symbole erlaubt';
+    let digits = lang === 'en' ? 'Digits not allowed' : 'Ziffern nicht erlaubt';
+    let forbiddenSymbol = lang === 'en' ? 'Forbidden symbol' : 'Verbotenes Symbol';
 
     if (code === 'Empty field') {
       element._warnField.textContent = emptyField;
@@ -451,10 +518,20 @@ function formValidatorEventsHandler() {
       element._warnField.textContent = onlyLatins;
     } else if (code === 'Text lower than minimum length') {
       element._warnField.textContent = minSymbolsCount;
+    } else if (code === 'Only cyrylic allowed') {
+      element._warnField.textContent = onlyCyrylic;
+    } else if (code === 'Digits not allowed') {
+      element._warnField.textContent = digits;
+    } else if (code === 'Forbidden symbol') {
+      element._warnField.textContent = forbiddenSymbol;
     }
 
+    let info = getComputedStyle(element);
+    let paddingTop = parseFloat(info.paddingTop);
+    let paddingBot = parseFloat(info.paddingBottom);
+
     element._warnField.classList.add('active');
-    element._warnField.style.height = element.scrollHeight + 'px';
+    element._warnField.style.height = element.scrollHeight - paddingTop - paddingBot + 'px';
 
   }
 
@@ -467,13 +544,17 @@ function formValidatorEventsHandler() {
 
   function findWarningFields() {
 
-    let inputs = Array.from(form.querySelectorAll('[data-validate]'));
+    forms.forEach((form) => {
 
-    inputs.forEach((input) => {
+      let inputs = Array.from(form.querySelectorAll('[data-validate]'));
 
-      let warnField = form.querySelector(`[data-warn="${input.id}"]`);
-      input._warnField = warnField;
-      input._inputs = inputs;
+      inputs.forEach((input) => {
+
+        let warnField = form.querySelector(`[data-warn="${input.id}"]`);
+        input._warnField = warnField;
+        input._inputs = inputs;
+
+      })
 
     })
 
@@ -788,6 +869,103 @@ function strategyMobileSlider() {
 
 }
 
+function showMoreTeammates() {
+
+  let container = document.querySelector('.teammates__body');
+  let button = document.querySelector('.teammates__button');
+  let media = window.matchMedia('(max-width: 660px)').matches;
+
+  if (media || !button || !container) return;
+
+  let observer;
+  let conInfo = getComputedStyle(container);
+  let paddingBot = parseFloat(conInfo.paddingBottom);
+  let cards = Array.from(container.querySelectorAll('.teammate'));
+
+  container.style.height = cards[0].offsetHeight + paddingBot + 'px';
+  observeCards();
+
+  button.addEventListener('click', (event) => {
+
+    let lang = document.documentElement.lang;
+
+    if (button.matches('.active')) {
+      closeContainer(lang);
+    } else {
+      openContainer(lang);
+    }
+    
+  });
+
+  function openContainer(lang) {
+
+    let text = lang === 'en' ? 'Hide' : 'Verstecken';
+
+    container.style.height = container.scrollHeight + 'px';
+    container.classList.add('active');
+    button.classList.add('active');
+    button.textContent = text;
+
+  }
+
+  function closeContainer(lang) {
+
+    let text = lang === 'en' ? 'The whole team' : 'Das gesamte Team';
+
+    container.style.height = cards[0].offsetHeight + paddingBot + 'px';
+    container.classList.remove('active');
+    button.classList.remove('active');
+    button.textContent = text;
+
+    cards[0].scrollIntoView({ behavior: 'instant', inline: 'center' });
+
+  }
+
+  function observeCards() {
+
+    observer = new IntersectionObserver((list, obs) => {
+
+      list.forEach((item) => {
+
+        if (item.isIntersecting) {
+          item.target.classList.remove('hidden');
+        } else {
+          item.target.classList.add('hidden');
+        }
+
+      })
+
+    }, { root: container, threshold: 0.01 });
+
+    cards.forEach((card) => { observer.observe(card) });
+
+  }
+
+}
+
+function translateTeamMoreButton() {
+
+  let button = document.querySelector('.teammates__button');
+
+  if (!button) return;
+
+  document.addEventListener('translated', (event) => {
+
+    let lang = document.documentElement.lang;
+    let text;
+
+    if (button.matches('.active')) {
+      text = lang === 'en' ? 'Hide' : 'Verstecken';
+    } else {
+      text = lang === 'en' ? 'The whole team' : 'Das gesamte Team';
+    }
+
+    button.textContent = text;
+
+  });
+  
+}
+
 
 
 
@@ -801,3 +979,5 @@ exploreComponentHandler(elements_dic);
 addExtraSlidesInToolsSlider();
 strategyMobileSlider();
 strategyElementsAutoCount();
+showMoreTeammates();
+translateTeamMoreButton();
