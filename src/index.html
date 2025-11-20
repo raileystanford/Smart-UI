@@ -101,8 +101,6 @@
 
       <nav class="mobile-menu" data-burger-content>
 
-        <div class="mobile-menu__inner">
-
           <div class="mobile-menu__head">
 
             <button class="mobile-menu__close" data-burger-close>
@@ -116,6 +114,7 @@
           </div>
 
           <div class="mobile-menu__body">
+            <div class="mobile-menu__inner">
 
             <ul class="nav-links mobile-menu__nav-links">
 
@@ -166,9 +165,8 @@
 
             </div>
 
+            </div>
           </div>
-
-        </div>
 
         <div class="mobile-menu__decor">
           <div class="mobile-menu__circle"></div>
@@ -213,25 +211,27 @@
 
       </article>
 
-      <div class="bg-decore">
+      <div class="bg-decore header__bg-decore">
         <div class="bg-decore__circle bg-decore__circle--mid"></div>
         <div class="bg-decore__circle bg-decore__circle--small"></div>
         <div class="bg-decore__circle bg-decore__circle--min"></div>
         <div class="bg-decore__circle bg-decore__circle--big"></div>
       </div>
 
-      <div class="comp">
+      <div class="complex-decor header__complex-decor">
+        <div class="complex-decor__element">
 
-        <img src="./images/illustrations/monitor.png" alt="monitor" class="comp__img comp__img--monitor" data-parallax="0.03/0.08/0/normal/once/true">
-        <img src="./images/illustrations/viewport.png" alt="viewport" class="comp__img comp__img--viewport" data-parallax="0.03/0.08/0/normal/once/true">
-        <img src="./images/illustrations/tasks.png" alt="tasks" class="comp__img comp__img--tasks" data-parallax="0.03/0.08/0/normal/once/true">
+          <img src="./images/illustrations/monitor.png" alt="monitor" class="complex-decor__img complex-decor__img--monitor" data-parallax="0.03/0.08/0/normal/once/true">
+          <img src="./images/illustrations/viewport.png" alt="viewport" class="complex-decor__img complex-decor__img--viewport" data-parallax="0.03/0.08/0/normal/once/true">
+          <img src="./images/illustrations/tasks.png" alt="tasks" class="complex-decor__img complex-decor__img--tasks" data-parallax="0.03/0.08/0/normal/once/true">
 
-        <img src="./images/illustrations/files.png" alt="files" class="comp__img comp__img--files" data-parallax="0.06/0.08/0/normal/once/true">
-        <img src="./images/illustrations/message.png" alt="message" class="comp__img comp__img--msg" data-parallax="0.11/0.08/0/normal/once/true">
+          <img src="./images/illustrations/files.png" alt="files" class="complex-decor__img complex-decor__img--files" data-parallax="0.06/0.08/0/normal/once/true">
+          <img src="./images/illustrations/message.png" alt="message" class="complex-decor__img complex-decor__img--msg" data-parallax="0.11/0.08/0/normal/once/true">
 
-        <img src="./images/illustrations/keyboard.png" alt="keyboard" class="comp__img comp__img--keyboard" data-parallax="0.07/0.08/0/normal/once/true">
-        <img src="./images/illustrations/mouse.png" alt="mouse" class="comp__img comp__img--mouse" data-parallax="0.07/0.08/0/normal/once/true">
-      
+          <img src="./images/illustrations/keyboard.png" alt="keyboard" class="complex-decor__img complex-decor__img--keyboard" data-parallax="0.07/0.08/0/normal/once/true">
+          <img src="./images/illustrations/mouse.png" alt="mouse" class="complex-decor__img complex-decor__img--mouse" data-parallax="0.07/0.08/0/normal/once/true">
+        
+        </div>
       </div>
 
     </header>
@@ -249,7 +249,7 @@
 
           <button class="button button--common link-text" data-popup="popup-msg--com" data-lang="about-btn">Ask a question</button>
 
-          <div class="skills-slider">
+          <div class="skills-slider about__skills-slider">
 
             <div class="skills-slider__panel">
 
@@ -269,46 +269,44 @@
 
             </div>
 
-            <div class="skills-slider__line-wrapper">
-              <div class="swiper skills-slider__main" id="skillsSlider">
-                <div class="swiper-wrapper">
+            <div class="swiper skills-slider__main" id="skillsSlider">
+              <div class="swiper-wrapper">
 
-                  <div class="swiper-slide" data-key="about-sub">
-                    <article class="skills-slider__slide">
+                <div class="swiper-slide" data-key="about-sub">
+                  <article class="skills-slider__slide">
 
-                      <h3 class="skills-slider__title slide-text" data-lang="about-s1-title">We have already strong skills and we are not stopping on achieved in following:</h3>
+                    <h3 class="skills-slider__title slide-text" data-lang="about-s1-title">We have already strong skills and we are not stopping on achieved in following:</h3>
 
-                      <ul class="skills-slider__list">
-                        <li class="skills-slider__li parag-text" data-lang="about-s1-li1">Programming Languages: HTML5, CSS3, PHP, JavaScript (AngularJS, ReactJS NodeJS, jQuery)</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s1-li2">Content Management Systems (CMS): Wordpress, Opencart, Drupal</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s1-li3">Version Control System (VCS): SVN GIT GitLab GitHub Bitbucket</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s1-li4">Software as a Service (SAAS): Amazon Web Services, Rackspace Cloud</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s1-li5">Integration of different Application Programming Interface (API)</li>
-                      </ul>
+                    <ul class="skills-slider__list">
+                      <li class="skills-slider__li parag-text" data-lang="about-s1-li1">Programming Languages: HTML5, CSS3, PHP, JavaScript (AngularJS, ReactJS NodeJS, jQuery)</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s1-li2">Content Management Systems (CMS): Wordpress, Opencart, Drupal</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s1-li3">Version Control System (VCS): SVN GIT GitLab GitHub Bitbucket</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s1-li4">Software as a Service (SAAS): Amazon Web Services, Rackspace Cloud</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s1-li5">Integration of different Application Programming Interface (API)</li>
+                    </ul>
 
-                      <a href="#" target="_blank" class="skills-slider__link succ-text" data-lang="about-link">Find out more</a>
-                    
-                    </article>
-                  </div>
-
-                  <div class="swiper-slide" data-key="about-sub2">
-                    <article class="skills-slider__slide">
-
-                      <h3 class="skills-slider__title slide-text" data-lang="about-s2-title">We have a strong background in the areas below:</h3>
-
-                      <ul class="skills-slider__list">
-                        <li class="skills-slider__li parag-text" data-lang="about-s2-li1">Website design and development</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s2-li2">Website integration and maintenance</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s2-li3">Customized e-commerce development</li>
-                        <li class="skills-slider__li parag-text" data-lang="about-s2-li4">CMS development/integration</li>
-                      </ul>
-
-                      <a href="#" target="_blank" class="skills-slider__link succ-text" data-lang="about-link">Find out more</a>
-
-                    </article>
-                  </div>
-
+                    <a href="#" target="_blank" class="skills-slider__link succ-text" data-lang="about-link">Find out more</a>
+                  
+                  </article>
                 </div>
+
+                <div class="swiper-slide" data-key="about-sub2">
+                  <article class="skills-slider__slide">
+
+                    <h3 class="skills-slider__title slide-text" data-lang="about-s2-title">We have a strong background in the areas below:</h3>
+
+                    <ul class="skills-slider__list">
+                      <li class="skills-slider__li parag-text" data-lang="about-s2-li1">Website design and development</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s2-li2">Website integration and maintenance</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s2-li3">Customized e-commerce development</li>
+                      <li class="skills-slider__li parag-text" data-lang="about-s2-li4">CMS development/integration</li>
+                    </ul>
+
+                    <a href="#" target="_blank" class="skills-slider__link succ-text" data-lang="about-link">Find out more</a>
+
+                  </article>
+                </div>
+
               </div>
             </div>
 
@@ -449,6 +447,10 @@
 
         </div>
 
+        <div class="bg-decore tools__bg-decore">
+          <div class="bg-decore__circle bg-decore__circle--once"></div>
+        </div>
+
       </article>
 
       <article class="strategy custom-bg" data-title="strategy">
@@ -548,48 +550,50 @@
           <p class="block-intro__subtitle parag-text" data-lang="team-sub">Expert Team Member</p>
         </div>
 
-        <div class="multi-decor" data-load-block>
+        <div class="complex-decor team__complex-decor">
+          <div class="complex-decor__element" data-load-block>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/phone.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/phone.png" alt="decor" class="multi-decor__img multi-decor__img--phone" data-parallax="0.015/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/phone.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/phone.png" alt="decor" class="complex-decor__img complex-decor__img--phone" data-parallax="0.015/0.08/0/normal/once/true">
+            </picture>
 
-          <img src="./images/preloader.svg" data-load="./images/illustrations/tab.png" alt="decor" class="multi-decor__img multi-decor__img--tab" data-parallax="0.015/0.08/0/normal/once/true">
-          <img src="./images/preloader.svg" data-load="./images/illustrations/sector.png" alt="decor" class="multi-decor__img multi-decor__img--sector" data-parallax="0.015/0.08/0/normal/once/true">
+            <img src="./images/preloader.svg" data-load="./images/illustrations/tab.png" alt="decor" class="complex-decor__img complex-decor__img--tab" data-parallax="0.015/0.08/0/normal/once/true">
+            <img src="./images/preloader.svg" data-load="./images/illustrations/sector.png" alt="decor" class="complex-decor__img complex-decor__img--sector" data-parallax="0.015/0.08/0/normal/once/true">
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/colors.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/colors.png" alt="decor" class="multi-decor__img multi-decor__img--colors" data-parallax="0.035/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/colors.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/colors.png" alt="decor" class="complex-decor__img complex-decor__img--colors" data-parallax="0.035/0.08/0/normal/once/true">
+            </picture>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/bucket.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/bucket.png" alt="decor" class="multi-decor__img multi-decor__img--bucket" data-parallax="0.035/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/bucket.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/bucket.png" alt="decor" class="complex-decor__img complex-decor__img--bucket" data-parallax="0.035/0.08/0/normal/once/true">
+            </picture>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/mid.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/mid.png" alt="decor" class="multi-decor__img multi-decor__img--mid" data-parallax="0.015/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/mid.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/mid.png" alt="decor" class="complex-decor__img complex-decor__img--mid" data-parallax="0.015/0.08/0/normal/once/true">
+            </picture>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/cube.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/cube.png" alt="decor" class="multi-decor__img multi-decor__img--cube" data-parallax="0.07/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/cube.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/cube.png" alt="decor" class="complex-decor__img complex-decor__img--cube" data-parallax="0.07/0.08/0/normal/once/true">
+            </picture>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/msg-block.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/msg-block.png" alt="decor" class="multi-decor__img multi-decor__img--msg" data-parallax="0.05/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/msg-block.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/msg-block.png" alt="decor" class="complex-decor__img complex-decor__img--msg" data-parallax="0.05/0.08/0/normal/once/true">
+            </picture>
 
-          <picture>
-            <source srcset="./images/preloader.svg" data-load="./images/illustrations/tools.webp" type="image/webp">
-            <img src="./images/preloader.svg" data-load="./images/illustrations/tools.png" alt="decor" class="multi-decor__img multi-decor__img--tools" data-parallax="0.08/0.08/0/normal/once/true">
-          </picture>
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/tools.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/tools.png" alt="decor" class="complex-decor__img complex-decor__img--tools" data-parallax="0.08/0.08/0/normal/once/true">
+            </picture>
 
-          <img src="./images/preloader.svg" data-load="./images/illustrations/play-btn.png" alt="decor" class="multi-decor__img multi-decor__img--play" data-parallax="0.08/0.08/0/normal/once/true">
-          
+            <img src="./images/preloader.svg" data-load="./images/illustrations/play-btn.png" alt="decor" class="complex-decor__img complex-decor__img--play" data-parallax="0.08/0.08/0/normal/once/true">
+            
+          </div>
         </div>
 
         <div class="team__content">
@@ -778,7 +782,45 @@
         </div>
 
       </article>
-      
+
+      <article class="advantages custom-bg" data-title="advantages">
+
+        <div class="block-intro advantages__block-intro">
+          <h2 class="block-intro__title head-text" data-lang="adv-title">Our Advantages</h2>
+          <p class="block-intro__subtitle parag-text" data-lang="adv-sub">We help to develop business, using complex modern effective it solutions, tools of web development and Internet marketing.</p>
+        </div>
+
+        <div class="advantages__content">
+
+          <div class="advantages__cards">
+
+            <article class="advantage">
+              <h3 class="advantage__title adv-text" data-lang="adv-card1-title">Individual Approach</h3>
+              <p class="advantage__text small-text" data-lang="adv-card1-text">After converting all requirements into product implementation, our software engineers work quickly but smartly, using the full potential.</p>
+            </article>
+
+            <article class="advantage">
+              <h3 class="advantage__title adv-text" data-lang="adv-card2-title">Teamwork With Client</h3>
+              <p class="advantage__text small-text" data-lang="adv-card2-text">Teamwork is great opportunity to know more about you project from various specialists. You should ask necessary questions to our specialists, from Product Manager to Web-Developer.</p>
+            </article>
+
+            <article class="advantage">
+              <h3 class="advantage__title adv-text" data-lang="adv-card3-title">Your Business Profitable!</h3>
+              <p class="advantage__text small-text" data-lang="adv-card3-text">You should ask necessary questions to our specialists, from Product Manager to Web-Developer.</p>
+            </article>
+
+          </div>
+
+          <a href="#" class="button button--common advantages__button link-text" data-lang="adv-btn">Reviews</a>
+
+        </div>
+
+        <div class="bg-decore advantages__bg-decore" data-load-block>
+          <div class="bg-decore__circle bg-decore__circle--adv"></div>
+          <img src="./images/preloader.svg" data-load="./images/illustrations/advant-illustration.svg" alt="info" class="bg-decore__circle bg-decore__circle--image">
+        </div>
+
+      </article>
 
     </main>
 
@@ -804,7 +846,7 @@
           <span class="popup-msg__subtitle mini-text" data-lang="popup-sub">Please leave one of your contacts to contact you.</span>
         </div>
 
-        <div class="socials">
+        <div class="socials popup-msg__socials">
 
           <a href="#" class="socials__link">
             <img src="./images/icons/whatsapp.svg" alt="Whatsapp" class="socials__icon">

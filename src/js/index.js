@@ -1073,6 +1073,39 @@ function mobileTeamSlider() {
 
 }
 
+function aboutBlockGreenLine() {
+
+  let slider = document.querySelector('#skillsSlider');
+  let media = window.matchMedia('(max-width: 660px)').matches;
+
+  if (!slider || media) return;
+
+  let lineEl;
+
+  addLine();
+  calcWidth();
+
+  function addLine() {
+
+    let line = document.createElement('div');
+    line.classList.add('skills-slider__line');
+    slider.append(line);
+    lineEl = line;
+
+  }
+
+  function calcWidth() {
+
+    let info = lineEl.getBoundingClientRect();
+    let clientWidth = window.innerWidth;
+    let width = clientWidth - info.x - 1;
+    
+    lineEl.style.width = width + 'px';
+
+  }
+
+}
+
 
 
 
@@ -1088,3 +1121,4 @@ strategyMobileSlider();
 strategyElementsAutoCount();
 showMoreTeammates();
 translateTeamMoreButton();
+aboutBlockGreenLine();

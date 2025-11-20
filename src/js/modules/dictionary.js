@@ -23,6 +23,11 @@ let titles_dic = {
   'team': {
     'en': 'Smart-UI - Our team',
     'de': 'Smart-UI - Unser Team'
+  },
+
+  'advantages': {
+    'en': 'Smart-UI - Advantages',
+    'de': 'Smart-UI - Vorteile'
   }
 
 }
@@ -436,6 +441,53 @@ let elements_dic = {
   'team-role9': {
     'en': 'Technical Director of Development Department',
     'de': 'Technischer Leiter der Entwicklungsabteilung'
+  },
+
+  // Advantages
+
+  'adv-title': {
+    'en': 'Our Advantages',
+    'de': 'Unsere Vorteile'
+  },
+
+  'adv-sub': {
+    'en': 'We help to develop business, using complex modern effective it solutions, tools of web development and Internet marketing.',
+    'de': 'Wir helfen Unternehmen bei ihrer Entwicklung durch den Einsatz komplexer, moderner und effektiver IT-Lösungen sowie Tools für Webentwicklung und Internetmarketing.'
+  },
+
+  'adv-card1-title': {
+    'en': 'Individual Approach',
+    'de': 'Individuelle Herangehensweise'
+  },
+
+  'adv-card1-text': {
+    'en': 'After converting all requirements into product implementation, our software engineers work quickly but smartly, using the full potential.',
+    'de': 'Nachdem alle Anforderungen in die Produktimplementierung umgesetzt wurden, arbeiten unsere Softwareingenieure schnell, aber effizient und schöpfen dabei ihr volles Potenzial aus.'
+  },
+
+  'adv-card2-title': {
+    'en': 'Teamwork With Client',
+    'de': 'Teamarbeit mit dem Kunden'
+  },
+
+  'adv-card2-text': {
+    'en': 'Teamwork is great opportunity to know more about you project from various specialists. You should ask necessary questions to our specialists, from Product Manager to Web-Developer.',
+    'de': 'Teamarbeit bietet Ihnen die großartige Möglichkeit, von verschiedenen Spezialisten mehr über Ihr Projekt zu erfahren. Stellen Sie unseren Experten – vom Produktmanager bis zum Webentwickler – alle notwendigen Fragen.'
+  },
+
+  'adv-card3-title': {
+    'en': 'Your Business Profitable!',
+    'de': 'Ihr Unternehmen profitabel!'
+  },
+
+  'adv-card3-text': {
+    'en': 'You should ask necessary questions to our specialists, from Product Manager to Web-Developer.',
+    'de': 'Sie sollten unseren Spezialisten, vom Produktmanager bis zum Webentwickler, alle notwendigen Fragen stellen.'
+  },
+
+  'adv-btn': {
+    'en': 'Reviews',
+    'de': 'Rezensionen'
   },
 
 }
