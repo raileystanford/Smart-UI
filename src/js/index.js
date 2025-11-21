@@ -1106,6 +1106,109 @@ function aboutBlockGreenLine() {
 
 }
 
+function mobileAdvantagesSlider() {
+
+  let container = document.querySelector('.advantages__content');
+  let media = window.matchMedia('(max-width: 660px)').matches;
+
+  if (!media || !container) return;
+
+  let cards = Array.from(container.querySelectorAll('.advantage'));
+  let button = container.querySelector('.advantages__button');
+  let slider;
+
+  container.innerHTML = '';
+
+  createSlider();
+  createControls();
+  initSlider();
+  
+  function createSlider() {
+
+    slider = document.createElement('div');
+    slider.classList.add('swiper', 'advantages__slider');
+
+    let wrapper = document.createElement('div');
+    wrapper.classList.add('swiper-wrapper');
+
+    cards.forEach((card) => {
+
+      let slide = document.createElement('div');
+      slide.classList.add('swiper-slide');
+
+      slide.append(card);
+      wrapper.append(slide);
+
+    });
+
+    slider.append(wrapper);
+    container.append(slider);
+
+  }
+
+  function createControls() {
+
+    let controls = document.createElement('div');
+    controls.classList.add('advantages__controls');
+
+    let btns = `<div class="slider-controls advantages__slider-controls">
+
+                  <button class="slider-controls__btn slider-controls__btn--prev">
+                    <img src="./images/icons/arrow.png" alt="prev" class="slider-controls__icon">
+                  </button>
+
+                  <button class="slider-controls__btn slider-controls__btn--next">
+                    <img src="./images/icons/arrow.png" alt="next" class="slider-controls__icon">
+                  </button>
+
+                </div>`;
+
+    controls.insertAdjacentHTML('beforeend', btns);
+    controls.append(button);
+    container.append(controls);
+
+  }
+
+  function initSlider() {
+
+    new Swiper(slider, {
+      slidesPerView: 2.6,
+      slidesPerGroup: 1,
+      spaceBetween: 18,
+      speed: 600,
+      autoHeight: true,
+      centeredSlides: true, // Центрирование слайда
+      initialSlide: 1, // Каокй слайд по счету изначально активен с 0
+
+      navigation: {
+        nextEl: '.advantages .slider-controls__btn--next',
+        prevEl: '.advantages .slider-controls__btn--prev',
+      },
+
+      // autoplay: {
+      //   delay: 2000,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
+
+      breakpoints: {
+
+        437: {
+          slidesPerView: 2.6,
+        },
+
+        300: {
+          slidesPerView: 1.4,
+        }
+
+      },
+
+    });
+
+  }
+
+}
+
 
 
 
@@ -1122,3 +1225,4 @@ strategyElementsAutoCount();
 showMoreTeammates();
 translateTeamMoreButton();
 aboutBlockGreenLine();
+mobileAdvantagesSlider();

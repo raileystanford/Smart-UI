@@ -1643,7 +1643,6 @@
 
 .team {
   @include mix.flex-col(160px);
-  // padding: 80px 0 60px 0;
   padding: 80px 0 80px 0;
   position: relative;
 
@@ -1871,6 +1870,21 @@
       top: 64px;
       left: 67.7%;
     }
+  }
+
+  &__slider {
+    @extend %px-cen;
+    position: relative;
+    width: 100vw;
+
+    .swiper-slide {
+      padding: 0 0 30px 0;
+    }
+  }
+
+  &__controls {
+    @include mix.flex-col(20px);
+    align-items: center;
   }
 }
 
@@ -2370,7 +2384,7 @@
 
   .team {
     gap: 80px;
-    padding: 47px 0px;
+    padding: 47px 0px 53px 0;
 
     &__complex-decor {
 
@@ -2418,6 +2432,57 @@
       width: 160px;
       min-height: 50px;
       letter-spacing: -0.04em;
+    }
+  }
+
+  .advantages {
+    padding: 45px 0;
+    gap: 70px;
+
+    &__block-intro {
+      max-width: 316px;
+    }
+
+    &__cards {
+      gap: 32px;
+    }
+
+    &__button {
+      width: 160px;
+      min-height: 50px;
+      padding: 10px 15px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--adv {
+        top: 95px;
+        left: 49.45%;
+      }
+
+      .bg-decore__circle--image {
+        top: 43px;
+        left: 60%;
+        width: 252px;
+        height: 482px;
+      }
+    }
+  }
+
+  .advantage {
+    width: 253px;
+    min-height: 365px;
+    padding: 40px 31px 31px 31px;
+    gap: 50px;
+
+    &__title {
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 
@@ -2541,6 +2606,36 @@
 
   .teammate {
     width: 290px;
+  }
+
+  .advantages {
+
+    &__cards {
+      gap: 25px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--adv {
+        left: 51%;
+      }
+
+      .bg-decore__circle--image {
+        left: 58%;
+      }
+    }
+  }
+
+  .advantage {
+    width: 205px;
+    min-height: 252px;
+    padding: 34px 24px 24px 24px;
+    gap: 40px;
+
+    &__title {
+      font-size: 25px;
+      line-height: 25px;
+    }
   }
 
 }
@@ -2953,6 +3048,54 @@
     }
   }
 
+  .advantages {
+    padding: 41px 0;
+    gap: 55px;
+
+    &__block-intro {
+      max-width: 428px;
+    }
+
+    &__button {
+      width: 192px;
+      min-height: 50px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--adv {
+        top: 62.6%;
+        left: 92.1%;
+        width: 40px;
+        height: 40px;
+      }
+
+      .bg-decore__circle--image {
+        top: 41px;
+        left: 71.8%;
+        width: 195px;
+        height: 386px;
+      }
+    }
+  }
+
+  .advantage {
+    width: 192px;
+    min-height: 318px;
+    padding: 34px 22px 24px 22px;
+    gap: 30px;
+    border-radius: 7px;
+
+    &::before {
+      border-radius: 7px 7px 0 0;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
 }
 
 @media (max-width: 660px) {
@@ -3123,6 +3266,26 @@
 
   .teammate {
     width: 100%;
+  }
+
+  .advantages {
+
+    &__content {
+      gap: 0px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--image {
+        left: 88%;
+      }
+    }
+
+  }
+
+  .advantage {
+    width: 100%;
+    min-height: 280px;
   }
 
 }
@@ -3588,6 +3751,45 @@
 
     &__button {
       width: 165px;
+    }
+  }
+
+  .advantages {
+    padding: 45px 0;
+
+    &__block-intro {
+
+      .block-intro__title {
+        font-size: 52px;
+        line-height: 52px;
+      }
+    }
+
+    &__bg-decore {
+      display: none;
+    }
+
+    &__button {
+      width: 180px;
+    }
+  }
+
+  .advantage {
+    min-height: 318px;
+    box-shadow: 0px 20px 30px -30px var.$white;
+
+    &::before {
+      height: 10px;
+    }
+
+    &__title {
+      font-size: 35px;
+      line-height: 35px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 }
