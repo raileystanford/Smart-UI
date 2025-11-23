@@ -150,7 +150,40 @@ mobileTeamSlider();
 
 new LazyLoad({
   offset: 800,
-})
+});
+
+new Swiper('#worksSlider', {
+  slidesPerView: 3,
+  slidesPerGroup: 3,
+  spaceBetween: 1,
+  speed: 1000,
+  simulateTouch: false,
+  autoHeight: true,
+
+  navigation: {
+    nextEl: '.works .slider-controls__btn--next',
+    prevEl: '.works .slider-controls__btn--prev',
+  },
+
+  pagination: {
+    el: '.works .slider__pagination',
+    type: 'custom',
+    renderCustom: customSwiperPagination,
+  },
+
+  // autoplay: {
+  //   delay: 2000,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  // },
+
+  breakpoints: {
+
+    
+
+  },
+
+});
 
 
 // Other functions

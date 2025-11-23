@@ -28,6 +28,11 @@ let titles_dic = {
   'advantages': {
     'en': 'Smart-UI - Advantages',
     'de': 'Smart-UI - Vorteile'
+  }, 
+
+  'works': {
+    'en': 'Smart-UI - Recent works',
+    'de': 'Smart-UI - Neuere Arbeiten'
   }
 
 }
@@ -489,6 +494,54 @@ let elements_dic = {
     'en': 'Reviews',
     'de': 'Rezensionen'
   },
+
+  // Works
+
+  'works-label': {
+    'en': 'Showcase',
+    'de': 'Showcase'
+  },
+
+  'works-title': {
+    'en': 'Recent Works',
+    'de': 'Neuere Arbeiten'
+  },
+
+  'works-sub': {
+    'en': 'We will help to develop your best project based on your idea.',
+    'de': 'Wir helfen Ihnen, Ihr bestes Projekt auf Basis Ihrer Idee zu entwickeln.'
+  },
+
+  'works-button': {
+    'en': 'View More Projects',
+    'de': 'Weitere Projekte ansehen'
+  },
+
+  'works-text1': {
+    'en': 'Creating a site from scratch on React, Gatsby, back-end on WordPress.',
+    'de': 'Erstellung einer Website von Grund auf mit React, Gatsby, Backend mit WordPress.'
+  },
+
+  'works-text2': {
+    'en': 'Complete overhaul of an existing site and increased Pagespeed.',
+    'de': 'Komplette Überarbeitung einer bestehenden Website und Steigerung.'
+  },
+
+  'works-text3': {
+    'en': 'Site on Next.js and React.',
+    'de': 'Website auf Next.js und React.'
+  },
+
+  'works-link': {
+    'en': 'Website',
+    'de': 'Webseite'
+  },
+
+  'works-btn': {
+    'en': 'Learn more',
+    'de': 'Mehr erfahren'
+  },
+
 
 }
 
