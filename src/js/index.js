@@ -179,7 +179,23 @@ new Swiper('#worksSlider', {
 
   breakpoints: {
 
-    
+    661: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      speed: 1000,
+    },
+
+    437: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      speed: 1000,
+    },
+
+    300: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      speed: 600,
+    }
 
   },
 
@@ -845,7 +861,7 @@ function strategyMobileSlider() {
     let block = document.createElement('div');
     block.classList.add('strategy__controls');
 
-    let btns = `<div class="slider-controls strategy__slider-controls">
+    let btns = `<div class="slider-controls slider-controls--dark strategy__slider-controls">
 
                   <button class="slider-controls__btn slider-controls__btn--prev">
                     <img src="./images/icons/arrow.png" alt="prev" class="slider-controls__icon">
@@ -1184,7 +1200,7 @@ function mobileAdvantagesSlider() {
     let controls = document.createElement('div');
     controls.classList.add('advantages__controls');
 
-    let btns = `<div class="slider-controls advantages__slider-controls">
+    let btns = `<div class="slider-controls slider-controls--dark advantages__slider-controls">
 
                   <button class="slider-controls__btn slider-controls__btn--prev">
                     <img src="./images/icons/arrow.png" alt="prev" class="slider-controls__icon">

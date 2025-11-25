@@ -123,3 +123,13 @@
 
   }
 }
+
+// Works
+
+.work-slide__link {
+
+  &:active {
+    color: var.$yellow;
+    text-decoration: underline;
+  }
+}
