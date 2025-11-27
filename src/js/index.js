@@ -201,6 +201,43 @@ new Swiper('#worksSlider', {
 
 });
 
+new Swiper('#reviewsSlider', {
+  slidesPerView: 1,
+  spaceBetween: 1,
+  speed: 900,
+  simulateTouch: false,
+  effect: 'cube',
+    
+  cubeEffect: {
+    shadow: false,
+    slideShadows: false,
+  },
+
+  navigation: {
+    nextEl: '.reviews .slider-controls__btn--next',
+    prevEl: '.reviews .slider-controls__btn--prev',
+  },
+
+  pagination: {
+    el: '.reviews .reviews__pagination',
+    type: 'custom',
+    renderCustom: customSwiperPagination,
+  },
+
+  // autoplay: {
+  //   delay: 2000,
+  //   disableOnInteraction: false,
+  //   pauseOnMouseEnter: true,
+  // },
+
+  breakpoints: {
+
+    
+
+  },
+
+});
+
 
 // Other functions
 

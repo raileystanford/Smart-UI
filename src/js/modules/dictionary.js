@@ -33,6 +33,11 @@ let titles_dic = {
   'works': {
     'en': 'Smart-UI - Recent works',
     'de': 'Smart-UI - Neuere Arbeiten'
+  },
+
+  'reviews': {
+    'en': 'Smart-UI - Clients reviews',
+    'de': 'Smart-UI - Kundenbewertungen'
   }
 
 }
@@ -542,6 +547,72 @@ let elements_dic = {
     'de': 'Mehr erfahren'
   },
 
+  // Reviews
+
+  'rev-title': {
+    'en': 'Clients Reviews',
+    'de': 'Kundenbewertungen'
+  },
+
+  'rev-subtitle': {
+    'en': 'We help to develop business, using complex modern effective it solutions, tools of web development and Internet marketing.',
+    'de': 'Wir helfen Unternehmen bei ihrer Entwicklung durch den Einsatz komplexer, moderner und effektiver IT-Lösungen sowie Tools für Webentwicklung und Internetmarketing.'
+  },
+
+  'review1-title': {
+    'en': 'Static HTML pages and email templates',
+    'de': 'Statische HTML-Seiten und E-Mail-Vorlagen'
+  },
+
+  'review1-text': {
+    'en': '"Working with Denys from SMART-UI it\'s straightforward. I provide the design - he provides the implementation. After a couple of iterations, the job was done. No unnecessary interactions or delays and communication is succinct and on the point. Overall I am happy with the experience and will be working with Denys and SMART-UI in the future."',
+    'de': '„Die Zusammenarbeit mit Denys von SMART-UI ist unkompliziert. Ich liefere das Design, er die Umsetzung. Nach wenigen Iterationen war alles erledigt. Es gab keine unnötigen Interaktionen oder Verzögerungen, und die Kommunikation war prägnant und zielgerichtet. Insgesamt bin ich sehr zufrieden und werde auch in Zukunft mit Denys und SMART-UI zusammenarbeiten.“'
+  },
+
+  'review-link': {
+    'en': 'Review on',
+    'de': 'Rezension zu'
+  },
+
+  'review2-title': {
+    'en': 'Looking for an expert NextJs developer',
+    'de': 'Wir suchen einen erfahrenen Next.js-Entwickler'
+  },
+
+  'review2-text': {
+    'en': 'Looking for an expert NextJs developer',
+    'de': '"The team did a great job of completing the tasks with full satisfaction on time. We will work with them again."'
+  },
+
+  'review3-title': {
+    'en': 'Front-end engineer with Wordpress, Gutenberg, and React experience needed for headless blog',
+    'de': 'Wir suchen einen erfahrenen Next.js-Entwickler'
+  },
+
+  'review3-text': {
+    'en': '"Viktor and the team built our new blog exactly to spec, in half the time we expected. They took feedback well, and worked well with our existing code base and engineering team. Perfect experience."',
+    'de': '„Viktor und sein Team haben unseren neuen Blog exakt nach unseren Vorgaben und in der Hälfte der erwarteten Zeit entwickelt. Sie haben Feedback gut aufgenommen und hervorragend mit unserer bestehenden Codebasis und unserem Entwicklerteam zusammengearbeitet. Eine perfekte Erfahrung.“'
+  },
+
+  'review4-title': {
+    'en': 'Develop website',
+    'de': 'Website entwickeln'
+  },
+
+  'review4-text': {
+    'en': '"Job completed successfully, very good result as always. Quick and fast.. totally recommending."',
+    'de': '„Auftrag erfolgreich abgeschlossen, wie immer ein sehr gutes Ergebnis. Schnell und unkompliziert. Absolut empfehlenswert.“'
+  },
+
+  'rev-sub': {
+    'en': 'What others are saying on',
+    'de': 'Was andere dazu sagen'
+  },
+
+  'rev-button': {
+    'en': 'View all comments',
+    'de': 'Alle Kommentare anzeigen'
+  },
 
 }
 
