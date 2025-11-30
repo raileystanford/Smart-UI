@@ -133,3 +133,15 @@
     text-decoration: underline;
   }
 }
+
+// Reviews
+
+.review__link {
+  will-change: transform;
+  transition: all 0.06s;
+
+  &:active {
+    transform: scale(0.95);
+    text-decoration: underline solid var.$lime;
+  }
+}

@@ -2174,6 +2174,7 @@
   &__star {
     width: 19px;
     height: 19px;
+    flex-shrink: 0;
   }
 }
 
@@ -2199,6 +2200,7 @@
     margin: 10px 0 0 0;
     font-size: 20px;
     color: var.$gray-blue;
+    width: fit-content;
 
     &::after {
       content: ' Up work';
@@ -2911,6 +2913,96 @@
     }
   }
 
+  .reviews {
+    padding: 50px 0;
+
+    &__block-intro {
+      max-width: 435px;
+    }
+
+    &__content {
+      gap: 90px
+    }
+
+    &__main {
+      width: 497px;
+    }
+
+    &__view {
+      max-width: 190px;
+    }
+
+    &__sub {
+      font-size: 29px;
+      line-height: 31px;
+    }
+
+    &__button {
+      padding: 21px 15px 19px 15px;
+      min-height: 60px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--upline {
+        display: none;
+      }
+
+      .bg-decore__circle--upwork {
+        top: -61px;
+        right: -48.65%;
+        width: 888px;
+        height: 888px;
+      }
+    }
+  }
+
+  .review-slide {
+    gap: 30px;
+  }
+
+  .review {
+    gap: 15px;
+
+    &__title {
+      font-size: 29px;
+      line-height: 38px;
+    }
+
+    &__info {
+      gap: 12px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &__link {
+      font-size: 15px;
+      line-height: 20px;
+      margin: 5px 0 0 0;
+    }
+  }
+
+  .stars {
+    gap: 7px;
+
+    &__rate {
+      gap: 2.85px;
+    }
+
+    &__star {
+      width: 15px;
+      height: 15px;
+    }
+
+    &__count {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
 }
 
 @media (max-width: 950px) {
@@ -3091,6 +3183,28 @@
 
     &__img-wrapper {
       height: 93px;
+    }
+  }
+
+  .reviews {
+
+    &__header {
+      display: flex;
+      gap: 50px;
+    }
+
+    &__view {
+      align-self: flex-end;
+      margin: 0;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--upwork {
+        right: -42%;
+        width: 957px;
+        height: 957px;
+      }
     }
   }
 
@@ -3604,6 +3718,48 @@
     }
   }
 
+  .reviews {
+    padding: 45px 0;
+    gap: 70px;
+
+    &__header {
+      gap: 80px;
+    }
+
+    &__block-intro {
+      max-width: 305px;
+    }
+
+    &__main {
+      width: 517px;
+    }
+
+    &__button {
+      width: 100%;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--upwork {
+        top: 0px;
+        right: -60.2%;
+        height: 968px;
+      }
+    }
+  }
+
+  .review-slide {
+    gap: 35px;
+  }
+
+  .review {
+
+    &__text {
+      font-size: 17px;
+      line-height: 26px;
+    }
+  }
+
 }
 
 @media (max-width: 660px) {
@@ -3813,6 +3969,59 @@
       .bg-decore__circle--react {
         right: -71%;
       }
+    }
+  }
+
+  .reviews {
+    gap: 47px;
+
+    &__header {
+      gap: 22px;
+      flex-direction: column;
+    }
+
+    &__main {
+      width: 100%;
+    }
+
+    &__view {
+      max-width: 275px;
+      align-self: flex-start;
+    }
+
+    &__sub {
+      font-size: 40px;
+      line-height: 43px;
+    }
+
+    &__button {
+      width: 200px;
+    }
+
+    &__bg-decore {
+
+      .bg-decore__circle--upwork {
+        right: -40%;
+        width: 600px;
+        height: 600px;
+      }
+    }
+  }
+
+  .review-slide {
+    gap: 25px;
+  }
+
+  .review {
+    gap: 10px;
+
+    &__info {
+      gap: 10px;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 
@@ -4399,5 +4608,32 @@
       min-height: 45px;
     }
 
+  }
+
+  .reviews {
+
+    &__bg-decore {
+
+      .bg-decore__circle--upwork {
+        top: 4px;
+        right: -61.4%;
+      }
+    }
+  }
+
+  .review {
+
+    &__title {
+      font-size: 29px;
+      line-height: 33px;
+    }
+  }
+
+  .stars {
+    gap: 10px;
+
+    &__rate {
+      gap: 4.5px;
+    }
   }
 }

@@ -232,7 +232,13 @@ new Swiper('#reviewsSlider', {
 
   breakpoints: {
 
-    
+    661: {
+      speed: 900,
+    },
+
+    300: {
+      speed: 600,
+    }
 
   },
 
@@ -1295,6 +1301,26 @@ function mobileAdvantagesSlider() {
 
 }
 
+function mobileReviewsBlock() {
+
+  let block = document.querySelector('.reviews');
+  let media = window.matchMedia('(max-width: 950px)').matches;
+
+  if (!block || !media) return;
+
+  let intro = block.querySelector('.block-intro');
+  let view = block.querySelector('.reviews__view');
+
+  if (!intro || !view) return;
+
+  let conrainer = document.createElement('div');
+  conrainer.classList.add('reviews__header');
+
+  conrainer.append(intro, view);
+  block.prepend(conrainer);
+
+}
+
 
 
 
@@ -1312,3 +1338,4 @@ showMoreTeammates();
 translateTeamMoreButton();
 aboutBlockGreenLine();
 mobileAdvantagesSlider();
+mobileReviewsBlock();

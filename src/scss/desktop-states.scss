@@ -427,3 +427,38 @@
     transform: translateY(2px);
   }
 }
+
+// Reviews
+
+.review__link {
+  will-change: transform;
+  transition: all 0.2s;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: var.$lime;
+    transition: all 0.2s;
+  }
+
+  &:hover, &:focus {
+    letter-spacing: 0.4px;
+
+    &::before {
+      width: 100%;
+    }
+
+  }
+
+  &:active {
+    transition: all 0.1s;
+    letter-spacing: 0px;
+    transform: scale(0.95);
+  }
+}
