@@ -38,6 +38,11 @@ let titles_dic = {
   'reviews': {
     'en': 'Smart-UI - Clients reviews',
     'de': 'Smart-UI - Kundenbewertungen'
+  },
+
+  'qa': {
+    'en': 'Smart-UI - Questions/Answers',
+    'de': 'Smart-UI - Fragen/Antworten'
   }
 
 }
@@ -612,6 +617,88 @@ let elements_dic = {
   'rev-button': {
     'en': 'View all comments',
     'de': 'Alle Kommentare anzeigen'
+  },
+
+  // QA
+
+  'qa-title': {
+    'en': 'Frequently asked questions',
+    'de': 'Häufig gestellte Fragen'
+  },
+
+  'qa1-question': {
+    'en': 'Who did we work with?',
+    'de': 'Mit wem haben wir zusammengearbeitet?'
+  },
+
+  'qa1-answer': {
+    'en': 'Most of our clients are large financial organizations and companies. You can view the list of clients who have given permission to publish works in the <a class="question__link">Recent Works</a> block.',
+    'de': 'Die meisten unserer Kunden sind große Finanzorganisationen und Unternehmen. Eine Liste der Kunden, die uns die Erlaubnis zur Veröffentlichung ihrer Werke erteilt haben, finden Sie im Bereich <a class="question__link">Aktuelle Werke</a> block.'
+  },
+
+  'qa2-question': {
+    'en': 'What services do we offer to clients?',
+    'de': 'Welche Dienstleistungen bieten wir unseren Kunden an?'
+  },
+
+  'qa2-li1': {
+    'en': 'Website design and development',
+    'de': 'Webdesign und entwicklung'
+  },
+
+  'qa2-li2': {
+    'en': 'Website integration and maintenance',
+    'de': 'Website-Integration und Wartung'
+  },
+
+  'qa2-li3': {
+    'en': 'Costomized e-commerce development',
+    'de': 'Kundenspezifische E-Commerce-Entwicklung'
+  },
+
+  'qa2-li4': {
+    'en': 'CMS development/integration',
+    'de': 'CMS-Entwicklung/Integration'
+  },
+
+  'qa3-question': {
+    'en': 'How is the cost of the project formed?',
+    'de': 'Wie setzen sich die Projektkosten zusammen?'
+  },
+
+  'qa3-answer': {
+    'en': 'The cost of services is calculated very simply: the time spent by us is multiplied by the tariff. But we can assure you that they are at the market level.',
+    'de': 'Die Kosten für unsere Dienstleistungen berechnen sich ganz einfach: Wir multiplizieren unseren Zeitaufwand mit dem Stundensatz. Wir können Ihnen jedoch versichern, dass unsere Preise marktgerecht sind.'
+  },
+
+  'qa4-question': {
+    'en': 'Who owns the right to created solutions?',
+    'de': 'Wem gehören die Rechte an den entwickelten Lösungen?'
+  },
+
+  'qa4-answer': {
+    'en': 'As a rule, the exclusive rights to the software and the source code are transferred to the customer. Everything related to your project.',
+    'de': 'In der Regel werden die ausschließlichen Rechte an der Software und dem Quellcode an den Kunden übertragen. Alles, was mit Ihrem Projekt zusammenhängt.'
+  },
+
+  'qa5-question': {
+    'en': 'What technologies are used?',
+    'de': 'Welche Technologien werden eingesetzt?'
+  },
+
+  'qa5-answer': {
+    'en': 'We can solve any problem using any technology. These are not big words, they really are. At <a class="question__link">smart-ui</a>, a team of employees with the highest set of knowledge.',
+    'de': 'Wir können jedes Problem mit jeder Technologie lösen. Das sind keine leeren Versprechungen, sondern die Realität. Bei <a class="question__link">smart-ui</a> arbeitet ein Team von Mitarbeitern mit herausragendem Fachwissen.'
+  },
+
+  'qa6-question': {
+    'en': 'How long does it take to develop a project?',
+    'de': 'Wie lange dauert die Entwicklung eines Projekts?'
+  },
+
+  'qa6-answer': {
+    'en': 'Velocity doubled by quality is what our Agile approach boils down to.',
+    'de': 'Bei unserem agilen Ansatz geht es im Wesentlichen darum, Geschwindigkeit und Qualität zu verdoppeln.'
   },
 
 }

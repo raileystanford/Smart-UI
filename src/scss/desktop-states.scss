@@ -462,3 +462,23 @@
     transform: scale(0.95);
   }
 }
+
+// QA
+
+.question {
+  will-change: transform;
+  transition: all 0.08s;
+
+  &:not(.open):active {
+    transform: scale(0.97);
+    box-shadow: none;
+  }
+}
+
+.question__header {
+  transition: all 0.25s;
+
+  &:hover, &:focus {
+    background: var.$yellow;
+  }
+}

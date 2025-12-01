@@ -7,7 +7,8 @@ import {
   Chat,
   Parallax,
   BurgerMenu,
-  LazyLoad
+  LazyLoad,
+  DropAnswer,
 } from './modules/modules.js';
 
 import { titles_dic, elements_dic } from './modules/dictionary.js';
@@ -243,6 +244,12 @@ new Swiper('#reviewsSlider', {
   },
 
 });
+
+new DropAnswer({
+  backdropClose: true, // закрывает панель при нажатии на тригер а также на пространство вне контейнера с тригером. Если такой варик не нужен просто не пиши это свойство
+  multiple: false, // Если тру то одновременно могут быть открыты несколько панелей если false то только одна другая будет автоматически закрываться
+  escapeClose: true, // Если тру то все панели закроются если нажать клавишу Escape
+})
 
 
 // Other functions

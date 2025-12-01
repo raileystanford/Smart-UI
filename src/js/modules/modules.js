@@ -1698,6 +1698,102 @@ class LazyLoad {
 
 }
 
+class DropAnswer {
+
+  constructor(params) {
+    this.params = params ?? {};
+    this.items = Array.from(document.querySelectorAll('[data-drop-answer="main"]'));
+
+    if (this.items.length > 0) {
+      this.ownMethodsBinder();
+      this.setEventListeners();
+      this.openElements = [];
+    }
+  }
+
+  setEventListeners() {
+    document.addEventListener('click', this.workOperator);
+
+    if (this.params.escapeClose) {
+      document.addEventListener('keydown', (event) => {
+
+        if (event.key === 'Escape') {
+
+          this.items.forEach((item) => {  
+            this.closeTab(item);
+          });
+
+          this.openElements.length = 0;
+        }
+      });
+    }
+  }
+
+  workOperator(event) {
+    let target = event.target;
+
+    if (target.closest('[data-drop-answer="trigger"]')) {
+
+      let mainElement = target.closest('[data-drop-answer="main"]');
+      let content = mainElement.querySelector('[data-drop-answer="content"]');
+      let contentHeight = this.getContentHeight(target);
+
+      if (!this.params.multiple) {
+        this.items.forEach((item) => {
+
+          if (!item.contains(target)) {
+            this.closeTab(item)
+          }
+
+        })
+      }
+
+      if (mainElement.classList.contains('open')) {
+        content.style.height = '0px';
+      } else {
+        content.style.height = contentHeight + 'px';
+      }
+
+      mainElement.classList.toggle('open');
+      mainElement.classList.contains('open') ? this.openElements.push(mainElement) : null;
+    }
+
+    if (!target.closest('[data-drop-answer="main"]') && this.params.backdropClose && this.openElements.length > 0) {
+
+      this.openElements.forEach((item) => {
+        this.closeTab(item);
+      });
+
+      this.openElements.length = 0;
+    }   
+  }
+
+  closeTab(item) {
+    item.classList.remove('open');
+    item.querySelector('[data-drop-answer="content"]').style.height = '0px';
+  }
+
+  getContentHeight(element) {
+    let container = element.closest('[data-drop-answer="main"]');
+    let content = container.querySelector('[data-drop-answer="content"]');
+    let contentHeight = content.scrollHeight;
+
+    return contentHeight;
+  }
+
+  ownMethodsBinder() {
+    let prototype = Object.getPrototypeOf(this);
+    let ownMethods = Object.getOwnPropertyNames(prototype);
+
+    for (let item of ownMethods) {
+      if (item !== 'constructor') prototype[item] = prototype[item].bind(this);
+    }
+  }
+
+}
+
+
+
 
 
 
@@ -1714,4 +1810,5 @@ export {
   BurgerMenu,
   ScrollToTop,
   LazyLoad,
+  DropAnswer,
 }
