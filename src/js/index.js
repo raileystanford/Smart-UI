@@ -246,9 +246,9 @@ new Swiper('#reviewsSlider', {
 });
 
 new DropAnswer({
-  backdropClose: true, // закрывает панель при нажатии на тригер а также на пространство вне контейнера с тригером. Если такой варик не нужен просто не пиши это свойство
-  multiple: false, // Если тру то одновременно могут быть открыты несколько панелей если false то только одна другая будет автоматически закрываться
-  escapeClose: true, // Если тру то все панели закроются если нажать клавишу Escape
+  backdropClose: true,
+  multiple: false,
+  escapeClose: true,
 })
 
 
@@ -451,26 +451,25 @@ function langControlsHandler() {
 
 }
 
-function popupTextareaAutoHeight() {
+function textareaAutoHeight() {
 
-  let element = document.querySelector('.data-field__input--textarea');
+  let elements = Array.from(document.querySelectorAll('textarea'));
 
-  if (!element) return;
+  if (elements.length === 0) return;
 
-  let initHeight;
   let maxHeight = 62;
 
   document.addEventListener('input', (event) => {
 
-    let input = event.target.closest('.data-field__input--textarea');
+    let input = event.target.closest('textarea');
 
     if (input) {
 
-      if (!initHeight) initHeight = input.offsetHeight;
+      if (!input._initHeight) input._initHeight = input.offsetHeight;
       input.style.height = '4px';
       let inputHeight = input.scrollHeight;
-      if (inputHeight < initHeight) inputHeight = initHeight;
-      if (inputHeight > 62) inputHeight = 62;
+      if (inputHeight < input._initHeight) inputHeight = input._initHeight;
+      if (inputHeight > maxHeight) inputHeight = maxHeight;
       input.style.height = inputHeight + 'px';
 
     }
@@ -551,6 +550,17 @@ function successMsgHandler(state) {
   
 }
 
+function clearRequestFormFields(form) {
+
+  let inputs = Array.from(form.querySelectorAll('[data-validate]'));
+
+  inputs.forEach((input) => {
+    input.value = '';
+    if (input._initHeight) input.style.height = input._initHeight + 'px';
+  });
+
+}
+
 function formValidatorEventsHandler() {
 
   let forms = Array.from(document.querySelectorAll('[data-form]'))
@@ -580,7 +590,12 @@ function formValidatorEventsHandler() {
 
   document.addEventListener('formvalid', (event) => {
 
-    if (popupClass) popupClass.closePopup();
+    if (!(event.target.id === 'requestForm')) {
+      if (popupClass) popupClass.closePopup();
+    } else {
+      clearRequestFormFields(event.target);
+    }
+    
     successMsgHandler(true);
 
   })
@@ -612,10 +627,12 @@ function formValidatorEventsHandler() {
     let onlyCyrylic = lang === 'en' ? 'Only cyrylic symbols allowed' : 'Nur cyrylische Symbole erlaubt';
     let digits = lang === 'en' ? 'Digits not allowed' : 'Ziffern nicht erlaubt';
     let forbiddenSymbol = lang === 'en' ? 'Forbidden symbol' : 'Verbotenes Symbol';
+    let moreThanOneEmail = lang === 'en' ? 'Only one email required' : 'Nur eine E-Mail erforderlich';
+    let wrongEmailFormat = lang === 'en' ? 'Wrong email format' : 'Falsches E-Mail-Format';
 
     if (code === 'Empty field') {
       element._warnField.textContent = emptyField;
-    } else if (code === 'Only latins allowed') {
+    } else if (code === 'Only latins allowed' || code === 'Cyrylic symbols forbidden') {
       element._warnField.textContent = onlyLatins;
     } else if (code === 'Text lower than minimum length') {
       element._warnField.textContent = minSymbolsCount;
@@ -625,6 +642,10 @@ function formValidatorEventsHandler() {
       element._warnField.textContent = digits;
     } else if (code === 'Forbidden symbol') {
       element._warnField.textContent = forbiddenSymbol;
+    } else if (code === 'More than one email') {
+      element._warnField.textContent = moreThanOneEmail;
+    } else if (code === 'Wrong email format') {
+      element._warnField.textContent = wrongEmailFormat;
     }
 
     let info = getComputedStyle(element);
@@ -1333,7 +1354,7 @@ function mobileReviewsBlock() {
 
 focusStateFix();
 langControlsHandler();
-popupTextareaAutoHeight();
+textareaAutoHeight();
 formValidatorEventsHandler();
 mobileNavLine();
 replacePopupButtonInAboutBlock();

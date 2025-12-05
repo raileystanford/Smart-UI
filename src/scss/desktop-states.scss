@@ -482,3 +482,53 @@
     background: var.$yellow;
   }
 }
+
+// Footer
+
+.contact {
+
+  &__title {
+    transition: all 0.2s;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: var.$lime;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+  }
+
+  &:hover {
+
+    .contact__title {
+      color: var.$gray-blue;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.contact__link {
+  transition: all 0.2s;
+  text-decoration: underline solid transparent;
+
+  &:hover, &:focus {
+    color: var.$blue;
+    text-decoration: underline solid var.$blue;
+  }
+
+  &:active {
+    transition: all 0.08s;
+    color: var.$yellow;
+    text-decoration: underline solid var.$yellow;
+  }
+}

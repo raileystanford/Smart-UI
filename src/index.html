@@ -1330,7 +1330,170 @@
 
     </main>
 
-    <footer class="footer"></footer>
+    <footer class="footer" data-title="footer">
+
+      <div class="request custom-bg">
+
+        <div class="block-intro request__block-intro">
+          <h2 class="block-intro__title head-text" data-lang="req-title">Lets Get In Touch</h2>
+        </div>
+
+        <form action="#" method="post" class="request-form" id="requestForm" data-form novalidate>
+
+          <div class="request-form__fields">
+
+            <div class="data-field request-form__data-field">
+
+              <input 
+                type="text" 
+                id="reqName" 
+                class="data-field__input link-text" 
+                data-lang="req-inp1" 
+                placeholder="First name:" 
+                autocomplete="off" 
+                maxlength="100" 
+              data-validate>
+              
+              <span class="data-field__warning input-text" data-warn="reqName"></span>
+
+            </div>
+
+            <div class="data-field request-form__data-field">
+
+              <input 
+                type="email" 
+                id="reqMail" 
+                class="data-field__input link-text" 
+                data-lang="req-inp2" 
+                placeholder="E-mail address:" 
+                autocomplete="off" 
+                maxlength="200" 
+              data-validate>
+              
+              <span class="data-field__warning input-text" data-warn="reqMail"></span>
+
+            </div>
+
+            <div class="data-field request-form__data-field request-form__data-field--textarea">
+
+              <textarea 
+                id="reqText" 
+                class="data-field__input link-text" 
+                data-lang="req-inp3" 
+                placeholder="Message:" 
+                autocomplete="off" 
+                maxlength="500" 
+                data-validate></textarea>
+              
+              <span class="data-field__warning input-text" data-warn="reqText"></span>
+
+            </div>
+
+          </div>
+
+          <button type="submit" class="button button--common link-text" data-lang="req-submit">Submit</button>
+
+        </form>
+
+        <div class="complex-decor request__complex-decor" data-load-block>
+          <div class="complex-decor__element">
+
+            <picture>
+              <source srcset="./images/preloader.svg" data-load="./images/illustrations/f-base.webp" type="image/webp">
+              <img src="./images/preloader.svg" data-load="./images/illustrations/f-base.png" alt="monitor" class="complex-decor__img complex-decor__img--base" data-parallax="0.015/0.08/0/normal/once/true">
+            </picture>
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-components.png" alt="tasks" class="complex-decor__img complex-decor__img--tasks" data-parallax="0.015/0.08/0/normal/once/true">
+
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-msg.png" alt="message" class="complex-decor__img complex-decor__img--msg" data-parallax="0.06/0.08/0/normal/once/true">
+
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-chat.png" alt="chat" class="complex-decor__img complex-decor__img--chat" data-parallax="0.04/0.08/0/normal/once/true">
+
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-keyboard.png" alt="keyboard" class="complex-decor__img complex-decor__img--keyboard" data-parallax="0.035/0.08/0/normal/once/true">
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-mouse.png" alt="mouse" class="complex-decor__img complex-decor__img--mouse" data-parallax="0.035/0.08/0/normal/once/true">
+
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-bell.png" alt="bell" class="complex-decor__img complex-decor__img--bell" data-parallax="0.03/0.08/0/normal/once/true">
+
+            <img src="./images/preloader.svg" data-load="./images/illustrations/f-cube.png" alt="cube" class="complex-decor__img complex-decor__img--cube" data-parallax="0.02/0.08/0/normal/once/true">
+               
+          </div>
+        </div>
+
+      </div>
+
+      <nav class="contacts">
+
+        <div class="contacts__body">
+
+          <div class="contacts__intro">
+
+            <a href="#" class="logotype contacts__logotype">
+              <img src="./images/icons/logo.svg" alt="Smart UI" class="logotype__icon">
+            </a>
+
+            <div class="partners contacts__partners">
+
+              <a href="#" class="partners__link">
+                <img src="./images/icons/Clutch.svg" alt="Clutch" class="partners__icon">
+              </a>
+
+              <a href="#" class="partners__link">
+                <img src="./images/icons/Upwork.svg" alt="Upwork" class="partners__icon">
+              </a>
+
+              <a href="#" class="partners__link">
+                <img src="./images/icons/Linkedin.svg" alt="Linkedin" class="partners__icon">
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="contacts__info">
+
+            <ul class="contact">
+
+              <li class="contact__title chat-text" data-lang="cont1-title">Our Contacts</li>
+
+              <li class="contact__li role-text">
+                <a href="tel:+380935046334" class="contact__link contact__link--tel">+38 (093) 504 63 34</a>
+              </li>
+
+              <li class="contact__li role-text">
+                <a href="mailto:info@smart-ui.pro" class="contact__link contact__link--mail">info@smart-ui.pro</a>
+              </li>
+
+            </ul>
+
+            <ul class="contact">
+
+              <li class="contact__title chat-text" data-lang="cont2-title">Our Address</li>
+
+              <li class="contact__li role-text">
+                <a href="https://maps.app.goo.gl/qxKiE4d91JZvLNPU9" target="_blank" class="contact__link" data-lang="cont2-address">Kharkiv City, 72 Grigory Skovoroda Street, Ukraine</a>
+              </li>
+
+            </ul>
+
+            <ul class="contact">
+
+              <li class="contact__title chat-text" data-lang="cont3-title">Working hours</li>
+
+              <li class="contact__li role-text" data-lang="cont3-li1">Monday-Friday: 09.00-23.00</li>
+              <li class="contact__li role-text" data-lang="cont3-li2">Saturday-Sanday: 11.00-16.00</li>
+              
+            </ul>
+
+          </div>
+
+        </div>
+
+        <address class="contacts__footer">
+          <span class="contacts__rights law-text" data-lang="cont-rights">© 2022 Smart-UI. All Rights Reserved</span>
+        </address>
+
+      </nav>
+
+    </footer>
 
   </div>
 

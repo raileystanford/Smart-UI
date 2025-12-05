@@ -43,6 +43,11 @@ let titles_dic = {
   'qa': {
     'en': 'Smart-UI - Questions/Answers',
     'de': 'Smart-UI - Fragen/Antworten'
+  },
+
+  'footer': {
+    'en': 'Smart-UI - Contacts',
+    'de': 'Smart-UI - Kontakte'
   }
 
 }
@@ -699,6 +704,68 @@ let elements_dic = {
   'qa6-answer': {
     'en': 'Velocity doubled by quality is what our Agile approach boils down to.',
     'de': 'Bei unserem agilen Ansatz geht es im Wesentlichen darum, Geschwindigkeit und Qualität zu verdoppeln.'
+  },
+
+  // Footer
+
+  'req-title': {
+    'en': 'Lets Get In Touch',
+    'de': 'Lass uns in Kontakt treten'
+  },
+
+  'req-inp1': {
+    'en': 'First name:',
+    'de': 'Vorname:'
+  },
+
+  'req-inp2': {
+    'en': 'E-mail address:',
+    'de': 'E-Mail-Adresse:'
+  },
+
+  'req-inp3': {
+    'en': 'Message:',
+    'de': 'Nachricht:'
+  },
+
+  'req-submit': {
+    'en': 'Submit',
+    'de': 'Einreichen'
+  },
+
+  'cont-rights': {
+    'en': '© 2022 Smart-UI. All Rights Reserved',
+    'de': '© 2022 Smart-UI. Alle Rechte vorbehalten.'
+  },
+
+  'cont1-title': {
+    'en': 'Our Contacts',
+    'de': 'Unsere Kontakte'
+  },
+
+  'cont2-title': {
+    'en': 'Our Address',
+    'de': 'Unsere Adresse'
+  },
+
+  'cont2-address': {
+    'en': 'Kharkiv City, 72 Grigory Skovoroda Street, Ukraine',
+    'de': 'Stadt Charkiw, Grigory-Skoworoda-Straße 72, Ukraine'
+  },
+
+  'cont3-title': {
+    'en': 'Working hours',
+    'de': 'Arbeitszeit'
+  },
+
+  'cont3-li1': {
+    'en': 'Monday-Friday: 09.00-23.00',
+    'de': 'Montag bis Freitag: 09.00-23.00 Uhr'
+  },
+
+  'cont3-li2': {
+    'en': 'Saturday-Sunday: 11.00-16.00',
+    'de': 'Samstag-Sonntag: 11.00-16.00 Uhr'
   },
 
 }

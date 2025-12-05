@@ -525,19 +525,13 @@ class FormValidator {
       }
 
     } else {
-
       isCorrectFormat = regExp.test(value);
-
     }
 
     if (opt.allowedDomains) {
-
       isAllowedDomain = opt.allowedDomains.some((item) => value.includes(item));
-
     } else {
-
       isAllowedDomain = true;
-
     }
 
     if (isEmpty) {
