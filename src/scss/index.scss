@@ -2395,7 +2395,7 @@
     
     .complex-decor__element {
       @extend %px-cen;
-      width: 1240px;
+      width: 1022px;
       height: 646px;
       bottom: 20px;
     }
@@ -2404,60 +2404,61 @@
 
       &--base {
         top: 23.55%;
-        left: 24.9%;
-        width: 50.27%;
-        height: 62%;
+        left: 19.5%;
+        width: 60.99%;
+        height: 62.05%;
         filter: saturate(1.2) drop-shadow(5px 5px 5px var.$black-shadow);
       }
 
       &--tasks {
         top: 40.4%;
-        left: 26.58%;
-        width: 45.5%;
-        height: 61.55%;
+        left: 21.5%;
+        width: 55.35%;
+        height: 61.65%;
       }
 
       &--msg {
         top: 26.5%;
-        left: 64.75%;
-        width: 20%;
-        height: 18%;
+        left: 67.87%;
+        width: 24.28%;
+        height: 18.24%;
         filter: saturate(1.2) drop-shadow(25px 20px 15px var.$black-shadow);
       }
 
       &--chat {
         top: 66%;
-        left: -0.23%;
-        width: 33.2%;
-        height: 22.4%;
+        left: -0%;
+        width: 12.82%;
+        height: 21.15%;
+        filter: saturate(1.2) drop-shadow(15px 5px 10px var.$card-shadow);
       }
 
       &--keyboard {
         top: 92.65%;
-        left: 32.25%;
-        width: 35.3%;
-        height: 7%;
+        left: 28.5%;
+        width: 42.855%;
+        height: 7.27%;
       }
 
       &--mouse {
         top: 92.75%;
-        left: 66.9%;
-        width: 9.55%;
-        height: 6.9%;
+        left: 70.7%;
+        width: 11.4%;
+        height: 7.2%;
       }
 
       &--bell {
-        top: 50.1%;
-        left: 78.68%;
-        width: 9.1%;
+        top: 50.3%;
+        left: 84.8%;
+        width: 10.93%;
         height: 18.70%;
         filter: saturate(1.2) drop-shadow(25px 25px 15px var.$black-shadow);
       }
 
       &--cube {
         top: 0%;
-        left: 81.85%;
-        width: 8.8%;
+        left: 88.92%;
+        width: 10.2%;
         height: 14.2%;
       }
     }
@@ -2521,6 +2522,7 @@
     justify-content: space-between;
     min-height: 145px;
     max-width: 310px;
+    flex-shrink: 0;
   }
 
   &__logotype {
@@ -2740,6 +2742,17 @@
       .bg-decore__circle--upwork {
         right: -33%;
       }
+    }
+  }
+
+  .contacts {
+
+    &__body {
+      gap: 70px;
+    }
+
+    &__info {
+      gap: 30px 30px;
     }
   }
 
@@ -3418,6 +3431,70 @@
 
   }
 
+  .request {
+    padding: 50px 0 435px 0;
+
+    &__complex-decor {
+
+      .complex-decor__element {
+        width: 755px;
+        height: 477px;
+      }
+    }
+
+    &.custom-bg {
+
+      &::before {
+        height: 733px;
+      }
+      
+    }
+  }
+
+  .contacts {
+
+    &__body {
+      gap: 29px;
+    }
+
+    &__intro {
+      max-width: 225px;
+      min-height: 123px;
+    }
+
+    &__logotype {
+      max-width: 100%;
+    }
+
+    &__info {
+      gap: 15px;
+    }
+  }
+
+  .contact {
+    width: 180px;
+
+    &__li {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    &__link {
+
+      &--tel, &--mail {
+        
+        &::before {
+          margin: 0;
+        }
+
+      }
+
+      &--mail::before {
+        margin: 2px 0 0 0;
+      }
+    }
+  }
+
 }
 
 @media (max-width: 950px) {
@@ -3620,6 +3697,60 @@
         width: 957px;
         height: 957px;
       }
+    }
+  }
+
+  .request {
+    padding: 50px 0 400px 0;
+
+    &.custom-bg {
+
+      &::before {
+        height: 710px;
+      }
+    }
+
+    &__complex-decor {
+
+      .complex-decor__element {
+        width: 670px;
+        height: 430px;
+      }
+    }
+  }
+
+  .contacts {
+    padding: 30px 0 0 0;
+
+    &__body {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    &__intro {
+      max-width: 295px;
+      min-height: auto;
+      gap: 30px;
+    }
+
+    &__info {
+      align-self: flex-start;
+    }
+
+    &__partners {
+      flex-direction: row;
+      gap: 17px;
+
+      .partners__link {
+        max-width: 86px;
+      }
+    }
+  }
+
+  .contact {
+
+    &__title {
+      margin: 0 0 10px 0;
     }
   }
 
@@ -4226,6 +4357,72 @@
 
   }
 
+  .request {
+    padding: 50px 0 330px 0;
+
+    &.custom-bg {
+
+      &::before {
+        height: 625px;
+      }
+      
+    }
+
+    &__complex-decor {
+
+      .complex-decor__element {
+        width: 565px;
+        height: 357px;
+      }
+    }
+  }
+
+  .request-form {
+    width: 350px;
+    gap: 30px;
+
+    &__fields {
+      gap: 20px;
+    }
+
+    &__data-field {
+
+      .data-field__input {
+        height: 30px;
+        font-size: 16px;
+      }
+
+      &--textarea {
+        margin: 30px 0 0 0;
+      }
+    }
+  }
+
+  .contacts {
+    padding: 25px 0 0 0;
+
+    &__body {
+      gap: 30px;
+      padding: 0 0 20px 0;
+    }
+
+    &__logotype {
+      max-width: 294px;
+    }
+
+    &__info {
+      gap: 30px;
+    }
+
+    &__partners {
+      gap: 17px;
+    }
+
+    &__footer {
+      padding: 20px 0;
+    }
+  }
+
 }
 
 @media (max-width: 660px) {
@@ -4501,6 +4698,18 @@
     &__column {
       gap: 13px;
       width: 100%;
+    }
+  }
+
+  .request {
+    padding: 50px 0 255px 0;
+
+    &__complex-decor {
+
+      .complex-decor__element {
+        width: 400px;
+        height: 260px;
+      }
     }
   }
 
@@ -5150,6 +5359,88 @@
     &__text, &__li {
       font-size: 15px;
       line-height: 20px;
+    }
+  }
+
+  .request {
+    padding: 45px 0 225px 0;
+    gap: 50px;
+
+    &__block-intro {
+
+      .block-intro__title {
+        text-align: left;
+      }
+    }
+
+    &__complex-decor {
+
+      .complex-decor__element {
+        width: 92%;
+        height: 220px;
+      }
+    }
+
+    &.custom-bg {
+
+      &::before {
+        height: 597px;
+      }
+      
+    }
+  }
+
+  .request-form {
+    width: 100%;
+  }
+
+  .contacts {
+
+    &__logotype {
+      max-width: 220px;
+    }
+
+    &__partners {
+      flex-direction: column;
+      gap: 15px;
+
+      .partners__link {
+        max-width: 128px;
+      }
+    }
+
+    &__rights {
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+
+  .contact {
+    width: 100%;
+
+    &__title {
+      font-size: 20px;
+      line-height: 25px;
+    }
+
+    &__li {
+      font-size: 15px;
+      line-height: 19px;
+    }
+
+    &__link {
+
+      &--tel, &--mail {
+        
+        &::before {
+          margin: 1px 0 0 0;
+        }
+
+      }
+
+      &--mail::before {
+        margin: 4px 0 0 0;
+      }
     }
   }
   

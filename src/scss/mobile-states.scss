@@ -145,3 +145,14 @@
     text-decoration: underline solid var.$lime;
   }
 }
+
+// Footer
+
+.contact__link {
+  transition: all 0.05s;
+
+  &:active {
+    color: var.$blue;
+    text-decoration: underline;
+  }
+}
